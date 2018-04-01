@@ -34,9 +34,6 @@ __git_files () {
 
 alias naslan="ssh taylor@nas"
 alias naswan="ssh taylor@taylorjthurlow.com"
-alias droplet-rails="ssh taylor@138.68.59.123"
-
-alias minestart="/Users/taylorthurlow/Software/nheqminer-macos/miner/nheqminer-gpu -l equihash.usa.nicehash.com:3357 -u 3GPGs9fvGCt6gaeBGyeDc2FiiWAn1tKSHQ -cd 0"
 
 alias rakeprofile="TESTOPTS='--profile' rake test"
 
