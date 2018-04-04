@@ -640,6 +640,13 @@
 			<key>Text</key>
 			<string>0x1</string>
 		</dict>
+		<key>0x62-0x100000</key>
+		<dict>
+			<key>Action</key>
+			<integer>11</integer>
+			<key>Text</key>
+			<string>0x2</string>
+		</dict>
 		<key>0x63-0x100000</key>
 		<dict>
 			<key>Action</key>
@@ -700,10 +707,8 @@
 	<integer>7</integer>
 	<key>LoadPrefsFromCustomFolder</key>
 	<true/>
-	<key>NSFontPanelAttributes</key>
-	<string>1, 4</string>
 	<key>NSNavLastRootDirectory</key>
-	<string>~/Dropbox/dotfiles/autogen/themer-1517188985283/themer-iterm</string>
+	<string>~</string>
 	<key>NSNavPanelExpandedSizeForOpenMode</key>
 	<string>{712, 448}</string>
 	<key>NSQuotedKeystrokeBinding</key>
@@ -721,7 +726,7 @@
 	gAKACoAN0xAJChEVGVdOUy5rZXlzoxITFIADgASABaMWFxiABoAHgAiACVpJZGVudGlm
 	aWVyVVdpZHRoVkhpZGRlblEwI0BowAAAAAAACNIhIiMkWiRjbGFzc25hbWVYJGNsYXNz
 	ZXNcTlNEaWN0aW9uYXJ5oiMlWE5TT2JqZWN00xAJCicrGaMSExSAA4AEgAWjLC0YgAuA
-	DIAIgAlRMSNAc7Gdsi0OVtIhIjM0Xk5TTXV0YWJsZUFycmF5ozM1JVdOU0FycmF5XxAP
+	DIAIgAlRMSNAdKGdsi0OVtIhIjM0Xk5TTXV0YWJsZUFycmF5ozM1JVdOU0FycmF5XxAP
 	TlNLZXllZEFyY2hpdmVy0Tg5VUFycmF5gAEACAARABoAIwAtADIANwBGAEwAUQBcAGMA
 	ZgBoAGoAbABzAHsAfwCBAIMAhQCJAIsAjQCPAJEAnACiAKkAqwC0ALUAugDFAM4A2wDe
 	AOcA7gDyAPQA9gD4APwA/gEAAQIBBAEGAQ8BFAEjAScBLwFBAUQBSgAAAAAAAAIBAAAA
@@ -737,21 +742,12 @@
 	</data>
 	<key>NSTableView Supports v2 KeyBingingTable</key>
 	<true/>
-	<key>NSToolbar Configuration com.apple.NSColorPanel</key>
-	<dict>
-		<key>TB Is Shown</key>
-		<integer>1</integer>
-	</dict>
-	<key>NSWindow Frame NSFontPanel</key>
-	<string>768 184 489 283 0 0 2560 1418 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>2699 108 796 473 2560 -244 1080 1920 </string>
+	<string>248 231 958 451 0 0 1440 878 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>2560 -244 1080 1920 2560 -244 1080 1920 </string>
+	<string>0 0 1060 878 0 0 1440 878 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>-817 791 652 477 -1080 -151 1080 1920 </string>
-	<key>NSWindow Frame iTerm Window 2</key>
-	<string>364 158 652 477 0 0 2560 1418 </string>
+	<string>0 103 1274 775 0 0 1920 1058 </string>
 	<key>New Bookmarks</key>
 	<array>
 		<dict>
@@ -1467,24 +1463,18 @@
 			<string>/Users/taylorthurlow</string>
 		</dict>
 	</array>
-	<key>NoSyncHaveUsedCopyMode</key>
-	<true/>
 	<key>NoSyncHaveWarnedAboutPasteConfirmationChange</key>
 	<true/>
 	<key>NoSyncInstallationId</key>
-	<string>7571852A-CEEE-4CCC-909F-D67CEADC6593</string>
-	<key>NoSyncLastTipTime</key>
-	<real>533596443.75772399</real>
+	<string>68FE2632-0ACF-4CFD-BCCC-C1458E474871</string>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
 	<true/>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
 	<integer>0</integer>
 	<key>NoSyncPermissionToShowTip</key>
-	<true/>
+	<false/>
 	<key>NoSyncTimeOfFirstLaunchOfVersionWithTip</key>
-	<real>531879547.13684601</real>
-	<key>NoSyncTipsDisabled</key>
-	<true/>
+	<real>536044192.71999401</real>
 	<key>OnlyWhenMoreTabs</key>
 	<false/>
 	<key>PMPrintingExpandedStateForPrint2</key>
@@ -1533,11 +1523,11 @@
 	<key>SUFeedAlternateAppNameKey</key>
 	<string>iTerm</string>
 	<key>SUFeedURL</key>
-	<string>https://iterm2.com/appcasts/final.xml?shard=52</string>
+	<string>https://iterm2.com/appcasts/final.xml?shard=70</string>
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2018-04-01T17:46:47Z</date>
+	<date>2018-04-04T01:17:06Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>ShowBookmarkName</key>
