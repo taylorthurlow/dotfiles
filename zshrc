@@ -5,6 +5,8 @@ fi
 export ZSH=/Users/taylorthurlow/.oh-my-zsh
 ZSH_THEME="panda"
 
+DISABLE_UPDATE_PROMPT=true
+
 plugins=(gitfast gpg-agent autojump bundler common-aliases gem rails ruby sublime sudo systemd)
 
 source $ZSH/oh-my-zsh.sh
@@ -36,6 +38,8 @@ alias naslan="ssh taylor@nas"
 alias naswan="ssh taylor@taylorjthurlow.com"
 
 alias rakeprofile="TESTOPTS='--profile' rake test"
+
+alias git=hub
 
 eval "$(rbenv init -)"
 
