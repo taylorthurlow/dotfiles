@@ -166,8 +166,13 @@ Metrics/PerceivedComplexity:
 
 # Non-style guide additions
 
+require: rubocop-rspec
+
 AllCops:
   TargetRubyVersion: 2.4
+  RSpec:
+    Patterns:
+      - '_spec.rb$'
   Exclude:
     - 'db/**/*'
     - 'config/**/*'
@@ -177,6 +182,11 @@ AllCops:
     - 'script/**/*'
     - 'bin/**/*'
     - 'app/assets/bower_components/**/*'
+
+Metrics/BlockLength:
+  Exclude:
+    - 'test/**/*'
+    - 'spec/**/*'
 
 Style/FrozenStringLiteralComment:
   Enabled: false
