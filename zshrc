@@ -7,7 +7,7 @@ ZSH_THEME="panda"
 
 DISABLE_UPDATE_PROMPT=true
 
-plugins=(gitfast gpg-agent autojump bundler common-aliases gem rails ruby sublime sudo systemd)
+plugins=(gitfast gpg-agent autojump bundler common-aliases ruby sublime sudo systemd)
 
 source $ZSH/oh-my-zsh.sh
 
