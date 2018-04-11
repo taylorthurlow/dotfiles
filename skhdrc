@@ -1,0 +1,114 @@
+#  NOTE(koekeishiya): A list of all built-in modifier and literal keywords can
+#                     be found at https://github.com/koekeishiya/skhd/issues/1
+#
+#                     A hotkey is written according to the following rules:
+#
+#                       hotkey   = <keysym> ':' <command> |
+#                                  <keysym> '->' ':' <command>
+#
+#                       keysym   = <mod> '-' <key> | <key>
+#
+#                       mod      = 'built-in mod keyword' | <mod> '+' <mod>
+#
+#                       key      = <literal> | <keycode>
+#
+#                       literal  = 'single letter or built-in keyword'
+#
+#                       keycode  = 'apple keyboard kVK_<Key> values (0x3C)'
+#
+#                       ->       = keypress is not consumed by skhd
+#
+#                       command  = command is executed through '$SHELL -c' and
+#                                  follows valid shell syntax. if the $SHELL environment
+#                                  variable is not set, it will default to '/bin/bash'.
+#                                  when bash is used, the ';' delimeter can be specified
+#                                  to chain commands.
+#
+#                                  to allow a command to extend into multiple lines,
+#                                  prepend '\' at the end of the previous line.
+#
+#                                  an EOL character signifies the end of the bind.
+
+# close focused window
+alt - w : chunkc tiling::window --close
+
+# focus window
+ctrl - left : chunkc tiling::window --focus west
+ctrl - down : chunkc tiling::window --focus south
+ctrl - up : chunkc tiling::window --focus north
+ctrl - right : chunkc tiling::window --focus east
+
+# move window
+# shift + ctrl - left : chunkc tiling::window --warp west
+# shift + ctrl - down : chunkc tiling::window --warp south
+# shift + ctrl - up : chunkc tiling::window --warp north
+# shift + ctrl - right : chunkc tiling::window --warp east
+
+# swap window
+shift + ctrl - left : chunkc tiling::window --swap west
+shift + ctrl - down : chunkc tiling::window --swap south
+shift + ctrl - up : chunkc tiling::window --swap north
+shift + ctrl - right : chunkc tiling::window --swap east
+
+# send window to desktop
+ctrl + shift - 1 : chunkc tiling::window --send-to-desktop 1
+ctrl + shift - 2 : chunkc tiling::window --send-to-desktop 2
+ctrl + shift - 3 : chunkc tiling::window --send-to-desktop 3
+ctrl + shift - 4 : chunkc tiling::window --send-to-desktop 4
+
+# focus monitor
+alt - 1  : chunkc tiling::monitor -f 1
+alt - 2  : chunkc tiling::monitor -f 2
+alt - 3  : chunkc tiling::monitor -f 3
+
+# send window to monitor and follow focus
+shift + alt - 1  : chunkc tiling::window --send-to-monitor 1; chunkc tiling::monitor -f 1
+shift + alt - 2  : chunkc tiling::window --send-to-monitor 2; chunkc tiling::monitor -f 2
+shift + alt - 3  : chunkc tiling::window --send-to-monitor 3; chunkc tiling::monitor -f 3
+
+# increase region size
+# alt - left : chunkc tiling::window --use-temporary-ratio 0.1 --adjust-window-edge west
+# alt - down : chunkc tiling::window --use-temporary-ratio 0.1 --adjust-window-edge south
+# alt - up : chunkc tiling::window --use-temporary-ratio 0.1 --adjust-window-edge north
+# alt - right : chunkc tiling::window --use-temporary-ratio 0.1 --adjust-window-edge east
+
+# decrease region size
+# ctrl + alt - left : chunkc tiling::window --use-temporary-ratio -0.1 --adjust-window-edge west
+# ctrl + alt - down : chunkc tiling::window --use-temporary-ratio -0.1 --adjust-window-edge south
+# ctrl + alt - up : chunkc tiling::window --use-temporary-ratio -0.1 --adjust-window-edge north
+# ctrl + alt - right : chunkc tiling::window --use-temporary-ratio -0.1 --adjust-window-edge east
+
+# i3-like size changes
+ctrl + alt - left : chunkc tiling::window --use-temporary-ratio 0.05 --adjust-window-edge west; chunkc tiling::window --use-temporary-ratio -0.05 --adjust-window-edge east
+ctrl + alt - down : chunkc tiling::window --use-temporary-ratio 0.05 --adjust-window-edge south; chunkc tiling::window --use-temporary-ratio -0.05 --adjust-window-edge north
+ctrl + alt - up : chunkc tiling::window --use-temporary-ratio 0.05 --adjust-window-edge north; chunkc tiling::window --use-temporary-ratio -0.05 --adjust-window-edge south
+ctrl + alt - right : chunkc tiling::window --use-temporary-ratio 0.05 --adjust-window-edge east; chunkc tiling::window --use-temporary-ratio -0.05 --adjust-window-edge west
+
+# set insertion point for focused container
+alt - v : chunkc tiling::window --use-insertion-point south
+alt + shift - v : chunkc tiling::window --use-insertion-point north
+alt - h : chunkc tiling::window --use-insertion-point east
+alt + shift - h : chunkc tiling::window --use-insertion-point west
+
+# rotate tree
+alt - r : chunkc tiling::desktop --rotate 270
+
+# toggle window fullscreen
+alt - f : chunkc tiling::window --toggle fullscreen
+
+# toggle window native fullscreen
+shift + alt - f : chunkc tiling::window --toggle native-fullscreen
+
+# float / unfloat window and center on screen
+alt + ctrl - space : chunkc tiling::window --toggle float;\
+          chunkc tiling::window --grid-layout 4:4:1:1:2:2
+
+# change layout of desktop
+ctrl + alt - 1 : chunkc tiling::desktop --layout bsp
+ctrl + alt - 2 : chunkc tiling::desktop --layout monocle
+ctrl + alt - 3 : chunkc tiling::desktop --layout float
+
+ctrl + alt - w : chunkc tiling::desktop --deserialize ~/.chunkwm_layouts/dev_1
+
+# Fix single-app screenshot capturing the border instead
+cmd + ctrl - 2 -> : chunkc border::clear
