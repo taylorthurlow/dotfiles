@@ -5,8 +5,7 @@ local PROMPT_GIT_BRANCH='%{$fg[green]%}$(_git_branch)'
 local PROMPT_GIT_TIME='%{$fg[white]%}$(_git_time_since_commit)'
 local PROMPT_END='%{$reset_color%} > '
 
-PROMPT="${PROMPT_PATH}${PROMPT_HOST}${PROMPT_GIT_BRANCH}${PROMPT_GIT_TIME}${PROMPT_END}"
-
+PROMPT="${PROMPT_PATH}${PROMPT_HOST}${PROMPT_END}"
 
 function _user_host() {
 	if [[ -n $SSH_CONNECTION ]]; then
