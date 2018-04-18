@@ -36,10 +36,10 @@ __git_files () {
 
 alias naslan="ssh taylor@nas"
 alias naswan="ssh taylor@taylorjthurlow.com"
-
 alias rakeprofile="TESTOPTS='--profile' rake test"
-
 alias git=hub
+alias brewup="brew update; brew upgrade; brew cask upgrade"
+alias brewupup="brewup; brew prune; brew cleanup; brew doctor"
 
 eval "$(rbenv init -)"
 
