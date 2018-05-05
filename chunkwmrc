@@ -105,7 +105,7 @@ chunkc set ffm_bypass_modifier           fn
 #       if chunkc plugin_dir is not set, the absolutepath is necessary.
 #
 
-chunkc core::load border.so
+# chunkc core::load border.so
 chunkc core::load tiling.so
 chunkc core::load ffm.so
 
