@@ -44,15 +44,15 @@ alias brewupup="brewup; brew prune; brew cleanup; brew doctor"
 
 eval "$(rbenv init -)"
 
+# homebrew path
+export PATH="/usr/local/sbin:$PATH"
+
 # Add postgresql to path
 export PATH="$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin"
 
 # ELK path stuff
-export PATH="/usr/local/opt/elasticsearch@5.6/bin:$PATH"
-export PATH="/usr/local/opt/kibana@5.6/bin:$PATH"
-
-# RUST path stuff
-export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$PATH:/usr/local/opt/elasticsearch@5.6/bin"
+export PATH="$PATH:/usr/local/opt/kibana@5.6/bin"
 
 # added by travis gem
 [ -f /Users/taylorthurlow/.travis/travis.sh ] && source /Users/taylorthurlow/.travis/travis.sh
