@@ -39,8 +39,11 @@ alias naswan="ssh taylor@thurlow.io"
 alias rakeprofile="TESTOPTS='--profile' rake test"
 alias git=hub
 alias gst="hub status -s"
+alias glog="git log --oneline --decorate --color --graph --pretty=format:'%C(yellow)%h %Cgreen%ad %Cblue%an%Cred%d %Creset%s' --date=short"
 alias brewup="brew update; brew upgrade; brew cask upgrade"
 alias brewupup="brewup; brew prune; brew cleanup; brew doctor"
+alias linenums="nl -w3 -ba -s ' | '"
+alias be="bundle exec"
 
 eval "$(rbenv init -)"
 
@@ -56,3 +59,7 @@ export PATH="$PATH:/usr/local/opt/kibana@5.6/bin"
 
 # added by travis gem
 [ -f /Users/taylorthurlow/.travis/travis.sh ] && source /Users/taylorthurlow/.travis/travis.sh
+export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
+
+# anaconda
+export PATH="$PATH":/usr/local/anaconda3/bin
