@@ -34,3 +34,5 @@
 	autostash = true
 [core]
 	askpass = git-gui--askpass
+[pager]
+	branch = false
