@@ -34,7 +34,7 @@ __git_files () {
 	_wanted files expl 'local files' _files
 }
 
-alias naslan="ssh taylor@nas"
+alias naslan="ssh taylor@nas.local"
 alias naswan="ssh taylor@thurlow.io"
 alias rakeprofile="TESTOPTS='--profile' rake test"
 alias git=hub
