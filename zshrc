@@ -35,7 +35,7 @@ __git_files () {
 }
 
 alias naslan="ssh taylor@nas"
-alias naswan="ssh taylor@taylorjthurlow.com"
+alias naswan="ssh taylor@thurlow.io"
 alias rakeprofile="TESTOPTS='--profile' rake test"
 alias git=hub
 alias gst="hub status -s"
