@@ -45,13 +45,14 @@ alias brewupup="brewup; brew prune; brew cleanup; brew doctor"
 alias linenums="nl -w3 -ba -s ' | '"
 alias be="bundle exec"
 
-eval "$(rbenv init -)"
-[ -f /Users/taylorthurlow/.travis/travis.sh ] && source /Users/taylorthurlow/.travis/travis.sh
-
 # PATH modification
+export PATH="$HOME/.rbenv/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH" # homebrew
 export PATH="$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin"
 export PATH="$PATH:/usr/local/opt/elasticsearch@5.6/bin"
 export PATH="$PATH:/usr/local/opt/kibana@5.6/bin"
 export PATH="$PATH:/usr/local/opt/mysql@5.7/bin"
 export PATH="$PATH":/usr/local/anaconda3/bin
+
+eval "$(rbenv init -)"
+[ -f /Users/taylorthurlow/.travis/travis.sh ] && source /Users/taylorthurlow/.travis/travis.sh
