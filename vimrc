@@ -1,3 +1,11 @@
+" Vundle
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-repeat'
+call vundle#end()
+
 " Set leader key
 let mapleader = ","
 
@@ -21,7 +29,7 @@ noremap <Leader>v :vnew <C-R>=escape(expand("%:p:h"), ' ') . '/'<CR>
 noremap <C-s> <esc>:w<CR>
 inoremap <C-s> <esc>:w<CR>
 
-" =Options
+" Options
 set nocompatible " Don't maintain compatibility with Vi
 set hidden " Allow buffer change without saving
 set autoread " Load file from disk, ie for git reset
@@ -73,12 +81,29 @@ nmap <C-W>u :call MergeTabs()<CR>
 
 " Squash all commits into the first during rebase
 function! SquashAll()
-    normal ggj}klllcf
+  normal ggj}klllcf
+endfunction
 
+function! SearchForCallSitesCursor()
+  let searchterm = expand("<cword>")
+    call searchforcallsites(searchterm)
+  endfunction
 
-" Auto Commands
+" search for call sites for term (excluding its definition) and
+" load into the quickfix list.
+function! SearchForCallSites(term)
+  cexpr system('ag ' . shellescape(a:term) . '\| grep -v def')
+endfunction
+
+" make ctrlp use ag for listing the files. way faster and no useless
+" files.
+let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+let g:ctrlp_use_caching = 1
+
 autocmd Filetype help nnoremap <buffer> q :q<CR>
 
+" Don't automatically continue comments after newline
+autocmd BufNewFile,BufRead * setlocal formatoptions-=cro
 " ==========================
 " Ruby Stuff
 " ==========================
@@ -94,3 +119,32 @@ augroup myfiletypes
   " Make ?s part of words
   autocmd FileType ruby,eruby,yaml setlocal iskeyword+=?
 augroup END
+
+" Only do this part when compiled with support for autocommands.
+if has("autocmd")
+
+  " Enable file type detection.
+  " Use the default filetype settings, so that mail gets 'tw' set to 72,
+  " 'cindent' is on in C files, etc.
+  " Also load indent files, to automatically do language-dependent
+  " indenting.
+  filetype plugin indent on
+
+  " Put these in an autocmd group, so that we can delete them
+  " easily.
+  augroup vimrcEx
+    au!
+
+    " When editing a file, always jump to the last known
+    " cursor position.
+    " Don't do it when the position is invalid or
+    " when inside an event handler
+    " (happens when dropping a file on gvim).
+    autocmd BufReadPost *
+          \ if line("'\"") > 0 && line("'\"") <= line("$") |
+          \   exe "normal g`\"" |
+          \ endif
+
+  augroup END
+
+endif " has("autocmd")
