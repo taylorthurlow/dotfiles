@@ -5,6 +5,7 @@ fi
 export ZSH=/Users/taylorthurlow/.oh-my-zsh
 ZSH_THEME="panda"
 
+KEYTIMEOUT=1 # 10ms for key sequences, for vim escape
 DISABLE_UPDATE_PROMPT=true
 
 plugins=(gitfast gpg-agent autojump bundler common-aliases ruby sublime sudo systemd)
@@ -33,6 +34,8 @@ mkcd() {
 __git_files () {
 	_wanted files expl 'local files' _files
 }
+
+setopt noflowcontrol
 
 alias naslan="ssh taylor@nas.local"
 alias naswan="ssh taylor@thurlow.io"
