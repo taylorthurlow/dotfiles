@@ -4,6 +4,16 @@ call vundle#begin()
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-rails'
+Plugin 'tpope/vim-rake'
+Plugin 'tpope/vim-commentary'
+Plugin 'thoughtbot/vim-rspec'
+Plugin 'tpope/vim-fugitive'
+Plugin 'vim-ruby/vim-ruby'
+Plugin 'tpope/vim-rhubarb'
+Plugin 'tpope/vim-endwise'
+Plugin 'flazz/vim-colorschemes'
+Plugin 'ngmy/vim-rubocop'
 call vundle#end()
 
 " Set leader key
@@ -24,14 +34,21 @@ nnoremap k gk
 nnoremap <leader>vr :tabe $MYVIMRC<CR>
 nnoremap <leader>so :source $MYVIMRC <CR>
 noremap <Leader>v :vnew <C-R>=escape(expand("%:p:h"), ' ') . '/'<CR>
-
+noremap <Leader>t :call RunCurrentSpecFile()<CR>
+noremap <Leader>s :call RunNearestSpec()<CR>
+noremap <Leader>l :call RunLastSpec()<CR>
+noremap <Leader>a :call RunAllSpecs()<CR>
+let g:vimrubocop_keymap = 0
+nmap <Leader>rc :w<CR>:RuboCop<CR>
 " Ctrl+s to save, also exits insert mode
 noremap <C-s> <esc>:w<CR>
 inoremap <C-s> <esc>:w<CR>
 
 " Options
 set nocompatible " Don't maintain compatibility with Vi
-set hidden " Allow buffer change without saving
+set splitright
+set splitbelow
+set t_Co=256 " 256 color terminal
 set autoread " Load file from disk, ie for git reset
 set backspace=indent,eol,start " Sane backspace behavior
 set history=1000 " Remember last 1000 commands
@@ -50,7 +67,6 @@ set ignorecase smartcase
 set laststatus=2 " Always show the status line
 set relativenumber
 set number
-highlight LineNr ctermfg=Grey
 set backupdir=~/.tmp
 set directory=~/.tmp " Don't clutter my dirs up with swp and tmp files
 set timeoutlen=1000 ttimeoutlen=0
@@ -60,6 +76,14 @@ set grepprg=ag " Use silver searcher instead of grep
 set shiftround " When at 3 spaces and I hit >> , go to 4, not 5
 set nofoldenable " No code folding
 set wildmenu " Better completion on command line
+
+let g:rspec_command = '!bundle exec rspec {spec}'
+
+" Colors
+colorscheme Tomorrow-Night
+highlight ColorColumn ctermbg=Grey guibg=Grey
+autocmd ColorScheme * highlight Normal ctermbg=13222e
+autocmd ColorScheme * highlight NonText ctermbg=13222e
 
 " Merge a tab into a split in the previous window
 function! MergeTabs()
@@ -119,6 +143,9 @@ augroup myfiletypes
   " Make ?s part of words
   autocmd FileType ruby,eruby,yaml setlocal iskeyword+=?
 augroup END
+
+autocmd CursorHold,CursorHoldI * checktime
+autocmd FocusGained,BufEnter * :checktime
 
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
