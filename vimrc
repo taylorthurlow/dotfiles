@@ -1,34 +1,45 @@
 " Vundle
+set nocompatible " required by Vundle
+filetype off     " required by Vundle
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'gmarik/Vundle.vim'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-rake'
 Plugin 'tpope/vim-commentary'
-Plugin 'thoughtbot/vim-rspec'
 Plugin 'tpope/vim-fugitive'
-Plugin 'vim-ruby/vim-ruby'
 Plugin 'tpope/vim-rhubarb'
 Plugin 'tpope/vim-endwise'
-Plugin 'flazz/vim-colorschemes'
+Plugin 'vim-ruby/vim-ruby'
+Plugin 'thoughtbot/vim-rspec'
 Plugin 'ngmy/vim-rubocop'
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'flazz/vim-colorschemes'
 call vundle#end()
+filetype plugin indent on " required by Vundle
+syntax on
 
 " Set leader key
 let mapleader = ","
 
+" Fix alt keys
+execute "set <M-j>=\ej"
+nnoremap <M-j> j
+execute "set <M-k>=\ek"
+nnoremap <M-k> k
+
 " Normal bindings
-nnoremap 0 ^  
 nnoremap j gj
 nnoremap k gk
-" inoremap <silent><expr><BS> 
-"   \ (&indentexpr isnot '' ? &indentkeys : &cinkeys) =~? '!\^F' &&
-"   \ &backspace =~? '.*eol\&.*start\&.*indent\&' &&
-"   \ !search('\S','nbW',line('.')) ? (col('.') != 1 ? "\<C-U>" : "") .
-"   \ "\<BS>" . (getline(line('.')-1) =~ '\S' ? "" : "\<C-F>") : "\<BS>"
-" inoremap <C-BS> <BS>
+noremap <C-s> <esc>:w<CR>
+inoremap <C-s> <esc>:w<CR>
+" Shift lines up and down
+nnoremap <A-k> :<C-u>silent! move-2<CR>==
+nnoremap <A-j> :<C-u>silent! move+<CR>==
+xnoremap <A-k> :<C-u>silent! '<,'>move-2<CR>gv=gv
+xnoremap <A-j> :<C-u>silent! '<,'>move'>+<CR>gv=gv
 
 " Leader bindings
 nnoremap <leader>vr :tabe $MYVIMRC<CR>
@@ -39,10 +50,7 @@ noremap <Leader>s :call RunNearestSpec()<CR>
 noremap <Leader>l :call RunLastSpec()<CR>
 noremap <Leader>a :call RunAllSpecs()<CR>
 let g:vimrubocop_keymap = 0
-nmap <Leader>rc :w<CR>:RuboCop<CR>
-" Ctrl+s to save, also exits insert mode
-noremap <C-s> <esc>:w<CR>
-inoremap <C-s> <esc>:w<CR>
+nnoremap <Leader>rc :w<CR>:RuboCop<CR>
 
 " Options
 set nocompatible " Don't maintain compatibility with Vi
@@ -101,7 +109,7 @@ function! MergeTabs()
   execute "buffer " . bufferName
 endfunction
 
-nmap <C-W>u :call MergeTabs()<CR>
+nnoremap <C-W>u :call MergeTabs()<CR>
 
 " Squash all commits into the first during rebase
 function! SquashAll()
@@ -110,7 +118,7 @@ endfunction
 
 function! SearchForCallSitesCursor()
   let searchterm = expand("<cword>")
-    call searchforcallsites(searchterm)
+    call SearchForCallSites(searchterm)
   endfunction
 
 " search for call sites for term (excluding its definition) and
@@ -124,10 +132,7 @@ endfunction
 let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 let g:ctrlp_use_caching = 1
 
-autocmd Filetype help nnoremap <buffer> q :q<CR>
 
-" Don't automatically continue comments after newline
-autocmd BufNewFile,BufRead * setlocal formatoptions-=cro
 " ==========================
 " Ruby Stuff
 " ==========================
@@ -142,10 +147,19 @@ augroup myfiletypes
   autocmd FileType ruby,eruby,yaml setlocal colorcolumn=80
   " Make ?s part of words
   autocmd FileType ruby,eruby,yaml setlocal iskeyword+=?
-augroup END
+  " Refresh buffer contents on cursor wait and term focus
+  autocmd CursorHold,CursorHoldI * checktime
+  autocmd FocusGained,BufEnter * :checktime
 
-autocmd CursorHold,CursorHoldI * checktime
-autocmd FocusGained,BufEnter * :checktime
+  " Always open quickfix window as full-width below
+  autocmd FileType qf wincmd J
+
+  autocmd Filetype help nnoremap <buffer> q :q<CR>
+
+  " Don't automatically continue comments after newline
+  autocmd BufNewFile,BufRead * setlocal formatoptions-=cro
+
+augroup END
 
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
