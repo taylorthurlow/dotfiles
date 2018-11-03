@@ -1,3 +1,5 @@
+runtime! plugin/sensible.vim
+
 " Vundle
 set nocompatible " required by Vundle
 filetype off     " required by Vundle
@@ -17,9 +19,13 @@ Plugin 'thoughtbot/vim-rspec'
 Plugin 'ngmy/vim-rubocop'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'flazz/vim-colorschemes'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'w0rp/ale'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'edkolev/tmuxline.vim'
 call vundle#end()
 filetype plugin indent on " required by Vundle
-syntax on
 
 " Set leader key
 let mapleader = ","
@@ -31,6 +37,7 @@ execute "set <M-k>=\ek"
 nnoremap <M-k> k
 
 " Normal bindings
+nnoremap <Ctrl-A> <Nop>
 nnoremap j gj
 nnoremap k gk
 noremap <C-s> <esc>:w<CR>
@@ -41,16 +48,22 @@ nnoremap <A-j> :<C-u>silent! move+<CR>==
 xnoremap <A-k> :<C-u>silent! '<,'>move-2<CR>gv=gv
 xnoremap <A-j> :<C-u>silent! '<,'>move'>+<CR>gv=gv
 
-" Leader bindings
+" leader bindings
 nnoremap <leader>vr :tabe $MYVIMRC<CR>
 nnoremap <leader>so :source $MYVIMRC <CR>
-noremap <Leader>v :vnew <C-R>=escape(expand("%:p:h"), ' ') . '/'<CR>
-noremap <Leader>t :call RunCurrentSpecFile()<CR>
-noremap <Leader>s :call RunNearestSpec()<CR>
-noremap <Leader>l :call RunLastSpec()<CR>
-noremap <Leader>a :call RunAllSpecs()<CR>
+nnoremap <leader>nf :split <C-R>escape(expand("%:p:h"), ' ') . '/'<CR>
+nnoremap <leader>nfv :vsplit <C-R>escape(expand("%:p:h"), ' ') . '/'<CR>
+nnoremap <leader>op :split <C-R>=escape(expand("%:p:h"), ' ') . '/'<CR>
+nnoremap <leader>opv :split <C-R>=escape(expand("%:p:h"), ' ') . '/'<CR>
+nnoremap <leader>opq :edit <C-R>=escape(expand("%:p:h"), ' ') . '/'<CR>
+noremap <leader>t :call RunCurrentSpecFile()<CR>
+noremap <leader>s :call RunNearestSpec()<CR>
+noremap <leader>l :call RunLastSpec()<CR>
+noremap <leader>a :call RunAllSpecs()<CR>
 let g:vimrubocop_keymap = 0
-nnoremap <Leader>rc :w<CR>:RuboCop<CR>
+nnoremap <leader>rc :w<CR>:RuboCop<CR>
+nnoremap <leader>rcf :w<CR>:RuboCop -x<CR>
+nnoremap <leader>rcfa :w<CR>:RuboCop -a<CR>
 
 " Options
 set nocompatible " Don't maintain compatibility with Vi
@@ -68,7 +81,7 @@ set softtabstop=2 "   specific settings via autocmd
 set secure " Limit what modelines and autocmds can do
 set autowrite " Write for me when I take any action
 set ruler " Show cursor position all the time
-set showmatch 
+set showmatch
 set nowrap
 set smarttab
 set ignorecase smartcase
@@ -86,12 +99,7 @@ set nofoldenable " No code folding
 set wildmenu " Better completion on command line
 
 let g:rspec_command = '!bundle exec rspec {spec}'
-
-" Colors
-colorscheme Tomorrow-Night
-highlight ColorColumn ctermbg=Grey guibg=Grey
-autocmd ColorScheme * highlight Normal ctermbg=13222e
-autocmd ColorScheme * highlight NonText ctermbg=13222e
+let g:ale_sign_column_always = 1
 
 " Merge a tab into a split in the previous window
 function! MergeTabs()
@@ -132,14 +140,25 @@ endfunction
 let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 let g:ctrlp_use_caching = 1
 
-
 " ==========================
 " Ruby Stuff
 " ==========================
-syntax on
+if !exists('g:syntax_on')
+  syntax enable
+endif
+
+" Word wrap in quickfix
+augroup quickfix
+  autocmd!
+  autocmd FileType qf setlocal wrap
+augroup END
+
+augroup reload_vimrc
+  autocmd!
+  autocmd BufWritePost $MYVIMRC nested source $MYVIMRC
+augroup END
 
 augroup myfiletypes
-  " Clear old autocmds in group
   autocmd!
   " autoindent with two spaces, always expand tabs
   autocmd FileType ruby,eruby,yaml setlocal ai sw=2 sts=2 et
@@ -150,6 +169,8 @@ augroup myfiletypes
   " Refresh buffer contents on cursor wait and term focus
   autocmd CursorHold,CursorHoldI * checktime
   autocmd FocusGained,BufEnter * :checktime
+  " Always remove trailing whitespaces
+  autocmd BufWritePre * %s/\s\+$//e
 
   " Always open quickfix window as full-width below
   autocmd FileType qf wincmd J
@@ -158,8 +179,23 @@ augroup myfiletypes
 
   " Don't automatically continue comments after newline
   autocmd BufNewFile,BufRead * setlocal formatoptions-=cro
-
 augroup END
+
+augroup mycolors
+  autocmd!
+  autocmd ColorScheme * highlight Normal ctermbg=NONE
+  autocmd ColorScheme * highlight NonText ctermbg=NONE
+  autocmd ColorScheme * highlight ColorColumn ctermbg=240
+  autocmd ColorScheme * highlight ALEWarning ctermbg=60
+  autocmd ColorScheme * highlight ALEError ctermbg=52
+  autocmd ColorScheme * highlight clear SignColumn
+augroup END
+
+let g:tmuxline_separators = { 'left': '', 'right': '',
+                            \ 'left_alt': '', 'right_alt': '|' }
+
+let g:airline_theme='minimalist'
+colorscheme Tomorrow-Night
 
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
@@ -189,3 +225,4 @@ if has("autocmd")
   augroup END
 
 endif " has("autocmd")
+
