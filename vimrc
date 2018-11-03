@@ -24,6 +24,8 @@ Plugin 'w0rp/ale'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'edkolev/tmuxline.vim'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'AndrewRadev/splitjoin.vim'
 call vundle#end()
 filetype plugin indent on " required by Vundle
 
@@ -97,6 +99,7 @@ set grepprg=ag " Use silver searcher instead of grep
 set shiftround " When at 3 spaces and I hit >> , go to 4, not 5
 set nofoldenable " No code folding
 set wildmenu " Better completion on command line
+set updatetime=100
 
 let g:rspec_command = '!bundle exec rspec {spec}'
 let g:ale_sign_column_always = 1
@@ -139,6 +142,8 @@ endfunction
 " files.
 let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 let g:ctrlp_use_caching = 1
+let g:ycm_max_num_candidates = 5
+let g:ycm_max_num_identifier_candidates = 5
 
 " ==========================
 " Ruby Stuff
@@ -185,16 +190,17 @@ augroup mycolors
   autocmd!
   autocmd ColorScheme * highlight Normal ctermbg=NONE
   autocmd ColorScheme * highlight NonText ctermbg=NONE
-  autocmd ColorScheme * highlight ColorColumn ctermbg=240
+  autocmd ColorScheme * highlight ColorColumn ctermbg=NONE
   autocmd ColorScheme * highlight ALEWarning ctermbg=60
   autocmd ColorScheme * highlight ALEError ctermbg=52
   autocmd ColorScheme * highlight clear SignColumn
 augroup END
 
 let g:tmuxline_separators = { 'left': '', 'right': '',
-                            \ 'left_alt': '', 'right_alt': '|' }
+                            \ 'left_alt': ':', 'right_alt': '|' }
 
 let g:airline_theme='minimalist'
+let g:airline#extensions#tabline#formatter = 'unique_tail'
 colorscheme Tomorrow-Night
 
 " Only do this part when compiled with support for autocommands.
