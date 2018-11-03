@@ -48,6 +48,10 @@ alias brewupup="brewup; brew prune; brew cleanup; brew doctor"
 alias linenums="nl -w3 -ba -s ' | '"
 alias be="bundle exec"
 
+function git-nuke {
+  git branch -D $1 && git push origin :$1
+}
+
 # PATH modification
 export PATH="$HOME/.rbenv/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH" # homebrew
