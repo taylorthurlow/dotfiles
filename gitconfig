@@ -36,3 +36,6 @@
 	askpass = git-gui--askpass
 [pager]
 	branch = false
+[alias]
+  co = checkout
+  br = branch
