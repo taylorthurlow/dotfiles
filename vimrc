@@ -15,6 +15,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-rhubarb'
 Plugin 'tpope/vim-endwise'
 Plugin 'tpope/vim-unimpaired'
+Plugin 'tpope/vim-ragtag'
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'thoughtbot/vim-rspec'
 Plugin 'ngmy/vim-rubocop'
@@ -26,6 +27,7 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'edkolev/tmuxline.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'AndrewRadev/splitjoin.vim'
+Plugin 'mattn/emmet-vim'
 call vundle#end()
 filetype plugin indent on " required by Vundle
 
@@ -141,7 +143,7 @@ endfunction
 " make ctrlp use ag for listing the files. way faster and no useless
 " files.
 let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-let g:ctrlp_use_caching = 1
+let g:ctrlp_use_caching = 0
 let g:ycm_max_num_candidates = 5
 let g:ycm_max_num_identifier_candidates = 5
 
@@ -184,16 +186,13 @@ augroup myfiletypes
 
   " Don't automatically continue comments after newline
   autocmd BufNewFile,BufRead * setlocal formatoptions-=cro
-
-  " Open quickfix window when grepping (like :Glog)
-  autocmd QuickFixCmdPost *grep* cwindow
 augroup END
 
 augroup mycolors
   autocmd!
   autocmd ColorScheme * highlight Normal ctermbg=NONE
   autocmd ColorScheme * highlight NonText ctermbg=NONE
-  autocmd ColorScheme * highlight ColorColumn ctermbg=NONE
+  autocmd ColorScheme * highlight ColorColumn ctermbg=235
   autocmd ColorScheme * highlight ALEWarning ctermbg=60
   autocmd ColorScheme * highlight ALEError ctermbg=52
   autocmd ColorScheme * highlight clear SignColumn
