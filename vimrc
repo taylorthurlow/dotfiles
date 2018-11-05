@@ -16,6 +16,7 @@ Plugin 'tpope/vim-rhubarb'
 Plugin 'tpope/vim-endwise'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-ragtag'
+Plugin 'tpope/vim-eunuch'
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'thoughtbot/vim-rspec'
 Plugin 'ngmy/vim-rubocop'
@@ -28,6 +29,8 @@ Plugin 'edkolev/tmuxline.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'AndrewRadev/splitjoin.vim'
 Plugin 'mattn/emmet-vim'
+Plugin 'Carpetsmoker/auto_mkdir2.vim'
+Plugin 'christoomey/vim-tmux-navigator'
 call vundle#end()
 filetype plugin indent on " required by Vundle
 
