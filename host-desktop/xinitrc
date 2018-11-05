@@ -1,5 +1,0 @@
-xrandr --output HDMI-1 --mode 1920x1080 --rate 60 --rotate right --pos 0x0
-xrandr --output DP-1 --mode 2560x1440 --rate 144 --primary --pos 1080x240
-xrandr --output DP-2 --mode 1920x1080 --rate 144 --pos 3640x420
-
-exec i3
