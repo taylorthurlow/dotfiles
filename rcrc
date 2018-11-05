@@ -1,1 +1,1 @@
-EXCLUDES="README.md tmuxline_theme"
+EXCLUDES="LICENSE README.md tmuxline_theme"
