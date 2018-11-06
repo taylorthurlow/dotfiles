@@ -299,7 +299,7 @@ type = custom/script
 interval = 1
 format-prefix = " "
 format = <label>
-exec = python $HOME/.config/polybar/modules/spotify/spotify_status.py -f '{artist} - {song}FF'
+exec = python $HOME/.config/polybar/modules/spotify/spotify_status.py -f '{artist} - {song}'
 format-underline = #1db954
 
 [settings]
