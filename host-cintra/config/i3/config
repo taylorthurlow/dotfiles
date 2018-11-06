@@ -141,7 +141,6 @@ gaps inner 5
 smart_gaps on
 smart_borders no_gaps
 
-exec-always --no-startup-id $HOME/.config/polybar/launch.sh
-exec-always --no-startup-id nitrogen --restore
-exec --no-startup-id google-drive-ocamlfuse $HOME/Drive
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+exec_always --no-startup-id nitrogen --restore
 
