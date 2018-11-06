@@ -1,14 +1,8 @@
-if [[ -v ZSH_PROF ]]; then
-  zmodload zsh/zprof
-fi
-
 export ZSH=/home/taylor/.oh-my-zsh
 ZSH_THEME="panda"
-
-KEYTIMEOUT=1 # 10ms for key sequences, for vim escape
-DISABLE_UPDATE_PROMPT=true
-
 plugins=(gitfast gpg-agent autojump bundler common-aliases ruby sublime sudo systemd)
+DISABLE_UPDATE_PROMPT=true
+KEYTIMEOUT=1
 
 source $ZSH/oh-my-zsh.sh
 
@@ -16,37 +10,9 @@ source $ZSH/oh-my-zsh.sh
 ## USER CONFIG BELOW THIS LINE ##
 #################################
 
-# Up a directory with "up"
-up() {
-    cd $(eval printf '../'%.0s {1..$1})
-}
+source "$HOME/.zshrc_shared"
 
-# Makedir and cd into it
-mkcd() {
-    if [ $# != 1 ]; then
-        echo "Usage: mkcd <dir>"
-    else
-        mkdir -p $1 && cd $1
-    fi
-}
-
-# make git tab completion faster
-__git_files () {
-	_wanted files expl 'local files' _files
-}
-
-setopt noflowcontrol
-
-alias naslan="ssh taylor@nas.local"
-alias naswan="ssh taylor@thurlow.io"
-alias git=hub
-alias gst="hub status -s"
-alias glog="git log --oneline --decorate --color --graph --pretty=format:'%C(yellow)%h %Cgreen%ad %Cblue%an%Cred%d %Creset%s' --date=short"
-alias be="bundle exec"
-
-function git-nuke {
-  git branch -D $1 && git push origin :$1
-}
+alias update="sudo apt update && sudo apt full-upgrade"
 
 # PATH modification
 export PATH="$HOME/.rbenv/bin:$PATH"

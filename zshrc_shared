@@ -1,0 +1,31 @@
+# Up a directory with "up"
+up() {
+    cd $(eval printf '../'%.0s {1..$1})
+}
+
+# Makedir and cd into it
+mkcd() {
+    if [ $# != 1 ]; then
+        echo "Usage: mkcd <dir>"
+    else
+        mkdir -p $1 && cd $1
+    fi
+}
+
+# Delete local and remote branches
+function git-nuke {
+  git branch -D $1 && git push origin :$1
+}
+
+# make git tab completion faster
+__git_files () {
+	_wanted files expl 'local files' _files
+}
+
+setopt noflowcontrol
+
+alias naslan="ssh taylor@nas.local"
+alias naswan="ssh taylor@home.thurlow.io"
+alias git=hub
+alias gst="hub status -s"
+alias glog="git log --oneline --decorate --color --graph --pretty=format:'%C(yellow)%h %Cgreen%ad %Cblue%an%Cred%d %Creset%s' --date=short"
