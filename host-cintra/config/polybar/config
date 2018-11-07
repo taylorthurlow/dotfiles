@@ -27,6 +27,56 @@ primary = #ffb52a
 secondary = #e60053
 alert = #bd2c40
 
+[bar/right]
+monitor = ${env:MONITOR:DP-2}
+width = 100%
+height = 30
+fixed-center = true
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+line-size = 3
+line-color = #f00
+
+padding-left = 0
+padding-right = 0
+
+module-margin-left = 1
+module-margin-right = 2
+
+font-0 = fixed:pixelsize=10;1
+font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
+font-2 = siji:pixelsize=10;1
+
+modules-left = i3
+modules-center =
+modules-right =
+
+[bar/left]
+monitor = ${env:MONITOR:HDMI-0}
+width = 100%
+height = 30
+fixed-center = true
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+line-size = 3
+line-color = #f00
+
+padding-left = 0
+padding-right = 0
+
+module-margin-left = 1
+module-margin-right = 2
+
+font-0 = fixed:pixelsize=10;1
+font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
+font-2 = siji:pixelsize=10;1
+
+modules-left = i3
+modules-center =
+modules-right =
+
 [bar/center]
 monitor = ${env:MONITOR:DP-4}
 width = 100%
@@ -118,7 +168,7 @@ index-sort = true
 wrapping-scroll = false
 
 ; Only show workspaces on the same output as the bar
-;pin-workspaces = true
+pin-workspaces = true
 
 label-mode-padding = 2
 label-mode-foreground = #000

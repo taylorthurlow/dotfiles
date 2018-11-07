@@ -4,4 +4,6 @@ killall -q polybar
 
 while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
 
-polybar center &
+polybar -r center &
+polybar -r left &
+polybar -r right &
