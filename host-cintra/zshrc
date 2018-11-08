@@ -13,6 +13,7 @@ source $ZSH/oh-my-zsh.sh
 source "$HOME/.zshrc_shared"
 
 alias update="sudo apt update && sudo apt full-upgrade"
+alias cat="bat"
 
 # PATH modification
 export PATH="$HOME/.rbenv/bin:$PATH"
