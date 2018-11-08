@@ -1,4 +1,4 @@
-export ZSH=/Users/taylorthurlow/.oh-my-zsh
+export ZSH=/home/taylor/.oh-my-zsh
 ZSH_THEME="panda"
 plugins=(gitfast gpg-agent autojump bundler common-aliases ruby sublime sudo systemd)
 DISABLE_UPDATE_PROMPT=true
@@ -12,16 +12,11 @@ source $ZSH/oh-my-zsh.sh
 
 source "$HOME/.zshrc_shared"
 
-alias brewup="brew update; brew upgrade; brew cask upgrade"
-alias brewupup="brewup; brew prune; brew cleanup; brew doctor"
+alias update="sudo apt update && sudo apt full-upgrade"
 
+# PATH modification
 export PATH="$HOME/.rbenv/bin:$PATH"
-export PATH="/usr/local/sbin:$PATH" # homebrew
-export PATH="$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin"
-export PATH="$PATH:/usr/local/opt/elasticsearch@5.6/bin"
-export PATH="$PATH:/usr/local/opt/kibana@5.6/bin"
-export PATH="$PATH:/usr/local/opt/mysql@5.7/bin"
-export PATH="$PATH:/usr/local/anaconda3/bin"
 
 eval "$(rbenv init -)"
-[ -f /Users/taylorthurlow/.travis/travis.sh ] && source /Users/taylorthurlow/.travis/travis.sh
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
