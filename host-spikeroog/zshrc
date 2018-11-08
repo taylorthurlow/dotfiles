@@ -11,12 +11,3 @@ source $ZSH/oh-my-zsh.sh
 #################################
 
 source "$HOME/.dotfiles/zshrc_shared"
-
-alias update="sudo apt update && sudo apt full-upgrade"
-
-# PATH modification
-export PATH="$HOME/.rbenv/bin:$PATH"
-
-eval "$(rbenv init -)"
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

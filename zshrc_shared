@@ -24,11 +24,21 @@ __git_files () {
 
 setopt noflowcontrol
 
+if [[ ! -x "$(command -v bat)" ]]; then; alias cat="bat"; fi
+if [[ ! -x "$(command -v hub)" ]]; then; alias git="hub"; fi
+
 alias aedirnlan="ssh taylor@aedirn.local"
 alias aedirnwan="ssh taylor@home.thurlow.io"
 alias cintralan="ssh taylor@cintra.local"
 alias cintrawan="ssh taylor@home.thurlow.io -t ssh taylor@cintra.local"
 
-alias git=hub
-alias gst="hub status -s"
+alias gst="git status -s"
 alias glog="git log --oneline --decorate --color --graph --pretty=format:'%C(yellow)%h %Cgreen%ad %Cblue%an%Cred%d %Creset%s' --date=short"
+alias update="sudo apt update && sudo apt full-upgrade"
+
+# PATH modification
+export PATH="$HOME/.rbenv/bin:$PATH"
+
+# Other stuff
+[ "$(command -v rbenv)" ] &&  eval "$(rbenv init -)"
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
