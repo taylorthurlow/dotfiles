@@ -1,1 +1,1 @@
-EXCLUDES="LICENSE README.md tmuxline_theme"
+EXCLUDES="LICENSE README.md tmux/* .zshrc_shared"
