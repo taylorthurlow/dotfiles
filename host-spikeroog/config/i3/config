@@ -38,6 +38,9 @@ bindsym XF86MonBrightnessDown exec xbacklight -5
 bindsym XF86AudioMute exec amixer set Master toggle && amixer set Speaker unmute && amixer set "Bass Speaker" unmute && amixer set Headphone unmute
 bindsym XF86AudioRaiseVolume exec amixer set Master 5%+
 bindsym XF86AudioLowerVolume exec amixer set Master 5%-
+
+bindsym --release $mod+Shift+s exec scrot -szb -e '/home/taylor/.dotfiles/dropshadow.sh $f'
+
 # use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
@@ -148,4 +151,4 @@ smart_borders no_gaps
 
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 exec_always --no-startup-id nitrogen --restore
-
+exec --no-startup-id dunst
