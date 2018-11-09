@@ -24,8 +24,8 @@ __git_files () {
 
 setopt noflowcontrol
 
-if [[ ! -x "$(command -v bat)" ]]; then; alias cat="bat"; fi
-if [[ ! -x "$(command -v hub)" ]]; then; alias git="hub"; fi
+[ "$(command -v bat)" ] && alias cat="bat"
+[ "$(command -v hub)" ] && alias git="hub"
 
 alias aedirnlan="ssh taylor@aedirn.local"
 alias aedirnwan="ssh taylor@home.thurlow.io"
