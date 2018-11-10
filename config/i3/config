@@ -1,28 +1,22 @@
-# i3 config file (v4)
+################################################################################
+# WARNING!
 #
-# Please see https://i3wm.org/docs/userguide.html for a complete reference!
+# This file is generated using rcm's hooks functionality using the script
+# located at ~/.dotfiles/hooks/pre-up/build-i3-config.sh. As such, any
+# modifications to this file will be destroyed when running the rcup command.
+# Modifications should be made to the base file and the host-specific
+# concatenation files:
 #
-# This config file uses keycodes (bindsym) and was written for the QWERTY
-# layout.
-#
-# To get a config file with the same key positions, but for your current
-# layout, use the i3-config-wizard
-#
+# ~/.dotfiles/config/i3/config
+# ~/.dotfiles/host-hostname/config/i3/config
+################################################################################
+
+# BEGIN HOST AGNOSTIC CONFIGURATION
+# The following configuration is from ~/.dotfiles/config/i3/config_host_agnostic
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 font pango:monospace 8
-
-# This font is widely installed, provides lots of unicode glyphs, right-to-left
-# text rendering and scalability on retina/hidpi displays (thanks to pango).
-#font pango:DejaVu Sans Mono 8
-
-# Before i3 v4.8, we used to recommend this one as the default:
-# font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
-# The font above is very space-efficient, that is, it looks good, sharp and
-# clear in small sizes. However, its unicode glyph coverage is limited, the old
-# X core fonts rendering does not support right-to-left and this being a bitmap
-# font, it doesn't scale on retina/hidpi displays.
 
 # use these keys for focus, movement, and resize directions when reaching for
 # the arrows is not convenient
@@ -43,7 +37,7 @@ bindsym $mod+Return exec kitty
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+space exec dmenu_run
+bindsym $mod+space exec i3-dmenu-desktop
 
 # change focus
 bindsym $mod+$left focus left
@@ -79,7 +73,6 @@ set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
 
-
 # switch to workspace
 bindsym $mod+1 workspace $ws1
 bindsym $mod+2 workspace $ws2
@@ -110,6 +103,8 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+# take a screenshot
+bindsym --release $mod+Shift+s exec scrot -szb -e '/home/taylor/.dotfiles/dropshadow.sh $f'
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -143,4 +138,7 @@ smart_borders no_gaps
 
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 exec_always --no-startup-id nitrogen --restore
+exec --no-startup-id dunst
 
+# BEGIN HOST SPECIFIC CONFIGURATION - cintra
+# ~/.dotfiles/host-cintra/config/i3/config_host_specific

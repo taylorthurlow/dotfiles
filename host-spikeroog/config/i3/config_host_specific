@@ -1,0 +1,9 @@
+
+# BEGIN HOST SPECIFIC CONFIGURATION - spikeroog
+# ~/.dotfiles/host-spikeroog/config/i3/config_host_specific
+
+bindsym XF86MonBrightnessUp exec xbacklight +5
+bindsym XF86MonBrightnessDown exec xbacklight -5
+bindsym XF86AudioMute exec amixer set Master toggle && amixer set Speaker unmute && amixer set "Bass Speaker" unmute && amixer set Headphone unmute
+bindsym XF86AudioRaiseVolume exec amixer set Master 5%+
+bindsym XF86AudioLowerVolume exec amixer set Master 5%-
