@@ -1,5 +1,5 @@
 export ZSH=/home/taylor/.oh-my-zsh
-ZSH_THEME="bira"
+ZSH_THEME="panda"
 plugins=(gitfast gpg-agent autojump bundler common-aliases ruby sublime sudo systemd)
 DISABLE_UPDATE_PROMPT=true
 KEYTIMEOUT=1
