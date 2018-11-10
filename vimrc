@@ -31,6 +31,7 @@ Plugin 'AndrewRadev/splitjoin.vim'
 Plugin 'mattn/emmet-vim'
 Plugin 'Carpetsmoker/auto_mkdir2.vim'
 Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'jiangmiao/auto-pairs'
 call vundle#end()
 filetype plugin indent on " required by Vundle
 
@@ -88,6 +89,7 @@ set softtabstop=2 "   specific settings via autocmd
 set secure " Limit what modelines and autocmds can do
 set autowrite " Write for me when I take any action
 set ruler " Show cursor position all the time
+set cursorline
 set showmatch
 set nowrap
 set smarttab
@@ -108,6 +110,7 @@ set updatetime=100
 
 let g:rspec_command = '!bundle exec rspec {spec}'
 let g:ale_sign_column_always = 1
+let g:ale_lint_delay = 1000
 
 " Merge a tab into a split in the previous window
 function! MergeTabs()
@@ -195,17 +198,20 @@ augroup mycolors
   autocmd!
   autocmd ColorScheme * highlight Normal ctermbg=NONE
   autocmd ColorScheme * highlight NonText ctermbg=NONE
-  autocmd ColorScheme * highlight ColorColumn ctermbg=235
+  autocmd ColorScheme * highlight ColorColumn ctermbg=234
   autocmd ColorScheme * highlight ALEWarning ctermbg=60
   autocmd ColorScheme * highlight ALEError ctermbg=52
   autocmd ColorScheme * highlight clear SignColumn
+  autocmd ColorScheme * highlight CursorLine ctermbg=234
 augroup END
 
 let g:tmuxline_separators = { 'left': '', 'right': '',
                             \ 'left_alt': ':', 'right_alt': '|' }
 
 let g:airline_theme='minimalist'
+let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
+let g:airline_skip_empty_sections = 1
 colorscheme Tomorrow-Night
 
 " Only do this part when compiled with support for autocommands.
