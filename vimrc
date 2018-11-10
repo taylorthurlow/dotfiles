@@ -107,6 +107,7 @@ set shiftround " When at 3 spaces and I hit >> , go to 4, not 5
 set nofoldenable " No code folding
 set wildmenu " Better completion on command line
 set updatetime=100
+set colorcolumn=80
 
 let g:rspec_command = '!bundle exec rspec {spec}'
 let g:ale_sign_column_always = 1
@@ -176,7 +177,6 @@ augroup myfiletypes
   " autoindent with two spaces, always expand tabs
   autocmd FileType ruby,eruby,yaml setlocal ai sw=2 sts=2 et
   autocmd FileType ruby,eruby,yaml setlocal path+=lib
-  autocmd FileType ruby,eruby,yaml setlocal colorcolumn=80
   " Make ?s part of words
   autocmd FileType ruby,eruby,yaml setlocal iskeyword+=?
   " Refresh buffer contents on cursor wait and term focus
