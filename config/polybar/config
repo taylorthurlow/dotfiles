@@ -71,6 +71,7 @@ font-0 = fixed:pixelsize=22;1
 modules-center = xwindow
 modules-right = filesystem alsa memory cpu temperature wlan battery date powermenu
 tray-maxsize = 22
+fixed-center = false
 
 [module/xwindow]
 type = internal/xwindow
