@@ -32,6 +32,7 @@ Plugin 'mattn/emmet-vim'
 Plugin 'Carpetsmoker/auto_mkdir2.vim'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'jiangmiao/auto-pairs'
+Plugin 'francoiscabrol/ranger.vim'
 call vundle#end()
 filetype plugin indent on " required by Vundle
 
@@ -112,6 +113,8 @@ set colorcolumn=80
 let g:rspec_command = '!bundle exec rspec {spec}'
 let g:ale_sign_column_always = 1
 let g:ale_lint_delay = 1000
+let g:ranger_replace_netrw = 1
+let g:ranger_command_override = 'ranger --cmd "set show_hidden=true"'
 
 " Merge a tab into a split in the previous window
 function! MergeTabs()
