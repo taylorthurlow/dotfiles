@@ -37,9 +37,12 @@ padding-left = 0
 padding-right = 0
 module-margin-left = 1
 module-margin-right = 2
-font-0 = fixed:pixelsize=10;1
+font-0 = fixed:pixelsize=10;0
 font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = siji:pixelsize=10;1
+font-3 = Font Awesome 5 Free:pixelsize=8;0
+font-4 = Font Awesome 5 Free Solid:pixelsize=8;0
+font-5 = Font Awesome 5 Brands:pixelsize=8;0
 modules-left = i3
 modules-center =
 modules-right =
@@ -50,7 +53,7 @@ cursor-scroll = ns-resize
 inherit = import/bar/default
 monitor = ${env:MONITOR:DP-4}
 modules-center = xwindow
-modules-right = spotify filesystem memory cpu temperature date powermenu
+modules-right = spotify memory cpu temperature date powermenu
 tray-position = right
 tray-padding = 2
 
@@ -69,7 +72,7 @@ dpi = 227
 height = 50
 font-0 = fixed:pixelsize=22;1
 modules-center = xwindow
-modules-right = filesystem alsa memory cpu temperature wlan battery date powermenu
+modules-right = alsa memory cpu temperature wlan battery date powermenu
 tray-maxsize = 22
 fixed-center = false
 
@@ -87,16 +90,6 @@ label-charging = %percentage%%
 format-charging-underline = #A1D490
 format-discharging-underline = #DDD
 
-[module/filesystem]
-type = internal/fs
-interval = 25
-
-mount-0 = /
-
-label-mounted = %{F#0a81f5}%mountpoint%%{F-}: %percentage_used%%
-label-unmounted = %mountpoint% not mounted
-label-unmounted-foreground = ${colors.foreground-alt}
-
 [module/i3]
 type = internal/i3
 format = <label-state> <label-mode>
@@ -106,28 +99,33 @@ wrapping-scroll = false
 ; Only show workspaces on the same output as the bar
 pin-workspaces = true
 
+ws-icon-0 = 1;
+ws-icon-1 = 2;
+ws-icon-2 = 3;
+ws-icon-3 = 4;
+
 label-mode-padding = 2
 label-mode-foreground = #000
 label-mode-background = ${colors.primary}
 
 ; focused = Active workspace on focused monitor
-label-focused = %index%
+label-focused = %icon%
 label-focused-background = ${colors.background-alt}
 label-focused-underline = ${colors.primary}
 label-focused-padding = 2
 
 ; unfocused = Inactive workspace on any monitor
-label-unfocused = %index%
+label-unfocused = %icon%
 label-unfocused-padding = 2
 
 ; visible = Active workspace on unfocused monitor
-label-visible = %index%
+label-visible = %icon%
 label-visible-background = ${self.label-focused-background}
 label-visible-underline = ${self.label-focused-underline}
 label-visible-padding = ${self.label-focused-padding}
 
 ; urgent = Workspace with urgency hint set
-label-urgent = %index%
+label-urgent = %icon%
 label-urgent-background = ${colors.alert}
 label-urgent-padding = 2
 
@@ -135,7 +133,7 @@ label-urgent-padding = 2
 [module/cpu]
 type = internal/cpu
 interval = 2
-format-prefix = " "
+format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
 format-underline = #f90000
 label = %percentage:2%%
@@ -143,7 +141,7 @@ label = %percentage:2%%
 [module/memory]
 type = internal/memory
 interval = 2
-format-prefix = " "
+format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
 format-underline = #4bffdc
 label = %percentage_used%%
@@ -177,7 +175,7 @@ date =
 date-alt = " %Y-%m-%d"
 time = %I:%M %p
 time-alt = %I:%M:%S %p
-format-prefix = 
+format-prefix = 
 format-prefix-foreground = ${colors.foreground-alt}
 format-underline = #0a6cf5
 label = %date% %time%
@@ -195,7 +193,7 @@ format-volume-underline = #DEDE00
 label-volume = VOL
 label-volume-foreground = ${root.foreground}
 
-format-muted-prefix = " "
+format-muted-prefix = " "
 format-muted-foreground = ${colors.foreground-alt}
 format-muted-underline = #DEDE00
 label-muted = sound muted
@@ -231,9 +229,9 @@ label = %temperature-c%
 label-warn = %temperature-c%
 label-warn-foreground = ${colors.secondary}
 
-ramp-0 = 
-ramp-1 = 
-ramp-2 = 
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
 ramp-foreground = ${colors.foreground-alt}
 
 [module/powermenu]
@@ -243,9 +241,9 @@ expand-right = true
 
 format-spacing = 1
 
-label-open = 
+label-open = ""
 label-open-foreground = ${colors.secondary}
-label-close =  cancel
+label-close = " cancel"
 label-close-foreground = ${colors.secondary}
 label-separator = |
 label-separator-foreground = ${colors.foreground-alt}
@@ -268,7 +266,8 @@ menu-2-1-exec = menu-open-0
 [module/spotify]
 type = custom/script
 interval = 1
-format-prefix = " "
+format-prefix-foreground = ${colors.foreground-alt}
+format-prefix = " "
 format = <label>
 exec = python $HOME/.config/polybar/modules/spotify/spotify_status.py -f '{artist} - {song}'
 format-underline = #1db954
