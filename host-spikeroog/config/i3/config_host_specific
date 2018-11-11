@@ -4,6 +4,8 @@
 
 bindsym XF86MonBrightnessUp exec xbacklight +5
 bindsym XF86MonBrightnessDown exec xbacklight -5
-bindsym XF86AudioMute exec amixer set Master toggle && amixer set Speaker unmute && amixer set "Bass Speaker" unmute && amixer set Headphone unmute
-bindsym XF86AudioRaiseVolume exec amixer set Master 5%+
-bindsym XF86AudioLowerVolume exec amixer set Master 5%-
+bindsym XF86AudioMute exec /home/taylor/.dotfiles/host-spikeroog/config/i3/toggle_mute.sh
+bindsym XF86AudioRaiseVolume exec /home/taylor/.dotfiles/host-spikeroog/config/i3/change_volume.sh up
+bindsym XF86AudioLowerVolume exec /home/taylor/.dotfiles/host-spikeroog/config/i3/change_volume.sh down
+
+exec --no-startup-id nmapplet
