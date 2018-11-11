@@ -53,7 +53,7 @@ cursor-scroll = ns-resize
 inherit = import/bar/default
 monitor = ${env:MONITOR:DP-4}
 modules-center = xwindow
-modules-right = spotify temperature date
+modules-right = spotify date
 tray-position = right
 tray-padding = 2
 
