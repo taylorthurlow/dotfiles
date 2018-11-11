@@ -75,6 +75,9 @@ modules-center = xwindow
 modules-right = alsa memory cpu temperature wlan battery date powermenu
 tray-maxsize = 22
 fixed-center = false
+font-3 = Font Awesome 5 Free:pixelsize=6;1
+font-4 = Font Awesome 5 Free Solid:pixelsize=6;1
+font-5 = Font Awesome 5 Brands:pixelsize=6;1
 
 [module/xwindow]
 type = internal/xwindow
@@ -85,10 +88,26 @@ type = internal/battery
 battery = BAT0
 adapter = ADP1
 time-format = %H:%M
-label-discharging = %percentage%%
-label-charging = %percentage%%
+
+format-charging = <animation-charging>
 format-charging-underline = #A1D490
+format-charging-foreground = ${colors.foreground}
+
+format-discharging = <ramp-capacity>
 format-discharging-underline = #DDD
+format-discharging-foreground = ${colors.foreground-alt}
+
+ramp-capacity-0 = ""
+ramp-capacity-1 = ""
+ramp-capacity-2 = ""
+ramp-capacity-3 = ""
+ramp-capacity-4 = ""
+
+animation-charging-0 = ""
+animation-charging-1 = ""
+animation-charging-2 = ""
+animation-charging-3 = ""
+animation-charging-4 = ""
 
 [module/i3]
 type = internal/i3
@@ -161,11 +180,11 @@ format-disconnected =
 ;label-disconnected = %ifname% disconnected
 ;label-disconnected-foreground = ${colors.foreground-alt}
 
-ramp-signal-0 = 
-ramp-signal-1 = 
-ramp-signal-2 = 
-ramp-signal-3 = 
-ramp-signal-4 = 
+ramp-signal-0 = 
+ramp-signal-1 = 
+ramp-signal-2 = 
+ramp-signal-3 = 
+ramp-signal-4 = 
 ramp-signal-foreground = ${colors.foreground-alt}
 
 [module/date]
@@ -190,8 +209,8 @@ mapped = true
 
 format-volume = <label-volume> <bar-volume>
 format-volume-underline = #DEDE00
-label-volume = VOL
-label-volume-foreground = ${root.foreground}
+label-volume = ""
+label-volume-foreground = ${colors.foreground-alt}
 
 format-muted-prefix = " "
 format-muted-foreground = ${colors.foreground-alt}
