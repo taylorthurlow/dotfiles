@@ -12,6 +12,15 @@ mkcd() {
     fi
 }
 
+# Makedir and take ownership
+mkchown() {
+  if [ $# != 1 ]; then
+    echo "Usage: mkchown <dir>"
+  else
+    sudo mkdir -p $1 && sudo chown $(whoami):$(whoami) $1
+  fi
+}
+
 # Delete local and remote branches
 function git-nuke {
   git branch -D $1 && git push origin :$1
