@@ -34,6 +34,7 @@ Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'francoiscabrol/ranger.vim'
 Plugin 'rbgrouleff/bclose.vim'
+Plugin 'yegappan/greplace'
 call vundle#end()
 filetype plugin indent on " required by Vundle
 
