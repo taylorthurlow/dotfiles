@@ -32,8 +32,6 @@ Plugin 'mattn/emmet-vim'
 Plugin 'Carpetsmoker/auto_mkdir2.vim'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'jiangmiao/auto-pairs'
-Plugin 'francoiscabrol/ranger.vim'
-Plugin 'rbgrouleff/bclose.vim'
 Plugin 'yegappan/greplace'
 call vundle#end()
 filetype plugin indent on " required by Vundle
@@ -115,8 +113,6 @@ set colorcolumn=80
 let g:rspec_command = '!bundle exec rspec {spec}'
 let g:ale_sign_column_always = 1
 let g:ale_lint_delay = 1000
-let g:ranger_replace_netrw = 1
-let g:ranger_command_override = 'ranger --cmd "set show_hidden=true"'
 
 " Merge a tab into a split in the previous window
 function! MergeTabs()
@@ -217,6 +213,10 @@ let g:airline_theme='minimalist'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline_skip_empty_sections = 1
+let g:airline_section_b = '%{airline#util#wrap(airline#extensions#branch#get_head(),0)}'
+let g:airline_section_x = '%{airline#util#prepend("",0)}%{airline#util#prepend("",0)}%{airline#util#wrap(airline#parts#filetype(),0)}'
+let g:airline_section_y = ''
+let g:airline_section_z = '%1v'
 colorscheme Tomorrow-Night
 
 " Only do this part when compiled with support for autocommands.
