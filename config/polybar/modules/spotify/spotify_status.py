@@ -38,7 +38,7 @@ def fix_string(string):
 
 # Default parameters
 output = fix_string(u'{play_pause} {artist}: {song}')
-trunclen = 25
+trunclen = 40
 play_pause = fix_string(u'\u25B6,\u23F8') # first character is play, second is paused
 
 # parameters can be overwritten by args
