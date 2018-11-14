@@ -51,6 +51,7 @@ nnoremap j gj
 nnoremap k gk
 noremap <C-s> <esc>:w<CR>
 inoremap <C-s> <esc>:w<CR>
+nnoremap <esc> :let @/=""<return><esc>
 " Shift lines up and down
 nnoremap <A-k> :<C-u>silent! move-2<CR>==
 nnoremap <A-j> :<C-u>silent! move+<CR>==
@@ -94,6 +95,7 @@ set cursorline
 set showmatch
 set nowrap
 set smarttab
+set hlsearch
 set ignorecase smartcase
 set laststatus=2 " Always show the status line
 set relativenumber
