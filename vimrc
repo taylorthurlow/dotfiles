@@ -33,6 +33,7 @@ Plugin 'Carpetsmoker/auto_mkdir2.vim'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'yegappan/greplace'
+Plugin 'dansomething/vim-eclim'
 call vundle#end()
 filetype plugin indent on " required by Vundle
 
