@@ -64,7 +64,7 @@ vnoremap <A-k> :m '<-2<CR>gv=gv
 
 " leader bindings
 nnoremap <leader>vr :tabe $MYVIMRC<CR>
-nnoremap <leader>so :source $MYVIMRC <CR>
+nnoremap <leader>so :source $MYVIMRC<CR>
 noremap <leader>tf :call RunCurrentSpecFile()<CR>
 noremap <leader>ts :call RunNearestSpec()<CR>
 noremap <leader>tl :call RunLastSpec()<CR>
@@ -72,6 +72,7 @@ noremap <leader>ta :call RunAllSpecs()<CR>
 nnoremap <leader>rc :w<CR>:RuboCop<CR>
 nnoremap <leader>rf :w<CR>:RuboCop -x<CR>
 nnoremap <leader>ra :w<CR>:RuboCop -a<CR>
+nnoremap <leader>fu :call SearchForCallSitesCursor()<CR>
 
 let g:vimrubocop_keymap = 0
 let g:rspec_command = '!bundle exec rspec {spec}'
