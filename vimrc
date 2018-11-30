@@ -99,6 +99,7 @@ set secure " Limit what modelines and autocmds can do
 set autowrite " Write for me when I take any action
 set ruler " Show cursor position all the time
 set cursorline
+set breakindent
 set showmatch
 set nowrap
 set smarttab
