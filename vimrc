@@ -52,12 +52,13 @@ nnoremap j gj
 nnoremap k gk
 noremap <C-s> <esc>:w<CR>
 inoremap <C-s> <esc>:w<CR>
-nnoremap <esc> :let @/=""<return><esc>
 " Shift lines up and down
-nnoremap <A-k> :<C-u>silent! move-2<CR>==
-nnoremap <A-j> :<C-u>silent! move+<CR>==
-xnoremap <A-k> :<C-u>silent! '<,'>move-2<CR>gv=gv
-xnoremap <A-j> :<C-u>silent! '<,'>move'>+<CR>gv=gv
+nnoremap <A-j> :m .+1<CR>==
+nnoremap <A-k> :m .-2<CR>==
+inoremap <A-j> <Esc>:m .+1<CR>==gi
+inoremap <A-k> <Esc>:m .-2<CR>==gi
+vnoremap <A-j> :m '>+1<CR>gv=gv
+vnoremap <A-k> :m '<-2<CR>gv=gv
 
 " leader bindings
 nnoremap <leader>vr :tabe $MYVIMRC<CR>
