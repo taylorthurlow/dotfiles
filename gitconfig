@@ -7,11 +7,13 @@
 [advice]
 	statusHints = false
 [diff]
+  tool = vimdiff
 	renames = copies
 [branch]
 	autosetupmerge = true
 [commit]
 	gpgsign = true
+  verbose = true
 [push]
 	default = tracking
 	followTags = true
