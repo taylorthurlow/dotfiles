@@ -55,7 +55,6 @@ alias dc="docker-compose"
 alias gst="git status -s"
 alias glog="git log --oneline --decorate --color --graph --pretty=format:'%C(yellow)%h %Cgreen%ad %Cblue%an%Cred%d %Creset%s' --date=short"
 alias update="sudo apt update && sudo apt full-upgrade"
-unalias fd
 
 # PATH modification
 export PATH="$HOME/.rbenv/bin:$PATH"
