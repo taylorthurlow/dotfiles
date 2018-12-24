@@ -129,4 +129,5 @@ smart_borders no_gaps
 
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 exec_always --no-startup-id nitrogen --restore
+exec --no-startup-id nm-applet
 exec --no-startup-id dunst
