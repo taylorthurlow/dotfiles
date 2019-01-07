@@ -12,12 +12,15 @@ Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'dansomething/vim-eclim'
 " Plugin 'edkolev/tmuxline.vim'
+Plugin 'dhruvasagar/vim-zoom'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'gmarik/Vundle.vim'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'mattn/emmet-vim'
 Plugin 'ngmy/vim-rubocop'
 Plugin 'rhysd/committia.vim'
+Plugin 'romainl/vim-cool'
+Plugin 'shime/vim-livedown'
 Plugin 'thoughtbot/vim-rspec'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-endwise'
@@ -98,7 +101,7 @@ onoremap <silent> an :<c-u>call <sid>aroundNumber()<cr>
 let g:vimrubocop_keymap = 0
 let g:rspec_command = '!bundle exec rspec {spec}'
 let g:ale_sign_column_always = 1
-let g:ale_lint_delay = 1000
+let g:ale_lint_delay = 500
 let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 let g:ctrlp_use_caching = 0
 let g:ycm_max_num_candidates = 5
