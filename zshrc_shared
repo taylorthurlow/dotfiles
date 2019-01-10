@@ -50,6 +50,7 @@ alias aedirnlan="ssh taylor@aedirn.local"
 alias aedirnwan="ssh taylor@home.thurlow.io"
 alias cintralan="ssh taylor@cintra.local"
 alias cintrawan="ssh taylor@home.thurlow.io -t ssh taylor@cintra.local"
+alias feral="ssh frizkie@selene.feralhosting.com"
 
 alias dc="docker-compose"
 alias gst="git status -s"
