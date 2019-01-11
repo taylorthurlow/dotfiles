@@ -11,21 +11,24 @@ Plugin 'Carpetsmoker/auto_mkdir2.vim'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'dansomething/vim-eclim'
-" Plugin 'edkolev/tmuxline.vim'
 Plugin 'dhruvasagar/vim-zoom'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'gmarik/Vundle.vim'
+Plugin 'itchyny/lightline.vim'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'mattn/emmet-vim'
-Plugin 'ngmy/vim-rubocop'
+Plugin 'maximbaz/lightline-ale'
 Plugin 'rhysd/committia.vim'
 Plugin 'romainl/vim-cool'
+Plugin 'rust-lang/rust.vim'
+Plugin 'sbdchd/neoformat'
 Plugin 'shime/vim-livedown'
 Plugin 'thoughtbot/vim-rspec'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-endwise'
 Plugin 'tpope/vim-eunuch'
 Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-obsession'
 Plugin 'tpope/vim-ragtag'
 Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-rake'
@@ -33,8 +36,6 @@ Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-rhubarb'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-unimpaired'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'w0rp/ale'
 Plugin 'yegappan/greplace'
@@ -78,11 +79,14 @@ noremap <leader>tf :call RunCurrentSpecFile()<CR>
 noremap <leader>ts :call RunNearestSpec()<CR>
 noremap <leader>tl :call RunLastSpec()<CR>
 noremap <leader>ta :call RunAllSpecs()<CR>
-nnoremap <leader>rc :w<CR>:RuboCop<CR>
-nnoremap <leader>rf :w<CR>:RuboCop -x<CR>
-nnoremap <leader>ra :w<CR>:RuboCop -a<CR>
+
+nnoremap <leader>fo :w<CR>:Neoformat<CR>
+" nnoremap <leader>rc :w<CR>:RuboCop<CR>
+" nnoremap <leader>rf :w<CR>:RuboCop -x<CR>
+" nnoremap <leader>ra :w<CR>:RuboCop -a<CR>
 nnoremap <leader>fu :call SearchForCallSitesCursor()<CR>
-nnoremap <leader>pp :setlocal paste!<cr>
+nnoremap <leader>pp :setlocal paste!<CR>
+nnoremap <silent> <leader>pa :setlocal paste<CR>"+p :setlocal nopaste<CR>
 
 " custom text objects
 " "in indentation" (indentation level sans any surrounding empty lines)
@@ -104,8 +108,6 @@ let g:ale_sign_column_always = 1
 let g:ale_lint_delay = 500
 let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 let g:ctrlp_use_caching = 0
-let g:ycm_max_num_candidates = 5
-let g:ycm_max_num_identifier_candidates = 5
 
 set nocompatible " Don't maintain compatibility with Vi
 set splitright
@@ -192,16 +194,87 @@ augroup mycolors
   autocmd ColorScheme * highlight CursorLine ctermbg=234
 augroup END
 
-let g:tmuxline_separators = { 'left': '', 'right': '',
-                            \ 'left_alt': ':', 'right_alt': '|' }
-let g:airline_theme='minimalist'
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#formatter = 'unique_tail'
-let g:airline_skip_empty_sections = 1
-let g:airline_section_b = '%{airline#util#wrap(airline#extensions#branch#get_head(),0)}'
-let g:airline_section_x = '%{airline#util#prepend("",0)}%{airline#util#prepend("",0)}%{airline#util#wrap(airline#parts#filetype(),0)}'
-let g:airline_section_y = ''
-let g:airline_section_z = '%1v'
+" lightline configuration
+let g:lightline = {
+      \ 'colorscheme': 'wombat',
+      \ 'inactive': {
+      \   'left': [ [ 'mode', 'paste' ], [ 'ctrlpmark' ],
+      \             [ 'gitbranch', 'readonly', 'lightline_filename', 'modified' ] ],
+      \   'right': [[ 'filetype' ]],
+      \ },
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'lightline_filename', 'modified' ] ],
+      \   'right': [ ['linter_checking', 'linter_errors', 'linter_warnings',
+      \                'linter_ok' ],
+      \             [ 'filetype' ]],
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'fugitive#head',
+      \   'lightline_filename': 'LightlineFilename'
+      \ },
+      \ }
+
+function! MyMode()
+  let fname = expand('%:t')
+  return fname == '__Tagbar__' ? 'Tagbar' :
+        \ fname == 'ControlP' ? 'CtrlP' :
+        \ fname =~ 'NERD_tree' ? 'NERDTree' :
+        \ winwidth(0) > 60 ? lightline#mode() : ''
+endfunction
+
+let g:ctrlp_status_func = {
+      \ 'main': 'CtrlPStatusFunc_1',
+      \ 'prog': 'CtrlPStatusFunc_2',
+      \ }
+
+function! CtrlPMark()
+  if expand('%:t') =~ 'ControlP'
+    call lightline#link('iR'[g:lightline.ctrlp_regex])
+    return lightline#concatenate([g:lightline.ctrlp_prev, g:lightline.ctrlp_item
+          \ , g:lightline.ctrlp_next], 0)
+  else
+    return ''
+  endif
+endfunction
+
+function! CtrlPStatusFunc_1(focus, byfname, regex, prev, item, next, marked)
+  let g:lightline.ctrlp_regex = a:regex
+  let g:lightline.ctrlp_prev = a:prev
+  let g:lightline.ctrlp_item = a:item
+  let g:lightline.ctrlp_next = a:next
+  return lightline#statusline(0)
+endfunction
+
+function! CtrlPStatusFunc_2(str)
+  return lightline#statusline(0)
+endfunction
+
+let g:lightline.component = {
+  \ 'filename': '%{expand("%:t") == "ControlP" ? g:lightline.ctrlp_item : expand("%:p")}'
+  \ }
+
+let g:lightline.component_expand = {
+      \  'linter_checking': 'lightline#ale#checking',
+      \  'linter_warnings': 'lightline#ale#warnings',
+      \  'linter_errors': 'lightline#ale#errors',
+      \  'linter_ok': 'lightline#ale#ok',
+      \ }
+
+let g:lightline.component_type = {
+      \     'linter_checking': 'left',
+      \     'linter_warnings': 'warning',
+      \     'linter_errors': 'error',
+      \     'linter_ok': 'left',
+      \ }
+
+function! LightlineFilename()
+  let filename = expand('%:t') !=# '' ? expand('%:t') : '[No Name]'
+  let modified = &modified ? ' +' : ''
+  return filename . modified
+endfunction
+
+" other visual stuff
 colorscheme Tomorrow-Night
 
 if has("autocmd")
