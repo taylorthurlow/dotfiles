@@ -25,6 +25,7 @@ Plugin 'sbdchd/neoformat'
 Plugin 'shime/vim-livedown'
 Plugin 'thoughtbot/vim-rspec'
 Plugin 'tpope/vim-commentary'
+Plugin 'tpope/vim-bundler'
 Plugin 'tpope/vim-endwise'
 Plugin 'tpope/vim-eunuch'
 Plugin 'tpope/vim-fugitive'
@@ -81,9 +82,6 @@ noremap <leader>tl :call RunLastSpec()<CR>
 noremap <leader>ta :call RunAllSpecs()<CR>
 
 nnoremap <leader>fo :w<CR>:Neoformat<CR>
-" nnoremap <leader>rc :w<CR>:RuboCop<CR>
-" nnoremap <leader>rf :w<CR>:RuboCop -x<CR>
-" nnoremap <leader>ra :w<CR>:RuboCop -a<CR>
 nnoremap <leader>fu :call SearchForCallSitesCursor()<CR>
 nnoremap <leader>pp :setlocal paste!<CR>
 nnoremap <silent> <leader>pa :setlocal paste<CR>"+p :setlocal nopaste<CR>
@@ -163,11 +161,15 @@ augroup END
 
 augroup myfiletypes
   autocmd!
+
+  """ Ruby """
   " autoindent with two spaces, always expand tabs
   autocmd FileType ruby,eruby,yaml setlocal ai sw=2 sts=2 et
   autocmd FileType ruby,eruby,yaml setlocal path+=lib
   " Make ?s part of words
   autocmd FileType ruby,eruby,yaml setlocal iskeyword+=?
+
+  """ Misc """
   " Refresh buffer contents on cursor wait and term focus
   autocmd CursorHold,CursorHoldI * checktime
   autocmd FocusGained,BufEnter * :checktime
