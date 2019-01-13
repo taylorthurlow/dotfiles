@@ -16,6 +16,8 @@ Plugin 'flazz/vim-colorschemes'
 Plugin 'gmarik/Vundle.vim'
 Plugin 'itchyny/lightline.vim'
 Plugin 'jiangmiao/auto-pairs'
+Plugin 'ludovicchabant/vim-gutentags'
+Plugin 'machakann/vim-highlightedyank'
 Plugin 'mattn/emmet-vim'
 Plugin 'maximbaz/lightline-ale'
 Plugin 'rhysd/committia.vim'
@@ -29,6 +31,7 @@ Plugin 'tpope/vim-bundler'
 Plugin 'tpope/vim-endwise'
 Plugin 'tpope/vim-eunuch'
 Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-jdaddy'
 Plugin 'tpope/vim-obsession'
 Plugin 'tpope/vim-ragtag'
 Plugin 'tpope/vim-rails'
@@ -37,6 +40,7 @@ Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-rhubarb'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-unimpaired'
+Plugin 'tpope/vim-vinegar'
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'w0rp/ale'
 Plugin 'yegappan/greplace'
@@ -61,8 +65,6 @@ nnoremap <M-k> k
 nnoremap <Ctrl-A> <Nop>
 nnoremap j gj
 nnoremap k gk
-noremap <C-s> <esc>:w<CR>
-inoremap <C-s> <esc>:w<CR>
 nnoremap <C-W>u :call MergeTabs()<CR>
 
 " Shift lines up and down
@@ -80,11 +82,15 @@ noremap <leader>tf :call RunCurrentSpecFile()<CR>
 noremap <leader>ts :call RunNearestSpec()<CR>
 noremap <leader>tl :call RunLastSpec()<CR>
 noremap <leader>ta :call RunAllSpecs()<CR>
-
 nnoremap <leader>fo :w<CR>:Neoformat<CR>
-nnoremap <leader>fu :call SearchForCallSitesCursor()<CR>
 nnoremap <leader>pp :setlocal paste!<CR>
 nnoremap <silent> <leader>pa :setlocal paste<CR>"+p :setlocal nopaste<CR>
+
+" tags
+nnoremap <C-]> :exec("tag ".expand("<cword>"))<CR>
+nnoremap <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
+nnoremap <C-[> :split <CR>:exec("tag ".expand("<cword>"))<CR>
+nunmap <Esc>
 
 " custom text objects
 " "in indentation" (indentation level sans any surrounding empty lines)
@@ -200,12 +206,12 @@ augroup END
 let g:lightline = {
       \ 'colorscheme': 'wombat',
       \ 'inactive': {
-      \   'left': [ [ 'mode', 'paste' ], [ 'ctrlpmark' ],
+      \   'left': [ [ 'mode', 'paste', 'zoomstatus' ], [ 'ctrlpmark' ],
       \             [ 'gitbranch', 'readonly', 'lightline_filename', 'modified' ] ],
       \   'right': [[ 'filetype' ]],
       \ },
       \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
+      \   'left': [ [ 'mode', 'paste', 'zoomstatus' ], [ 'ctrlpmark' ],
       \             [ 'gitbranch', 'readonly', 'lightline_filename', 'modified' ] ],
       \   'right': [ ['linter_checking', 'linter_errors', 'linter_warnings',
       \                'linter_ok' ],
@@ -213,7 +219,8 @@ let g:lightline = {
       \ },
       \ 'component_function': {
       \   'gitbranch': 'fugitive#head',
-      \   'lightline_filename': 'LightlineFilename'
+      \   'lightline_filename': 'LightlineFilename',
+      \   'zoomstatus': 'zoom#statusline'
       \ },
       \ }
 
@@ -277,7 +284,7 @@ function! LightlineFilename()
 endfunction
 
 " other visual stuff
-colorscheme Tomorrow-Night
+colorscheme Tomorrow-Night-Bright
 
 if has("autocmd")
   " Enable file type detection. Use the default filetype settings, so that
@@ -320,17 +327,6 @@ endfunction
 " Squash all commits into the first during rebase
 function! SquashAll()
   normal ggj}klllcf
-endfunction
-
-function! SearchForCallSitesCursor()
-  let searchterm = expand("<cword>")
-  call SearchForCallSites(searchterm)
-endfunction
-
-" search for call sites for term (excluding its definition) and
-" load into the quickfix list.
-function! SearchForCallSites(term)
-  cexpr system('ag ' . shellescape(a:term) . '\| grep -v def')
 endfunction
 
 function! s:inIndentation()
