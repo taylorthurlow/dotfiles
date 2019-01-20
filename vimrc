@@ -13,6 +13,7 @@ Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'dansomething/vim-eclim'
 Plugin 'dhruvasagar/vim-zoom'
 Plugin 'editorconfig/editorconfig-vim'
+Plugin 'eugen0329/vim-esearch'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'gmarik/Vundle.vim'
 Plugin 'itchyny/lightline.vim'
@@ -27,6 +28,7 @@ Plugin 'romainl/vim-cool'
 Plugin 'rust-lang/rust.vim'
 Plugin 'sbdchd/neoformat'
 Plugin 'shime/vim-livedown'
+Plugin 'TaDaa/vimade'
 Plugin 'thoughtbot/vim-rspec'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-bundler'
@@ -204,6 +206,27 @@ augroup mycolors
   autocmd ColorScheme * highlight clear SignColumn
   autocmd ColorScheme * highlight CursorLine ctermbg=234
 augroup END
+
+" search configuration
+let g:esearch = {
+  \ 'adapter':          'ag',
+  \ 'out':              'win',
+  \ 'batch_size':       1000,
+  \ 'use':              ['visual', 'word_under_cursor', 'last'],
+  \ 'default_mappings': 1,
+  \}
+
+" vimade configuration
+let g:vimade = {
+  \ "normalid": '',
+  \ "basefg": '',
+  \ "basebg": '',
+  \ "fadelevel": 0.4,
+  \ "colbufsize": 30,
+  \ "rowbufsize": 30,
+  \ "checkinterval": 32,
+  \
+  \ }
 
 " lightline configuration
 let g:lightline = {
