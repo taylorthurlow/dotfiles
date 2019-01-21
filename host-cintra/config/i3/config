@@ -1,3 +1,15 @@
+################################################################################
+# WARNING!
+#
+# This file is generated using rcm's hooks functionality using the script
+# located at ~/.dotfiles/hooks/pre-up/build-i3-config.sh. As such, any
+# modifications to this file will be destroyed when running the rcup command.
+# Modifications should be made to the base file and the host-specific
+# concatenation files:
+#
+# ~/.dotfiles/config/i3/config
+# ~/.dotfiles/host-hostname/config/i3/config
+################################################################################
 
 # BEGIN HOST AGNOSTIC CONFIGURATION
 # The following configuration is from ~/.dotfiles/config/i3/config_host_agnostic
@@ -131,3 +143,4 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 exec_always --no-startup-id nitrogen --restore
 exec --no-startup-id nm-applet
 exec --no-startup-id dunst
+
