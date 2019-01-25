@@ -10,7 +10,6 @@ Plugin 'AndrewRadev/splitjoin.vim'
 Plugin 'Carpetsmoker/auto_mkdir2.vim'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'dansomething/vim-eclim'
 Plugin 'dhruvasagar/vim-zoom'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'eugen0329/vim-esearch'
@@ -28,7 +27,6 @@ Plugin 'romainl/vim-cool'
 Plugin 'rust-lang/rust.vim'
 Plugin 'sbdchd/neoformat'
 Plugin 'shime/vim-livedown'
-Plugin 'TaDaa/vimade'
 Plugin 'thoughtbot/vim-rspec'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-bundler'
@@ -203,8 +201,18 @@ augroup mycolors
   autocmd ColorScheme * highlight ColorColumn ctermbg=234
   autocmd ColorScheme * highlight ALEWarning ctermbg=60
   autocmd ColorScheme * highlight ALEError ctermbg=52
-  autocmd ColorScheme * highlight clear SignColumn
   autocmd ColorScheme * highlight CursorLine ctermbg=234
+
+  " Git Gutter
+  autocmd ColorScheme * highlight clear SignColumn
+  autocmd ColorScheme * highlight GitGutterAdd ctermbg=NONE
+  autocmd ColorScheme * highlight GitGutterAdd ctermfg=darkgreen
+  autocmd ColorScheme * highlight GitGutterChange ctermbg=NONE
+  autocmd ColorScheme * highlight GitGutterChange ctermfg=darkyellow
+  autocmd ColorScheme * highlight GitGutterDelete ctermbg=NONE
+  autocmd ColorScheme * highlight GitGutterDelete ctermfg=darkred
+  autocmd ColorScheme * highlight GitGutterChangeDelete ctermbg=NONE
+  autocmd ColorScheme * highlight GitGutterChangeDelete ctermfg=red
 augroup END
 
 " search configuration
@@ -215,18 +223,6 @@ let g:esearch = {
   \ 'use':              ['visual', 'word_under_cursor', 'last'],
   \ 'default_mappings': 1,
   \}
-
-" vimade configuration
-let g:vimade = {
-  \ "normalid": '',
-  \ "basefg": '',
-  \ "basebg": '',
-  \ "fadelevel": 0.4,
-  \ "colbufsize": 30,
-  \ "rowbufsize": 30,
-  \ "checkinterval": 32,
-  \
-  \ }
 
 " lightline configuration
 let g:lightline = {
