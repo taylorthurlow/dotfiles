@@ -199,9 +199,13 @@ augroup mycolors
   autocmd ColorScheme * highlight Normal ctermbg=NONE
   autocmd ColorScheme * highlight NonText ctermbg=NONE
   autocmd ColorScheme * highlight ColorColumn ctermbg=234
-  autocmd ColorScheme * highlight ALEWarning ctermbg=60
-  autocmd ColorScheme * highlight ALEError ctermbg=52
   autocmd ColorScheme * highlight CursorLine ctermbg=234
+
+  " ALE
+  autocmd ColorScheme * highlight ALEWarning ctermbg=236
+  autocmd ColorScheme * highlight ALEError ctermbg=52
+  autocmd ColorScheme * highlight ALEWarningSign ctermbg=NONE
+  autocmd ColorScheme * highlight ALEErrorSign ctermbg=NONE
 
   " Git Gutter
   autocmd ColorScheme * highlight clear SignColumn
