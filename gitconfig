@@ -3,7 +3,7 @@
 	email = taylorthurlow8@gmail.com
 	signingkey = 0804778559C6A1B2
 [color]
-	ui = auto
+	ui = true
 [advice]
 	statusHints = false
 [diff]
@@ -34,3 +34,17 @@
 [alias]
   co = checkout
   br = branch
+[core]
+	pager = diff-so-fancy | less --tabs=4 -RFX
+[color "diff-highlight"]
+	oldNormal = red bold
+	oldHighlight = red bold 52
+	newNormal = green bold
+	newHighlight = green bold 22
+[color "diff"]
+	meta = yellow
+	frag = magenta bold
+	commit = yellow bold
+	old = red bold
+	new = green bold
+	whitespace = red reverse
