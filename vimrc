@@ -13,7 +13,7 @@ Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'dhruvasagar/vim-zoom'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'eugen0329/vim-esearch'
-Plugin 'flazz/vim-colorschemes'
+Plugin 'tpope/vim-fugitive'
 Plugin 'gmarik/Vundle.vim'
 Plugin 'itchyny/lightline.vim'
 Plugin 'jiangmiao/auto-pairs'
@@ -32,7 +32,6 @@ Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-bundler'
 Plugin 'tpope/vim-endwise'
 Plugin 'tpope/vim-eunuch'
-Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-jdaddy'
 Plugin 'tpope/vim-obsession'
 Plugin 'tpope/vim-ragtag'
@@ -44,6 +43,7 @@ Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-vinegar'
 Plugin 'vim-ruby/vim-ruby'
+Plugin 'w0ng/vim-hybrid'
 Plugin 'w0rp/ale'
 Plugin 'yegappan/greplace'
 Plugin 'Yggdroot/indentLine'
@@ -115,6 +115,7 @@ let g:ale_sign_column_always = 1
 let g:ale_lint_delay = 500
 let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 let g:ctrlp_use_caching = 0
+let loaded_netrwPlugin = 1
 
 set nocompatible " Don't maintain compatibility with Vi
 set splitright
@@ -171,14 +172,14 @@ augroup END
 augroup myfiletypes
   autocmd!
 
-  """ Ruby """
+  """ Ruby
   " autoindent with two spaces, always expand tabs
   autocmd FileType ruby,eruby,yaml setlocal ai sw=2 sts=2 et
   autocmd FileType ruby,eruby,yaml setlocal path+=lib
   " Make ?s part of words
   autocmd FileType ruby,eruby,yaml setlocal iskeyword+=?
 
-  """ Misc """
+  """ Misc
   " Refresh buffer contents on cursor wait and term focus
   autocmd CursorHold,CursorHoldI * checktime
   autocmd FocusGained,BufEnter * :checktime
@@ -310,7 +311,8 @@ function! LightlineFilename()
 endfunction
 
 " other visual stuff
-colorscheme Tomorrow-Night-Bright
+set background=dark
+colorscheme hybrid
 
 if has("autocmd")
   " Enable file type detection. Use the default filetype settings, so that
@@ -348,11 +350,6 @@ function! MergeTabs()
   endif
   split
   execute "buffer " . bufferName
-endfunction
-
-" Squash all commits into the first during rebase
-function! SquashAll()
-  normal ggj}klllcf
 endfunction
 
 function! s:inIndentation()
