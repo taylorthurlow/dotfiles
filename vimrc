@@ -13,20 +13,16 @@ Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'dhruvasagar/vim-zoom'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'eugen0329/vim-esearch'
-Plugin 'tpope/vim-fugitive'
 Plugin 'gmarik/Vundle.vim'
 Plugin 'itchyny/lightline.vim'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'ludovicchabant/vim-gutentags'
 Plugin 'machakann/vim-highlightedyank'
 Plugin 'markonm/traces.vim'
-Plugin 'mattn/emmet-vim'
-Plugin 'maximbaz/lightline-ale'
 Plugin 'rhysd/committia.vim'
 Plugin 'romainl/vim-cool'
 Plugin 'rust-lang/rust.vim'
 Plugin 'sbdchd/neoformat'
-Plugin 'shime/vim-livedown'
 Plugin 'thoughtbot/vim-rspec'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-bundler'
@@ -109,14 +105,21 @@ onoremap <silent> in :<c-u>call <sid>inNumber()<cr>
 xnoremap <silent> an :<c-u>call <sid>aroundNumber()<cr>
 onoremap <silent> an :<c-u>call <sid>aroundNumber()<cr>
 
-let g:vimrubocop_keymap = 0
 let g:rspec_command = '!bundle exec rspec {spec}'
 let g:ale_sign_column_always = 1
-let g:ale_lint_delay = 500
-let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-let g:ctrlp_use_caching = 0
+let g:ale_lint_delay = 1000
 let loaded_netrwPlugin = 1
 
+" ctrlP
+let g:ctrlp_use_caching = 0
+let g:ctrlp_user_command = ['.git/', 'git ls-files --cached --others --exclude-standard']
+" if executable('ag')
+"   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+" endif
+
+let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
+
+set regexpengine=1 " Use old regex engine which is way faster with Ruby
 set nocompatible " Don't maintain compatibility with Vi
 set splitright
 set splitbelow
@@ -183,12 +186,14 @@ augroup myfiletypes
   " Refresh buffer contents on cursor wait and term focus
   autocmd CursorHold,CursorHoldI * checktime
   autocmd FocusGained,BufEnter * :checktime
+
   " Always remove trailing whitespaces
   autocmd BufWritePre * %s/\s\+$//e
 
   " Always open quickfix window as full-width below
   autocmd FileType qf wincmd J
 
+  " Easy exit help menus with q
   autocmd Filetype help nnoremap <buffer> q :q<CR>
 
   " Don't automatically continue comments after newline
@@ -233,21 +238,18 @@ let g:esearch = {
 let g:lightline = {
       \ 'colorscheme': 'wombat',
       \ 'inactive': {
-      \   'left': [ [ 'mode', 'paste', 'zoomstatus' ], [ 'ctrlpmark' ],
+      \   'left': [ [ 'mode', 'paste' ], [ 'ctrlpmark' ],
       \             [ 'gitbranch', 'readonly', 'lightline_filename', 'modified' ] ],
       \   'right': [[ 'filetype' ]],
       \ },
       \ 'active': {
       \   'left': [ [ 'mode', 'paste', 'zoomstatus' ], [ 'ctrlpmark' ],
       \             [ 'gitbranch', 'readonly', 'lightline_filename', 'modified' ] ],
-      \   'right': [ ['linter_checking', 'linter_errors', 'linter_warnings',
-      \                'linter_ok' ],
-      \             [ 'filetype' ]],
+      \   'right': [[ 'filetype' ]],
       \ },
       \ 'component_function': {
       \   'gitbranch': 'fugitive#head',
-      \   'lightline_filename': 'LightlineFilename',
-      \   'zoomstatus': 'zoom#statusline'
+      \   'lightline_filename': 'LightlineFilename'
       \ },
       \ }
 
@@ -290,20 +292,6 @@ let g:lightline.component = {
   \ 'filename': '%{expand("%:t") == "ControlP" ? g:lightline.ctrlp_item : expand("%:p")}'
   \ }
 
-let g:lightline.component_expand = {
-      \  'linter_checking': 'lightline#ale#checking',
-      \  'linter_warnings': 'lightline#ale#warnings',
-      \  'linter_errors': 'lightline#ale#errors',
-      \  'linter_ok': 'lightline#ale#ok',
-      \ }
-
-let g:lightline.component_type = {
-      \     'linter_checking': 'left',
-      \     'linter_warnings': 'warning',
-      \     'linter_errors': 'error',
-      \     'linter_ok': 'left',
-      \ }
-
 function! LightlineFilename()
   let filename = expand('%:t') !=# '' ? expand('%:t') : '[No Name]'
   let modified = &modified ? ' +' : ''
@@ -336,21 +324,6 @@ endif
 "
 " Function Definitions
 "
-
-function! MergeTabs()
-  if tabpagenr() == 1
-    return
-  endif
-  let bufferName = bufname("%")
-  if tabpagenr("$") == tabpagenr()
-    close!
-  else
-    close!
-    tabprev
-  endif
-  split
-  execute "buffer " . bufferName
-endfunction
 
 function! s:inIndentation()
   " select all text in current indentation level excluding any empty lines
