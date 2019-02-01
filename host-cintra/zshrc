@@ -1,4 +1,4 @@
-export ZSH=/home/taylor/.oh-my-zsh
+export ZSH=/Users/taylor/.oh-my-zsh
 ZSH_THEME="panda"
 plugins=(gitfast gpg-agent autojump bundler common-aliases ruby sublime sudo systemd)
 DISABLE_UPDATE_PROMPT=true
@@ -11,3 +11,4 @@ source $ZSH/oh-my-zsh.sh
 #################################
 
 source "$HOME/.dotfiles/zshrc_shared"
+
