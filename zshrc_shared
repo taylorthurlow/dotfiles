@@ -40,12 +40,14 @@ n() {
   fi
 }
 
+
 unsetopt AUTOcd
 setopt noflowcontrol
 
 [ "$(command -v bat)" ] && alias cat="bat"
 [ "$(command -v hub)" ] && alias git="hub"
 [ "$(command -v exa)" ] && alias ls="exa"
+[ "$(command -v thefuck)" ] && eval $(thefuck --alias)
 
 alias aedirnlan="ssh taylor@aedirn.local"
 alias aedirnwan="ssh taylor@home.thurlow.io"
@@ -61,6 +63,7 @@ alias update="brew upgrade"
 # PATH modification
 export PATH="$HOME/.rbenv/bin:$PATH"
 export PATH="$PATH:$HOME/.cargo/bin"
+export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 
 # Other stuff
 [ "$(command -v rbenv)" ] &&  eval "$(rbenv init -)"
