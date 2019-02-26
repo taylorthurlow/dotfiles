@@ -1,29 +1,29 @@
 # Up a directory with "up"
 up() {
-    cd $(eval printf '../'%.0s {1..$1})
+	cd $(eval printf '../'%.0s {1..$1})
 }
 
 # Makedir and cd into it
 mkcd() {
-    if [ $# != 1 ]; then
-        echo "Usage: mkcd <dir>"
-    else
-        mkdir -p $1 && cd $1
-    fi
+	if [ $# != 1 ]; then
+		echo "Usage: mkcd <dir>"
+	else
+		mkdir -p $1 && cd $1
+	fi
 }
 
 # Makedir and take ownership
 mkchown() {
-  if [ $# != 1 ]; then
-    echo "Usage: mkchown <dir>"
-  else
-    sudo mkdir -p $1 && sudo chown $(whoami):$(whoami) $1
-  fi
+	if [ $# != 1 ]; then
+		echo "Usage: mkchown <dir>"
+	else
+		sudo mkdir -p $1 && sudo chown $(whoami):$(whoami) $1
+	fi
 }
 
 # Delete local and remote branches
 function git-nuke {
-  git branch -D $1 && git push origin :$1
+	git branch -D $1 && git push origin :$1
 }
 
 # make git tab completion faster
@@ -33,13 +33,12 @@ __git_files () {
 
 export NNN_TMPFILE="/tmp/nnn"
 n() {
-  nnn "$@"
-  if [[ -f $NNN_TMPFILE ]]; then
-    . $NNN_TMPFILE
-    rm -f $NNN_TMPFILE
-  fi
+	nnn "$@"
+	if [[ -f $NNN_TMPFILE ]]; then
+		. $NNN_TMPFILE
+		rm -f $NNN_TMPFILE
+	fi
 }
-
 
 unsetopt AUTOcd
 setopt noflowcontrol
@@ -57,7 +56,7 @@ alias feral="ssh frizkie@selene.feralhosting.com"
 
 alias dc="docker-compose"
 alias gst="git status -s"
-alias glog="git log --oneline --decorate --color --graph --pretty=format:'%C(yellow)%h %Cgreen%ad %Cblue%an%Cred%d %Creset%s' --date=short"
+alias glog="git log --oneline --decorate --color --graph --pretty=format:'%C(yellow)%h %Cgreen%ad %Cblue%an%Cred%d %Creset%s' --date=human"
 alias update="brew upgrade"
 
 # PATH modification
@@ -66,5 +65,5 @@ export PATH="$PATH:$HOME/.cargo/bin"
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 
 # Other stuff
-[ "$(command -v rbenv)" ] &&  eval "$(rbenv init -)"
+[ "$(command -v rbenv)" ] && eval "$(rbenv init -)"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
