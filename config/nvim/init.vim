@@ -100,7 +100,11 @@ let g:ale_lint_delay = 1000
 let loaded_netrwPlugin = 1
 let g:indentLine_faster = 1
 let g:indentLine_setConceal = 0
-
+let g:gutentags_file_list_command = {
+      \ 'markers': {
+      \ '.git': 'git ls-files',
+      \ },
+      \ }
 " ctrlP
 let g:ctrlp_use_caching = 0
 " let g:ctrlp_user_command = ['.git/', 'git ls-files --cached --others --exclude-standard']
