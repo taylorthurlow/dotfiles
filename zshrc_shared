@@ -60,6 +60,7 @@ alias glog="git log --oneline --decorate --color --graph --pretty=format:'%C(yel
 alias update="brew upgrade"
 
 # PATH modification
+export PATH="/usr/local/sbin:$PATH"
 export PATH="$HOME/.rbenv/bin:$PATH"
 export PATH="$PATH:$HOME/.cargo/bin"
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
