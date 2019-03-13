@@ -124,6 +124,10 @@ augroup myfiletypes
   " Make ?s part of words
   autocmd FileType ruby,eruby,yaml setlocal iskeyword+=?
 
+  """ CSS/SCSS
+  " autoindent with two spaces, always expand tabs
+  autocmd FileType css,scss setlocal ai sw=2 sts=2 et
+
   """ Misc
   " Refresh buffer contents on cursor wait and term focus
   autocmd CursorHold,CursorHoldI * checktime
