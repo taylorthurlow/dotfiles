@@ -31,6 +31,28 @@ __git_files () {
 	_wanted files expl 'local files' _files
 }
 
+# easy kill processes with fzf
+kill_process() {
+	local pid=$(ps -ef | sed 1d | eval "fzf ${FZF_DEFAULT_OPTS} -m --header='[kill:process]'" | awk '{print $2}')
+
+	if [ "x$pid" != "x" ]
+	then
+		echo $pid | xargs kill -${1:-9}
+		kp
+	fi
+}
+
+# brew install with fzf
+brew_install_fzf() {
+	local inst=$(brew search | eval "fzf ${FZF_DEFAULT_OPTS} -m --header='[brew:install]'")
+
+	if [[ $inst ]]; then
+		for prog in $(echo $inst)
+		do brew install $prog
+		done
+	fi
+}
+
 export NNN_TMPFILE="/tmp/nnn"
 n() {
 	nnn "$@"
@@ -53,6 +75,8 @@ alias aedirnwan="ssh taylor@home.thurlow.io"
 alias cintralan="ssh taylor@cintra.local"
 alias cintrawan="ssh taylor@home.thurlow.io -t ssh taylor@cintra.local"
 alias feral="ssh frizkie@selene.feralhosting.com"
+alias kp="kill_process"
+alias bip="brew_install_fzf"
 
 alias dc="docker-compose"
 alias gst="git status -s"
