@@ -19,6 +19,7 @@ Plug 'romainl/vim-cool'
 Plug 'sbdchd/neoformat'
 Plug 'sheerun/vim-polyglot'
 Plug 'shime/vim-livedown'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'sillyotter/t4-vim'
 Plug 'thoughtbot/vim-rspec'
 Plug 'tpope/vim-bundler'
@@ -92,6 +93,7 @@ nnoremap <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 nnoremap <C-[> :split <CR>:exec("tag ".expand("<cword>"))<CR>
 nunmap <Esc>
 
+let g:deoplete#enable_at_startup = 1
 let g:rspec_command = '!bundle exec rspec {spec}'
 let g:ale_sign_column_always = 1
 let g:ale_lint_delay = 1000
