@@ -1,8 +1,0 @@
-xset +fp /home/taylor/.fonts
-xset fp rehash
-
-xrdb -merge ~/.Xresources
-
-setxkbmap -option caps:ctrl_modifier
-
-exec i3
