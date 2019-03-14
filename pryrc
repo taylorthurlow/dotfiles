@@ -1,4 +1,4 @@
-Pry.editor = "subl"
+Pry.editor = 'nvim'
 
 if defined?(PryByebug)
   Pry.commands.alias_command 'c', 'continue'
