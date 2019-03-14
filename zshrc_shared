@@ -65,6 +65,8 @@ n() {
 unsetopt AUTOcd
 setopt noflowcontrol
 
+[ "$(command -v nvim)" ] && export EDITOR="$(which nvim)"
+
 [ "$(command -v bat)" ] && alias cat="bat"
 [ "$(command -v hub)" ] && alias git="hub"
 [ "$(command -v exa)" ] && alias ls="exa"
@@ -77,6 +79,7 @@ alias cintrawan="ssh taylor@home.thurlow.io -t ssh taylor@cintra.local"
 alias feral="ssh frizkie@selene.feralhosting.com"
 alias kp="kill_process"
 alias bip="brew_install_fzf"
+alias tx="tmuxinator"
 
 alias dc="docker-compose"
 alias gst="git status -s"
