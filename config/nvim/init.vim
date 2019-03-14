@@ -2,13 +2,13 @@ call plug#begin('~/.local/share/nvim/plugged')
 Plug 'airblade/vim-gitgutter'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'Carpetsmoker/auto_mkdir2.vim'
-Plug 'christoomey/vim-tmux-navigator'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'dhruvasagar/vim-zoom'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'eugen0329/vim-esearch'
 Plug 'itchyny/lightline.vim'
 Plug 'jiangmiao/auto-pairs'
+Plug 'knubie/vim-kitty-navigator'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'machakann/vim-highlightedyank'
 Plug 'markonm/traces.vim'
@@ -108,6 +108,7 @@ let g:gutentags_file_list_command = {
       \ '.git': 'git ls-files',
       \ },
       \ }
+
 " ctrlP
 let g:ctrlp_use_caching = 0
 " let g:ctrlp_user_command = ['.git/', 'git ls-files --cached --others --exclude-standard']
