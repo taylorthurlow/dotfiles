@@ -196,9 +196,10 @@ colorscheme hybrid
 " search configuration
 let g:esearch = {
   \ 'adapter':          'ag',
+  \ 'backend':          'nvim',
   \ 'out':              'win',
   \ 'batch_size':       1000,
-  \ 'use':              ['visual', 'word_under_cursor', 'last'],
+  \ 'use':              ['visual', 'last'],
   \ 'default_mappings': 1,
   \}
 
