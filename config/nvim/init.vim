@@ -42,6 +42,7 @@ Plug 'w0rp/ale'
 Plug 'wellle/targets.vim'
 Plug 'yegappan/greplace'
 Plug 'Yggdroot/indentLine'
+Plug 'zivyangll/git-blame.vim'
 call plug#end()
 
 set background=dark
