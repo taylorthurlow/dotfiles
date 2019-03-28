@@ -116,7 +116,7 @@ let g:Hexokinase_ftAutoload = ['css', 'scss', 'conf', 'config']
 let g:ctrlp_use_caching = 0
 " let g:ctrlp_user_command = ['.git/', 'git ls-files --cached --others --exclude-standard']
 if executable('ag')
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+  let g:ctrlp_user_command = 'ag %s -l --hidden --nocolor -g ""'
 endif
 
 " Word wrap in quickfix
