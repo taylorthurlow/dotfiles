@@ -16,6 +16,7 @@ Plug 'michaeljsmith/vim-indent-object'
 Plug 'rhysd/clever-f.vim'
 Plug 'rhysd/committia.vim'
 Plug 'romainl/vim-cool'
+Plug 'RRethy/vim-hexokinase'
 Plug 'sbdchd/neoformat'
 Plug 'sheerun/vim-polyglot'
 Plug 'shime/vim-livedown'
@@ -58,6 +59,7 @@ set shiftround " When at 3 spaces and I hit >> , go to 4, not 5
 set smarttab
 set splitbelow
 set splitright
+set termguicolors
 
 " Set leader key
 let mapleader = ","
@@ -108,6 +110,7 @@ let g:gutentags_file_list_command = {
       \ '.git': 'git ls-files',
       \ },
       \ }
+let g:Hexokinase_ftAutoload = ['css', 'scss', 'conf', 'config']
 
 " ctrlP
 let g:ctrlp_use_caching = 0
@@ -162,6 +165,8 @@ augroup mycolors
   autocmd!
   autocmd ColorScheme * highlight Normal ctermbg=None
   autocmd ColorScheme * highlight NonText ctermbg=None
+  autocmd ColorScheme * highlight Normal guibg=None
+  autocmd ColorScheme * highlight NonText guibg=None
   autocmd ColorScheme * highlight ColorColumn ctermbg=234
   autocmd ColorScheme * highlight CursorLine ctermbg=234
 
