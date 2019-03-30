@@ -1,0 +1,57 @@
+{
+  "title": "HHKB Control as CMD",
+  "rules": [
+    {
+      "description": "Control as CMD",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "left_control",
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "left_command"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "frontmost_application_unless",
+              "bundle_identifiers": [
+                "^net\\.kovidgoyal\\.kitty$",
+                "^com\\.extropy\\.oni$",
+                "^org\\.python\\.python$"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "description": "Right CMD as Control",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "right_command",
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "left_control"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
