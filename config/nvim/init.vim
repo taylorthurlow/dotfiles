@@ -22,8 +22,6 @@ Plug 'ruby-formatter/rufo-vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'shime/vim-livedown'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'sillyotter/t4-vim'
-Plug 'SirVer/ultisnips'
 Plug 'thoughtbot/vim-rspec'
 Plug 'tpope/vim-bundler'
 Plug 'tpope/vim-commentary'
