@@ -102,7 +102,7 @@ nunmap <Esc>
 let g:deoplete#enable_at_startup = 1
 let g:rspec_command = '!bundle exec rspec {spec}'
 let g:ale_sign_column_always = 1
-let g:ale_lint_delay = 1000
+let g:ale_lint_delay = 250
 let loaded_netrwPlugin = 1
 let g:indentLine_faster = 1
 let g:indentLine_setConceal = 0
