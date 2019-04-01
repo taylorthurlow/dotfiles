@@ -107,15 +107,13 @@ let loaded_netrwPlugin = 1
 let g:indentLine_faster = 1
 let g:indentLine_setConceal = 0
 let g:gutentags_file_list_command = {
-      \ 'markers': {
-      \ '.git': 'git ls-files',
-      \ },
-      \ }
-let g:Hexokinase_ftAutoload = ['css', 'scss', 'conf', 'config']
+	\ 'markers': {
+	\ '.git': 'git ls-files',
+	\ },
+	\ }
 
 " ctrlP
 let g:ctrlp_use_caching = 0
-" let g:ctrlp_user_command = ['.git/', 'git ls-files --cached --others --exclude-standard']
 if executable('ag')
   let g:ctrlp_user_command = 'ag %s -l --hidden --nocolor -g ""'
 endif
@@ -164,10 +162,8 @@ augroup END
 
 augroup mycolors
   autocmd!
-  autocmd ColorScheme * highlight Normal ctermbg=None
-  autocmd ColorScheme * highlight NonText ctermbg=None
-  autocmd ColorScheme * highlight Normal guibg=None
-  autocmd ColorScheme * highlight NonText guibg=None
+  autocmd ColorScheme * highlight Normal ctermbg=None guibg=None
+  autocmd ColorScheme * highlight NonText ctermbg=None guibg=None
   autocmd ColorScheme * highlight ColorColumn ctermbg=234
   autocmd ColorScheme * highlight CursorLine ctermbg=234
 
