@@ -1,0 +1,90 @@
+require: rubocop-rspec
+
+AllCops:
+  TargetRubyVersion: 2.6
+  Exclude:
+    - '.circleci/**/*'
+    - 'app/assets/bower_components/**/*'
+    - 'bin/**/*'
+    - 'config/**/*'
+    - 'db/**/*'
+    - 'script/**/*'
+    - 'tmp/**/*'
+    - 'vendor/**/*'
+  RSpec:
+    Patterns:
+      - '_spec.rb$'
+
+Layout:
+  Enabled: false
+
+Metrics/ClassLength:
+  Max: 200
+  Exclude:
+    - 'spec/**/*'
+
+Metrics/MethodLength:
+  Max: 25
+
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*'
+
+Metrics/LineLength:
+  Max: 80
+  IgnoredPatterns: ['#[^\{\n]+$'] # ignore end of line comments
+  Exclude:
+    - 'Guardfile'
+
+Documentation:
+  Enabled: false
+
+Style/BlockDelimiters:
+  Exclude:
+    - 'spec/**/*'
+
+Style/SymbolArray:
+  Enabled: false
+
+Style/WordArray:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Style/StructInheritance:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/GuardClause:
+  Enabled: false
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+###############
+# RSpec Stuff #
+###############
+
+RSpec/MultipleDescribes:
+  Enabled: false
+
+RSpec/MessageChain:
+  Enabled: false
+
+RSpec/ContextWording:
+  Enabled: false
+
+RSpec/DescribeClass:
+  Enabled: false
+
+RSpec/ExampleLength:
+  Max: 10
+
+RSpec/MultipleExpectations:
+  Enabled: false
+
+RSpec/SubjectStub:
+  Enabled: false
