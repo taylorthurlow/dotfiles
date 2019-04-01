@@ -18,8 +18,7 @@ Plug 'michaeljsmith/vim-indent-object'
 Plug 'rhysd/clever-f.vim'
 Plug 'rhysd/committia.vim'
 Plug 'romainl/vim-cool'
-Plug 'RRethy/vim-hexokinase'
-Plug 'sbdchd/neoformat'
+Plug 'ruby-formatter/rufo-vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'shime/vim-livedown'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -92,7 +91,7 @@ nnoremap <leader>tf :call RunCurrentSpecFile()<CR>
 nnoremap <leader>ts :call RunNearestSpec()<CR>
 nnoremap <leader>tl :call RunLastSpec()<CR>
 nnoremap <leader>ta :call RunAllSpecs()<CR>
-nnoremap <leader>fo :w<CR>:Neoformat<CR>
+nnoremap <leader>fo :Rufo<CR>
 nnoremap <leader>pp :setlocal paste!<CR>
 nnoremap <silent> <leader>pa :setlocal paste<CR>"+p :setlocal nopaste<CR>
 
