@@ -70,6 +70,7 @@ setopt noflowcontrol
 [ "$(command -v hub)" ] && alias git="hub"
 [ "$(command -v hub)" ] && alias gci="hub ci-status -v"
 [ "$(command -v exa)" ] && alias ls="exa"
+[ "$(command -v nvim)" ] && alias vim="nvim"
 [ "$(command -v thefuck)" ] && eval $(thefuck --alias)
 
 alias kp="kill_process"
