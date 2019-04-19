@@ -1,7 +1,6 @@
 call plug#begin('~/.local/share/nvim/plugged')
 Plug 'airblade/vim-gitgutter'
 Plug 'AndrewRadev/splitjoin.vim'
-Plug 'aonemd/kuroi.vim'
 Plug 'Carpetsmoker/auto_mkdir2.vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'dhruvasagar/vim-zoom'
@@ -38,6 +37,7 @@ Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
+Plug 'w0ng/vim-hybrid'
 Plug 'w0rp/ale'
 Plug 'wellle/targets.vim'
 Plug 'yegappan/greplace'
@@ -185,7 +185,7 @@ augroup mycolors
   autocmd ColorScheme * highlight GitGutterChangeDelete ctermfg=red
 augroup END
 
-colorscheme kuroi
+colorscheme hybrid
 
 " search configuration
 let g:esearch = {
