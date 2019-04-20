@@ -2,13 +2,9 @@ call plug#begin('~/.local/share/nvim/plugged')
 Plug 'airblade/vim-gitgutter'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'Carpetsmoker/auto_mkdir2.vim'
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'dhruvasagar/vim-zoom'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'eugen0329/vim-esearch'
-Plug 'itchyny/lightline.vim'
 Plug 'jiangmiao/auto-pairs'
-Plug 'kchmck/vim-coffee-script'
 Plug 'knubie/vim-kitty-navigator'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'machakann/vim-highlightedyank'
@@ -20,8 +16,6 @@ Plug 'rhysd/committia.vim'
 Plug 'romainl/vim-cool'
 Plug 'ruby-formatter/rufo-vim'
 Plug 'sheerun/vim-polyglot'
-Plug 'shime/vim-livedown'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'thoughtbot/vim-rspec'
 Plug 'tpope/vim-bundler'
 Plug 'tpope/vim-commentary'
@@ -62,25 +56,40 @@ set splitbelow
 set splitright
 set termguicolors
 
+if exists("g:gui_oni")
+	" Disable status bar
+	set laststatus=0 ruler
+	set noruler
+	set noshowcmd
+endif
+
+colorscheme hybrid
+
 " Set leader key
 let mapleader = ","
 
 " Normal bindings
-nnoremap <Ctrl-A> <Nop>
-nnoremap j gj
-nnoremap k gk
-nnoremap <C-W>u :call MergeTabs()<CR>
+nnoremap <silent> <Ctrl-A> <Nop>
+nnoremap <silent> j gj
+nnoremap <silent> k gk
+nnoremap <silent> <C-W>u :call MergeTabs()<CR>
+
+" Window navigation
+nnoremap <silent> <C-h> <C-w><C-h>
+nnoremap <silent> <C-j> <C-w><C-j>
+nnoremap <silent> <C-k> <C-w><C-k>
+nnoremap <silent> <C-l> <C-w><C-l>
 
 " Don't put certain actions in the default register, send to black hole
 nnoremap x "_x
 
 " Shift lines up and down
-nnoremap <A-j> :m .+1<CR>==
-nnoremap <A-k> :m .-2<CR>==
-inoremap <A-j> <Esc>:m .+1<CR>==gi
-inoremap <A-k> <Esc>:m .-2<CR>==gi
-vnoremap <A-j> :m '>+1<CR>gv=gv
-vnoremap <A-k> :m '<-2<CR>gv=gv
+nnoremap <silent> <C-S-j> :m .+1<CR>==
+nnoremap <silent> <C-S-k> :m .-2<CR>==
+inoremap <silent> <C-S-j> <Esc>:m .+1<CR>==gi
+inoremap <silent> <C-S-k> <Esc>:m .-2<CR>==gi
+vnoremap <silent> <C-S-j> :m '>+1<CR>gv=gv
+vnoremap <silent> <C-S-k> :m '<-2<CR>gv=gv
 
 " leader bindings
 nnoremap <leader>vr :tabe $MYVIMRC<CR>
@@ -99,7 +108,7 @@ nnoremap <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 nnoremap <C-[> :split <CR>:exec("tag ".expand("<cword>"))<CR>
 nunmap <Esc>
 
-let g:deoplete#enable_at_startup = 1
+let g:rufo_auto_formatting = 1
 let g:rspec_command = '!bundle exec rspec {spec}'
 let g:ale_sign_column_always = 1
 let g:ale_lint_delay = 250
@@ -111,12 +120,6 @@ let g:gutentags_file_list_command = {
 	\ '.git': 'git ls-files',
 	\ },
 	\ }
-
-" ctrlP
-let g:ctrlp_use_caching = 0
-if executable('ag')
-  let g:ctrlp_user_command = 'ag %s -l --hidden --nocolor -g ""'
-endif
 
 " Word wrap in quickfix
 augroup quickfix
@@ -160,33 +163,6 @@ augroup myfiletypes
   autocmd BufNewFile,BufRead * setlocal formatoptions-=cro
 augroup END
 
-augroup mycolors
-  autocmd!
-  autocmd ColorScheme * highlight Normal ctermbg=None guibg=None
-  autocmd ColorScheme * highlight NonText ctermbg=None guibg=None
-  autocmd ColorScheme * highlight ColorColumn ctermbg=234
-  autocmd ColorScheme * highlight CursorLine ctermbg=234
-
-  " ALE
-  autocmd ColorScheme * highlight ALEWarning ctermbg=236
-  autocmd ColorScheme * highlight ALEError ctermbg=52
-  autocmd ColorScheme * highlight ALEWarningSign ctermbg=None
-  autocmd ColorScheme * highlight ALEErrorSign ctermbg=None
-
-  " Git Gutter
-  autocmd ColorScheme * highlight clear SignColumn
-  autocmd ColorScheme * highlight GitGutterAdd ctermbg=None
-  autocmd ColorScheme * highlight GitGutterAdd ctermfg=darkgreen
-  autocmd ColorScheme * highlight GitGutterChange ctermbg=None
-  autocmd ColorScheme * highlight GitGutterChange ctermfg=darkyellow
-  autocmd ColorScheme * highlight GitGutterDelete ctermbg=None
-  autocmd ColorScheme * highlight GitGutterDelete ctermfg=darkred
-  autocmd ColorScheme * highlight GitGutterChangeDelete ctermbg=None
-  autocmd ColorScheme * highlight GitGutterChangeDelete ctermfg=red
-augroup END
-
-colorscheme hybrid
-
 " search configuration
 let g:esearch = {
   \ 'adapter':          'ag',
@@ -197,69 +173,24 @@ let g:esearch = {
   \ 'default_mappings': 1,
   \}
 
-" lightline configuration
-let g:lightline = {
-      \ 'colorscheme': 'wombat',
-      \ 'inactive': {
-      \   'left': [ [ 'mode', 'paste' ], [ 'ctrlpmark' ],
-      \             [ 'gitbranch', 'readonly', 'lightline_filename', 'modified' ] ],
-      \   'right': [[ 'filetype' ]],
-      \ },
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste', 'zoomstatus' ], [ 'ctrlpmark' ],
-      \             [ 'gitbranch', 'readonly', 'lightline_filename', 'modified' ] ],
-      \   'right': [[ 'filetype' ]],
-      \ },
-      \ 'component_function': {
-      \   'gitbranch': 'fugitive#head',
-      \   'lightline_filename': 'LightlineFilename'
-      \ },
-      \ }
+augroup mycolors
+	" ALE
+	autocmd ColorScheme * highlight ALEWarning ctermbg=236
+	autocmd ColorScheme * highlight ALEError ctermbg=52
+	autocmd ColorScheme * highlight ALEWarningSign ctermbg=None
+	autocmd ColorScheme * highlight ALEErrorSign ctermbg=None
 
-function! MyMode()
-  let fname = expand('%:t')
-  return fname == '__Tagbar__' ? 'Tagbar' :
-        \ fname == 'ControlP' ? 'CtrlP' :
-        \ fname =~ 'NERD_tree' ? 'NERDTree' :
-        \ winwidth(0) > 60 ? lightline#mode() : ''
-endfunction
-
-let g:ctrlp_status_func = {
-      \ 'main': 'CtrlPStatusFunc_1',
-      \ 'prog': 'CtrlPStatusFunc_2',
-      \ }
-
-function! CtrlPMark()
-  if expand('%:t') =~ 'ControlP'
-    call lightline#link('iR'[g:lightline.ctrlp_regex])
-    return lightline#concatenate([g:lightline.ctrlp_prev, g:lightline.ctrlp_item
-          \ , g:lightline.ctrlp_next], 0)
-  else
-    return ''
-  endif
-endfunction
-
-function! CtrlPStatusFunc_1(focus, byfname, regex, prev, item, next, marked)
-  let g:lightline.ctrlp_regex = a:regex
-  let g:lightline.ctrlp_prev = a:prev
-  let g:lightline.ctrlp_item = a:item
-  let g:lightline.ctrlp_next = a:next
-  return lightline#statusline(0)
-endfunction
-
-function! CtrlPStatusFunc_2(str)
-  return lightline#statusline(0)
-endfunction
-
-let g:lightline.component = {
-  \ 'filename': '%{expand("%:t") == "ControlP" ? g:lightline.ctrlp_item : expand("%:p")}'
-  \ }
-
-function! LightlineFilename()
-  let filename = expand('%:t') !=# '' ? expand('%:t') : '[No Name]'
-  let modified = &modified ? ' +' : ''
-  return filename . modified
-endfunction
+	" Git Gutter
+	autocmd ColorScheme * highlight clear SignColumn
+	autocmd ColorScheme * highlight GitGutterAdd ctermbg=None
+	autocmd ColorScheme * highlight GitGutterAdd ctermfg=darkgreen
+	autocmd ColorScheme * highlight GitGutterChange ctermbg=None
+	autocmd ColorScheme * highlight GitGutterChange ctermfg=darkyellow
+	autocmd ColorScheme * highlight GitGutterDelete ctermbg=None
+	autocmd ColorScheme * highlight GitGutterDelete ctermfg=darkred
+	autocmd ColorScheme * highlight GitGutterChangeDelete ctermbg=None
+	autocmd ColorScheme * highlight GitGutterChangeDelete ctermfg=red
+augroup END
 
 if has("autocmd")
   augroup vimrcEx
