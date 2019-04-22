@@ -43,6 +43,9 @@ Style/BlockDelimiters:
   Exclude:
     - 'spec/**/*'
 
+Style/StringLiteralsInInterpolation:
+  Enabled: false
+
 Style/TrailingCommaInHashLiteral:
   EnforcedStyleForMultiline: comma
 
