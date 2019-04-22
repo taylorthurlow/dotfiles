@@ -26,7 +26,8 @@
                 "^net\\.kovidgoyal\\.kitty$",
                 "^com\\.extropy\\.oni$",
                 "^com\\.veonim\\.veonim$",
-                "^org\\.python\\.python$"
+                "^org\\.python\\.python$",
+                "^com\\.microsoft\\.VSCode$"
               ]
             }
           ]
