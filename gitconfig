@@ -7,15 +7,15 @@
 [advice]
 	statusHints = false
 [diff]
-  tool = vimdiff
+	tool = vimdiff
 	renames = copies
 [branch]
 	autosetupmerge = true
 [commit]
 	gpgsign = true
-  verbose = true
+	verbose = true
 [pull]
-  rebase = true
+	rebase = true
 [push]
 	default = tracking
 	followTags = true
@@ -32,8 +32,8 @@
 [pager]
 	branch = false
 [alias]
-  co = checkout
-  br = branch
+	co = checkout
+	br = branch
 [core]
 	pager = diff-so-fancy | less --tabs=4 -RFX
 	excludesfiles = $HOME/.gitignore_global
@@ -49,3 +49,5 @@
 	old = red bold
 	new = green bold
 	whitespace = red reverse
+[includeIf "gitdir:~/Code/bayphoto/"]
+	path = ~/Code/bayphoto/gitconfig_include
