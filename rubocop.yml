@@ -43,6 +43,9 @@ Style/BlockDelimiters:
   Exclude:
     - 'spec/**/*'
 
+Style/NumericPredicate:
+  Enabled: false
+
 Style/StringLiteralsInInterpolation:
   Enabled: false
 
