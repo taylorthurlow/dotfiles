@@ -78,6 +78,8 @@ alias bip="brew_install_fzf"
 alias dc="docker-compose"
 alias gst="git status -s"
 alias glog="git log --oneline --decorate --color --graph --pretty=format:'%C(yellow)%h %Cgreen%ad %Cblue%an%Cred%d %Creset%s' --date=human"
+alias wglog="watch --color -n 1 \"git log --oneline --decorate --color --graph --pretty=format:'%C(yellow)%h %Cgreen%ad %Cblue%an%Cred%d %Creset%s' --date=human\""
+alias wgloga="watch --color -n 1 \"git log --all --oneline --decorate --color --graph --pretty=format:'%C(yellow)%h %Cgreen%ad %Cblue%an%Cred%d %Creset%s' --date=human\""
 
 if [ "$(command -v kitty)" ]; then
 	alias aedirnlan="kitty +kitten ssh taylor@aedirn.local"
@@ -94,12 +96,8 @@ else
 	alias whatbox="ssh frizkie@apollo.whatbox.ca"
 fi
 
-# PATH modification
-export PATH="/usr/local/sbin:$PATH"
-export PATH="$HOME/.rbenv/bin:$PATH"
-export PATH="$PATH:$HOME/.cargo/bin"
-export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
-
-# Other stuff
-[ "$(command -v rbenv)" ] && eval "$(rbenv init -)"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# We want PATH modification to happen even in non-interactive shells, so we'll
+# include all the PATH modification in ~/.zprofile. Do not add PATH modification
+# to this file.
