@@ -1,5 +1,3 @@
-require: rubocop-rspec
-
 AllCops:
   TargetRubyVersion: 2.6
   Exclude:
@@ -11,9 +9,6 @@ AllCops:
     - 'script/**/*'
     - 'tmp/**/*'
     - 'vendor/**/*'
-  RSpec:
-    Patterns:
-      - '_spec.rb$'
 
 Layout:
   Enabled: false
@@ -78,28 +73,3 @@ Style/GuardClause:
 
 Style/StringLiterals:
   EnforcedStyle: double_quotes
-
-###############
-# RSpec Stuff #
-###############
-
-RSpec/MultipleDescribes:
-  Enabled: false
-
-RSpec/MessageChain:
-  Enabled: false
-
-RSpec/ContextWording:
-  Enabled: false
-
-RSpec/DescribeClass:
-  Enabled: false
-
-RSpec/ExampleLength:
-  Max: 10
-
-RSpec/MultipleExpectations:
-  Enabled: false
-
-RSpec/SubjectStub:
-  Enabled: false
