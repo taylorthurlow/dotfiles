@@ -1,0 +1,107 @@
+[
+	{
+		"name": "redacted_better",
+		"rootPath": "/Users/taylor/Code/redacted_better",
+		"paths": [],
+		"group": "",
+		"enabled": true
+	},
+	{
+		"name": "BayPhoto: Acrylic",
+		"rootPath": "/Users/taylor/Code/bayphoto/acrylic",
+		"paths": [],
+		"group": "Bay Photo",
+		"enabled": true
+	},
+	{
+		"name": "BayPhoto: My BayPhoto (wos-account-manager)",
+		"rootPath": "/Users/taylor/Code/bayphoto/wos-account-manager",
+		"paths": [],
+		"group": "Bay Photo",
+		"enabled": true
+	},
+	{
+		"name": "BayPhoto: Labworks (bayaccess-labworks)",
+		"rootPath": "/Users/taylor/Code/bayphoto/bayaccess-labworks",
+		"paths": [],
+		"group": "Bay Photo",
+		"enabled": true
+	},
+	{
+		"name": "BayPhoto: DP2 (bayaccess-dp2)",
+		"rootPath": "/Users/taylor/Code/bayphoto/bayaccess-dp2",
+		"paths": [],
+		"group": "Bay Photo",
+		"enabled": true
+	},
+	{
+		"name": "BayPhoto: Composite Primary Keys (bp_composite_primary_keys)",
+		"rootPath": "/Users/taylor/Code/bayphoto/bp_composite_primary_keys",
+		"paths": [],
+		"group": "Bay Photo",
+		"enabled": true
+	},
+	{
+		"name": "BayPhoto: bayruleengine",
+		"rootPath": "/Users/taylor/Code/bayphoto/bayruleengine",
+		"paths": [],
+		"group": "Bay Photo",
+		"enabled": true
+	},
+	{
+		"name": "BayPhoto: bayserviceorderprocessing",
+		"rootPath": "/Users/taylor/Code/bayphoto/bayserviceorderprocessing",
+		"paths": [],
+		"group": "Bay Photo",
+		"enabled": true
+	},
+	{
+		"name": "panda-motd",
+		"rootPath": "/Users/taylor/Code/panda-motd",
+		"paths": [],
+		"group": "",
+		"enabled": true
+	},
+	{
+		"name": "BayPhoto: LDAP (bayaccess-ldap)",
+		"rootPath": "/Users/taylor/Code/bayphoto/bayaccess-ldap",
+		"paths": [],
+		"group": "Bay Photo",
+		"enabled": true
+	},
+	{
+		"name": "BayPhoto: Auth (bayaccess-auth)",
+		"rootPath": "/Users/taylor/Code/bayphoto/bayaccess-auth",
+		"paths": [],
+		"group": "Bay Photo",
+		"enabled": true
+	},
+	{
+		"name": "BayPhoto: Labworks AR4 (bayaccess-labworks_ar4)",
+		"rootPath": "/Users/taylor/Code/bayphoto/bayaccess-labworks_ar4",
+		"paths": [],
+		"group": "Bay Photo",
+		"enabled": true
+	},
+	{
+		"name": "BayPhoto: Order (wos-ordering)",
+		"rootPath": "/Users/taylor/Code/bayphoto/wos-ordering",
+		"paths": [],
+		"group": "Bay Photo",
+		"enabled": true
+	},
+	{
+		"name": "BayPhoto: FedEx (bayaccess-fedex)",
+		"rootPath": "/Users/taylor/Code/bayphoto/bayaccess-fedex",
+		"paths": [],
+		"group": "Bay Photo",
+		"enabled": true
+	},
+	{
+		"name": "BayPhoto: Bay Forms (bay-forms)",
+		"rootPath": "/Users/taylor/Code/bayphoto/bay-forms",
+		"paths": [],
+		"group": "Bay Photo",
+		"enabled": true
+	}
+]
