@@ -80,6 +80,7 @@ alias gst="git status -s"
 alias glog="git log --oneline --decorate --color --graph --pretty=format:'%C(yellow)%h %Cgreen%ad %Cblue%an%Cred%d %Creset%s' --date=human"
 alias wglog="watch --color -n 1 \"git log --oneline --decorate --color --graph --pretty=format:'%C(yellow)%h %Cgreen%ad %Cblue%an%Cred%d %Creset%s' --date=human\""
 alias wgloga="watch --color -n 1 \"git log --all --oneline --decorate --color --graph --pretty=format:'%C(yellow)%h %Cgreen%ad %Cblue%an%Cred%d %Creset%s' --date=human\""
+alias bid="bundle install --path=vendor --jobs=6 --binstubs=.bundle/bin"
 
 if [ "$(command -v kitty)" ]; then
 	alias aedirnlan="kitty +kitten ssh taylor@aedirn.local"
