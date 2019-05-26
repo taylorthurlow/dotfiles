@@ -77,13 +77,6 @@
 		"enabled": true
 	},
 	{
-		"name": "BayPhoto: Labworks AR4 (bayaccess-labworks_ar4)",
-		"rootPath": "/Users/taylor/Code/bayphoto/bayaccess-labworks_ar4",
-		"paths": [],
-		"group": "Bay Photo",
-		"enabled": true
-	},
-	{
 		"name": "BayPhoto: Order (wos-ordering)",
 		"rootPath": "/Users/taylor/Code/bayphoto/wos-ordering",
 		"paths": [],
@@ -102,6 +95,20 @@
 		"rootPath": "/Users/taylor/Code/bayphoto/bay-forms",
 		"paths": [],
 		"group": "Bay Photo",
+		"enabled": true
+	},
+	{
+		"name": "thurlow.io",
+		"rootPath": "/Users/taylor/Code/thurlow.io",
+		"paths": [],
+		"group": "",
+		"enabled": true
+	},
+	{
+		"name": "Dotfiles",
+		"rootPath": "/Users/taylor/.dotfiles",
+		"paths": [],
+		"group": "",
 		"enabled": true
 	}
 ]
