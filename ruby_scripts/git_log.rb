@@ -19,7 +19,8 @@ thresholds = {
   week: 4 * 7 * 24 * 60 * 60,
   day: 2 * 24 * 60 * 60,
   hour: 1 * 60 * 60,
-  minute: 60 * 60,
+  minute: 60,
+  second: 0,
 }
 
 # The duration of a given measurement in seconds
@@ -30,6 +31,7 @@ lengths = {
   day: 24 * 60 * 60,
   hour: 60 * 60,
   minute: 60,
+  second: 1,
 }
 
 abbreviations = {
@@ -39,6 +41,7 @@ abbreviations = {
   day: "d",
   hour: "h",
   minute: "m",
+  second: "s",
 }
 
 def without_escapes(string)
