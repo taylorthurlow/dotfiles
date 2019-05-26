@@ -1,0 +1,12 @@
+{
+  "files.associations": {
+    "zshrc_shared": "shellscript",
+    "zshrc": "shellscript",
+    "zprofile": "shellscript",
+    "vimrc": "viml",
+    "gitignore_global": "ignore",
+    "pryrc": "ruby"
+  },
+  "solargraph.useBundler": false,
+  "ruby.useBundler": false
+}
