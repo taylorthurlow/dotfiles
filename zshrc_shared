@@ -77,9 +77,6 @@ alias kp="kill_process"
 alias bip="brew_install_fzf"
 alias dc="docker-compose"
 alias gst="git status -s"
-alias glog="git log --oneline --decorate --color --graph --pretty=format:'%C(yellow)%h %Cgreen%ad %Cblue%an%Cred%d %Creset%s' --date=human"
-alias wglog="watch --color -n 1 \"git log --oneline --decorate --color --graph --pretty=format:'%C(yellow)%h %Cgreen%ad %Cblue%an%Cred%d %Creset%s' --date=human\""
-alias wgloga="watch --color -n 1 \"git log --all --oneline --decorate --color --graph --pretty=format:'%C(yellow)%h %Cgreen%ad %Cblue%an%Cred%d %Creset%s' --date=human\""
 alias bid="bundle install --path=vendor --jobs=$(sysctl -n hw.ncpu) --binstubs=.bundle/bin"
 
 if [ "$(command -v kitty)" ]; then
@@ -98,6 +95,25 @@ else
 fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Evaluates some Ruby code passed in as a string parameter. The result goes to
+# STDIN.
+get_ruby() {
+	$(which ruby) <<RUBY
+		$:.unshift File.join(Dir.home, ".dotfiles", "ruby_scripts")
+		$1
+RUBY
+}
+
+# Temporarily switch the rbenv environment to one where we can run some Ruby
+# scripts which are way better than bash. Switch back afterwards.
+function git_log {
+	rbenv shell 2.6.3 # Switch to
+	get_ruby 'require "git_log"'
+	rbenv shell - # Switch back
+}
+
+alias glog="git_log | less"
 
 # We want PATH modification to happen even in non-interactive shells, so we'll
 # include all the PATH modification in ~/.zprofile. Do not add PATH modification

@@ -1,1 +1,1 @@
-EXCLUDES="Brewfile LICENSE README.md tags tmux/* zshrc_shared dropshadow.sh *:config/i3/config_* *:config/i3/*.sh sublime_text.zip"
+EXCLUDES="Brewfile LICENSE README.md tags zshrc_shared sublime_text.zip ruby_scripts"
