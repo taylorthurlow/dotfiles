@@ -58,6 +58,7 @@ begin
 
       time = Time.iso8601(date_match[1])
       author = date_match[2]
+      msg = date_match[4]
 
       # Handle time
       seconds_ago = today - time
@@ -66,6 +67,11 @@ begin
       to_sub = +"#{quantity}#{abbreviations[measurement]}".rjust(3)
       to_sub << "\e[31m" if date_match[3] # add color if we have refs in this line
       new_line.sub!(date_match[1], to_sub)
+
+      # Handle commit message prefix
+      msg.match(/^([\w\d-]+?:)/) do |prefix_match|
+        new_line.sub!(prefix_match[1], "\e[38;5;237m#{prefix_match[1]}\e[m")
+      end
 
       # Handle author
       new_line.sub!("\e[34m{#{author}}\e[31m ", "")
