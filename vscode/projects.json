@@ -110,5 +110,12 @@
 		"paths": [],
 		"group": "",
 		"enabled": true
+	},
+	{
+		"name": "albert",
+		"rootPath": "/Users/taylor/Code/albert",
+		"paths": [],
+		"group": "",
+		"enabled": true
 	}
 ]
