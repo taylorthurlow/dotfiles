@@ -105,7 +105,7 @@
 		"enabled": true
 	},
 	{
-		"name": "Dotfiles",
+		"name": "dotfiles",
 		"rootPath": "/Users/taylor/.dotfiles",
 		"paths": [],
 		"group": "",
@@ -114,6 +114,13 @@
 	{
 		"name": "albert",
 		"rootPath": "/Users/taylor/Code/albert",
+		"paths": [],
+		"group": "",
+		"enabled": true
+	},
+	{
+		"name": "thicket",
+		"rootPath": "/Users/taylor/Code/thicket",
 		"paths": [],
 		"group": "",
 		"enabled": true
