@@ -78,6 +78,10 @@ alias bip="brew_install_fzf"
 alias dc="docker-compose"
 alias gst="git status -s"
 alias bid="bundle install --path=vendor --jobs=$(sysctl -n hw.ncpu) --binstubs=.bundle/bin"
+alias glog="thicket --color-prefixes | less"
+alias gloga="thicket --color-prefixes --all | less"
+alias wglog="watch -n 1 thicket --color-prefixes"
+alias wgloga="watch -n 1 thicket --color-prefixes --all"
 
 if [ "$(command -v kitty)" ]; then
 	alias aedirnlan="kitty +kitten ssh taylor@aedirn.local"
@@ -103,15 +107,6 @@ get_ruby() {
 		$1
 RUBY
 }
-
-function git_log {
-	rbenv shell 2.6.3 # Switch to
-	get_ruby 'require "git_log"' "$1"
-	rbenv shell - # Switch back
-}
-
-alias glog="git_log | less"
-alias gloga="git_log all | less"
 
 # We want PATH modification to happen even in non-interactive shells, so we'll
 # include all the PATH modification in ~/.zprofile. Do not add PATH modification
