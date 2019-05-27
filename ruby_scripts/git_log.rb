@@ -8,7 +8,9 @@ require "time"
 terminal_width = `tput cols`.to_i
 glog_parse_regex = /[a-f0-9]{7}.+?m(.+?) .+?m\{([\w ]+)\}.+?m (?:\((.+?)\))?.+?m(.+$)/
 format_str = "%C(yellow)%h %Cgreen%aI %Cblue{%an}%Cred%d %Creset%s"
-raw_log = `git log --oneline --decorate --color --graph --pretty=format:'#{format_str}'`
+log_cmd = +"git log --oneline --decorate --color --graph --pretty=format:'#{format_str}'"
+log_cmd << " --all" if ARGV[0] == "all"
+raw_log = `#{log_cmd}`
 today = Time.now
 
 # Define the number of seconds at which we start measuring in a given
@@ -69,8 +71,8 @@ begin
       new_line.sub!(date_match[1], to_sub)
 
       # Handle commit message prefix
-      msg.match(/^([\w\d-]+?:)/) do |prefix_match|
-        new_line.sub!(prefix_match[1], "\e[38;5;237m#{prefix_match[1]}\e[m")
+      msg.match(%r{^(?=.*[0-9])([A-Z\d-]+?[: \/])}) do |prefix_match|
+        new_line.sub!(/([^\/])#{prefix_match[1]}/, "\\1\e[38;5;237m#{prefix_match[1]}\e[m")
       end
 
       # Handle author
