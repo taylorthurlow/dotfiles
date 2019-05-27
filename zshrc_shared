@@ -96,24 +96,22 @@ fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# Evaluates some Ruby code passed in as a string parameter. The result goes to
-# STDIN.
 get_ruby() {
 	$(which ruby) <<RUBY
 		$:.unshift File.join(Dir.home, ".dotfiles", "ruby_scripts")
+		ARGV = ["$2"]
 		$1
 RUBY
 }
 
-# Temporarily switch the rbenv environment to one where we can run some Ruby
-# scripts which are way better than bash. Switch back afterwards.
 function git_log {
 	rbenv shell 2.6.3 # Switch to
-	get_ruby 'require "git_log"'
+	get_ruby 'require "git_log"' "$1"
 	rbenv shell - # Switch back
 }
 
 alias glog="git_log | less"
+alias gloga="git_log all | less"
 
 # We want PATH modification to happen even in non-interactive shells, so we'll
 # include all the PATH modification in ~/.zprofile. Do not add PATH modification
