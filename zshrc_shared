@@ -1,3 +1,34 @@
+source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $HOME/.oh-my-zsh/custom/plugins/zsh-histdb/sqlite-history.zsh
+autoload -Uz add-zsh-hook
+add-zsh-hook precmd histdb-update-outcome
+
+# _zsh_autosuggest_strategy_histdb_top_here() {
+# 	local query=$(cat <<'HEREDOC'
+# SELECT
+#   commands.argv
+# FROM
+#   history
+#   LEFT JOIN
+#     commands
+#     ON history.command_id = commands.rowid
+#   LEFT JOIN
+#     places
+#     ON history.place_id = places.rowid
+# WHERE
+#   places.dir LIKE '$(sql_escape $PWD)%'
+#   AND commands.argv LIKE '$(sql_escape $1)%'
+# GROUP BY
+#   commands.argv
+# ORDER BY
+#   COUNT(*) DESC LIMIT 1
+# HEREDOC
+# )
+# 	suggestion=$(_histdb_query "$query")
+# }
+
+# ZSH_AUTOSUGGEST_STRATEGY=histdb_top_here
+
 # Up a directory with "up"
 up() {
 	cd $(eval printf '../'%.0s {1..$1})
