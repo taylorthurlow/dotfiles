@@ -124,5 +124,19 @@
 		"paths": [],
 		"group": "",
 		"enabled": true
+	},
+	{
+		"name": "Bay Photo: Order API (wos-pricing-manager)",
+		"rootPath": "/Users/taylor/Code/bayphoto/wos-pricing-manager",
+		"paths": [],
+		"group": "",
+		"enabled": true
+	},
+	{
+		"name": "BayPhoto: Elastic Logger (elastic_logger)",
+		"rootPath": "/Users/taylor/Code/bayphoto/elastic_logger",
+		"paths": [],
+		"group": "",
+		"enabled": true
 	}
 ]
