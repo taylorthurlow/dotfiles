@@ -1,5 +1,4 @@
 AllCops:
-  TargetRubyVersion: 2.6
   Exclude:
     - '.circleci/**/*'
     - 'app/assets/bower_components/**/*'
@@ -13,10 +12,14 @@ AllCops:
 Layout:
   Enabled: false
 
+Documentation:
+  Enabled: false
+
 Metrics/ClassLength:
   Max: 200
   Exclude:
     - 'spec/**/*'
+    - 'test/**/*'
 
 Metrics/MethodLength:
   Max: 25
@@ -24,19 +27,15 @@ Metrics/MethodLength:
 Metrics/BlockLength:
   Exclude:
     - 'spec/**/*'
+    - 'test/**/*'
 
 Metrics/LineLength:
-  Max: 80
-  IgnoredPatterns: ['#[^\{\n]+$'] # ignore end of line comments
-  Exclude:
-    - 'Guardfile'
-
-Documentation:
   Enabled: false
 
 Style/BlockDelimiters:
   Exclude:
     - 'spec/**/*'
+    - 'test/**/*'
 
 Style/NumericPredicate:
   Enabled: false
@@ -45,10 +44,10 @@ Style/StringLiteralsInInterpolation:
   Enabled: false
 
 Style/TrailingCommaInHashLiteral:
-  EnforcedStyleForMultiline: comma
+  Enabled: false
 
 Style/TrailingCommaInArrayLiteral:
-  EnforcedStyleForMultiline: comma
+  Enabled: false
 
 Style/TrailingCommaInArguments:
   Enabled: false
@@ -65,10 +64,10 @@ Style/ClassAndModuleChildren:
 Style/StructInheritance:
   Enabled: false
 
-Style/FrozenStringLiteralComment:
-  Enabled: true
-
 Style/GuardClause:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
   Enabled: false
 
 Style/StringLiterals:
