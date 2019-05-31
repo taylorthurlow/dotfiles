@@ -65,6 +65,11 @@ n() {
 unsetopt AUTOcd
 setopt noflowcontrol
 
+export GPG_TTY=$(tty)
+if [[ -n "$SSH_CONNECTION" ]]; then
+	export PINENTRY_USER_DATA="USE_CURSES=1"
+fi
+
 [ "$(command -v nvim)" ] && export EDITOR="$(which nvim)"
 [ "$(command -v bat)" ] && alias cat="bat"
 [ "$(command -v hub)" ] && alias git="hub"
@@ -80,8 +85,8 @@ alias gst="git status -s"
 alias bid="bundle install --path=vendor --jobs=$(sysctl -n hw.ncpu) --binstubs=.bundle/bin"
 alias glog="thicket --color-prefixes | less"
 alias gloga="thicket --color-prefixes --all | less"
-alias wglog="watch --color -n 1 thicket --color-prefixes"
-alias wgloga="watch --color -n 1 thicket --color-prefixes --all"
+alias wglog="watch --color -n 1 thicket --color-prefixes -n 200"
+alias wgloga="watch --color -n 1 thicket --color-prefixes -n 200 --all"
 
 if [ "$(command -v kitty)" ]; then
 	alias aedirnlan="kitty +kitten ssh taylor@aedirn.local"
