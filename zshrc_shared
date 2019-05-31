@@ -76,6 +76,11 @@ j() {
     cd "$(autojump -s | gsed '/_____/Q; s/^[0-9,.:]*\s*//' | fzf --height 40% --reverse --inline-info)"
 }
 
+# git interactive rebase with fzf commit selection
+girb() {
+	git rebase -i $(git log --decorate --oneline --color=always | fzf --ansi | cut -d ' ' -f1 )^
+}
+
 # browse chrome history
 c() {
   local cols sep google_history open
