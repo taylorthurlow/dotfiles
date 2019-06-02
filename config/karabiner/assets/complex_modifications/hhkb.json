@@ -25,7 +25,8 @@
                 "^com\\.extropy\\.oni$",
                 "^com\\.veonim\\.veonim$",
                 "^org\\.python\\.python$",
-                "^com\\.microsoft\\.VSCode$"
+                "^com\\.microsoft\\.VSCode$",
+                "^com\\.microsoft\\.VSCodeInsiders$"
               ]
             }
           ]
