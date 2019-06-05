@@ -138,5 +138,12 @@
 		"paths": [],
 		"group": "",
 		"enabled": true
+	},
+	{
+		"name": "BayPhoto: Integrations (xml-integrations)",
+		"rootPath": "/Users/taylor/Code/bayphoto/xml_integrations",
+		"paths": [],
+		"group": "",
+		"enabled": true
 	}
 ]
