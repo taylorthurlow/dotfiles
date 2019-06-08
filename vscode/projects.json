@@ -145,5 +145,26 @@
 		"paths": [],
 		"group": "",
 		"enabled": true
+	},
+	{
+		"name": "BayPhoto: Magic (bayaccess-magic)",
+		"rootPath": "/Users/taylor/Code/bayphoto/bayaccess-magic",
+		"paths": [],
+		"group": "",
+		"enabled": true
+	},
+	{
+		"name": "Bay Photo: PrintHub API (printhubapi)",
+		"rootPath": "/Users/taylor/Code/bayphoto/printhubapi",
+		"paths": [],
+		"group": "",
+		"enabled": true
+	},
+	{
+		"name": "BayPhoto: ebizcharge (bayaccess-ebizcharge)",
+		"rootPath": "/Users/taylor/Code/bayphoto/bayaccess-ebizcharge",
+		"paths": [],
+		"group": "",
+		"enabled": true
 	}
 ]
