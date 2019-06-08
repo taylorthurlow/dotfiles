@@ -30,7 +30,7 @@ Metrics/BlockLength:
     - 'test/**/*'
 
 Metrics/LineLength:
-  Enabled: false
+  Max: 120
 
 Style/BlockDelimiters:
   Exclude:
