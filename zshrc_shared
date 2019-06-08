@@ -150,7 +150,6 @@ fi
 [ "$(command -v exa)" ] && alias ls="exa"
 [ "$(command -v nvim)" ] && alias vim="nvim"
 [ "$(command -v thefuck)" ] && eval $(thefuck --alias)
-[ "$(command -v code-insiders)" ] && alias code="code-insiders"
 
 alias kp="kill_process"
 alias bip="brew_install_fzf"
