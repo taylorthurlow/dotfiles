@@ -14,14 +14,22 @@ local current_dir='%{$terminfo[bold]$fg[blue]%}%~%{$reset_color%}'
 local rbenv_stuff='$(
   if which rbenv &> /dev/null; then
     if [[ "$(rbenv version)" =~ \/.ruby-version\)$ ]]; then
-      echo "$fg[red]‹$(rbenv version | sed -e "s/ (set.*$//")›$reset_color "
+      echo "$fg[red]Ruby $(rbenv version | sed -e "s/ (set.*$//")$reset_color "
+    fi
+  fi
+)'
+
+local crenv_stuff='$(
+  if which crenv &> /dev/null; then
+    if [[ "$(crenv version)" =~ \/.crystal-version\)$ ]]; then
+      echo "$fg[magenta]Crystal $(crenv version | sed -e "s/ (set.*$//")$reset_color "
     fi
   fi
 )'
 
 local git_branch='$(git_prompt_info)%{$reset_color%}'
 
-PROMPT="╭─${user_host} ${current_dir} ${rbenv_stuff}${git_branch}
+PROMPT="╭─${user_host} ${current_dir} ${rbenv_stuff}${crenv_stuff}${git_branch}
 ╰─%B${user_symbol}%b "
 RPS1="%B${return_code}%b"
 
