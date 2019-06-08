@@ -5,4 +5,4 @@ export PATH="$PATH:$HOME/.cargo/bin"
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 
 # Other stuff
-[ "$(command -v rbenv)" ] && eval "$(rbenv init -)"
+[ "$(command -v anyenv)" ] && eval "$(anyenv init -)"
