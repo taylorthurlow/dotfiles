@@ -154,6 +154,7 @@ fi
 alias kp="kill_process"
 alias bip="brew_install_fzf"
 alias dc="docker-compose"
+alias dsa="docker stop $(docker ps -a -q)"
 alias gst="git status -s"
 alias bid="bundle install --path=vendor --jobs=$(sysctl -n hw.ncpu) --binstubs=.bundle/bin"
 alias glog="thicket --color-prefixes --refs | less"
