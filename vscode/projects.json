@@ -166,5 +166,12 @@
 		"paths": [],
 		"group": "",
 		"enabled": true
+	},
+	{
+		"name": "crystalgame",
+		"rootPath": "/Users/taylor/Code/crystalgame",
+		"paths": [],
+		"group": "",
+		"enabled": true
 	}
 ]
