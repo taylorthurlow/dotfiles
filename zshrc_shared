@@ -151,6 +151,8 @@ fi
 [ "$(command -v nvim)" ] && alias vim="nvim"
 [ "$(command -v thefuck)" ] && eval $(thefuck --alias)
 
+[ -f /Users/taylor/.travis/travis.sh ] && source /Users/taylor/.travis/travis.sh
+
 alias kp="kill_process"
 alias bip="brew_install_fzf"
 alias dc="docker-compose"
