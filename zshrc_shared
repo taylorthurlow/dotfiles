@@ -161,6 +161,7 @@ alias glog="thicket --color-prefixes --refs | less"
 alias gloga="thicket --color-prefixes --all --refs | less"
 alias wglog="watch --color -n 1 thicket --color-prefixes -n 200 --refs"
 alias wgloga="watch --color -n 1 thicket --color-prefixes -n 200 --refs --all"
+alias xit="exit"
 
 if [ "$(command -v kitty)" ]; then
 	alias aedirnlan="kitty +kitten ssh taylor@aedirn.local"
