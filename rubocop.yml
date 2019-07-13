@@ -72,3 +72,6 @@ Style/FrozenStringLiteralComment:
 
 Style/StringLiterals:
   EnforcedStyle: double_quotes
+  
+Naming/AccessorMethodName:
+  Enabled: false
