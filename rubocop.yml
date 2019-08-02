@@ -8,6 +8,7 @@ AllCops:
     - 'script/**/*'
     - 'tmp/**/*'
     - 'vendor/**/*'
+    - '**/*.rb.erb'
 
 Layout:
   Enabled: false
