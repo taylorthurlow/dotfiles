@@ -170,6 +170,10 @@ alias wgloga="watch --color -n 1 thicket --color-prefixes -n 200 --refs --all"
 alias xit="exit"
 alias work="nohup kitty --session ~/.dotfiles/work-kitty &"
 
+bay-clone() {
+	git clone git@bitbucket.org:bayphotolab/$1.git
+}
+
 if [ "$(command -v kitty)" ]; then
 	alias aedirnlan="kitty +kitten ssh taylor@aedirn.local"
 	alias aedirnwan="kitty +kitten ssh taylor@home.thurlow.io"
