@@ -1,5 +1,4 @@
 call plug#begin('~/.local/share/nvim/plugged')
-Plug 'AndrewRadev/splitjoin.vim'
 Plug 'Carpetsmoker/auto_mkdir2.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'jiangmiao/auto-pairs'
@@ -8,7 +7,6 @@ Plug 'ludovicchabant/vim-gutentags'
 Plug 'machakann/vim-highlightedyank'
 Plug 'markonm/traces.vim'
 Plug 'mattn/emmet-vim'
-Plug 'rhysd/clever-f.vim'
 Plug 'rhysd/committia.vim'
 Plug 'romainl/vim-cool'
 Plug 'sheerun/vim-polyglot'
