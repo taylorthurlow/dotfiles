@@ -123,15 +123,6 @@ fh() {
 	print -z $( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf +s --tac | gsed -r 's/ *[0-9]*\*? *//' | gsed -r 's/\\/\\\\/g')
 }
 
-export NNN_TMPFILE="/tmp/nnn"
-n() {
-	nnn "$@"
-	if [[ -f $NNN_TMPFILE ]]; then
-		. $NNN_TMPFILE
-		rm -f $NNN_TMPFILE
-	fi
-}
-
 dsa() {
 	docker stop $(docker ps -a -q)
 }
