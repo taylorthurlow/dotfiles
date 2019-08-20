@@ -127,6 +127,10 @@ dsa() {
 	docker stop $(docker ps -a -q)
 }
 
+bay-clone() {
+	git clone git@bitbucket.org:bayphotolab/$1.git
+}
+
 unsetopt AUTOcd
 setopt noflowcontrol
 
@@ -157,10 +161,6 @@ alias wglog="watch --color -n 1 thicket --color-prefixes -n 200 --refs"
 alias wgloga="watch --color -n 1 thicket --color-prefixes -n 200 --refs --all"
 alias xit="exit"
 alias work="nohup kitty --session ~/.dotfiles/work-kitty &"
-
-bay-clone() {
-	git clone git@bitbucket.org:bayphotolab/$1.git
-}
 
 if [ "$(command -v kitty)" ]; then
 	alias aedirnlan="kitty +kitten ssh taylor@aedirn.local"
