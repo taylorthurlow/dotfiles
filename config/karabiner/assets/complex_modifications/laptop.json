@@ -1,0 +1,73 @@
+{
+  "title": "Caps Lock As CMD/Control",
+  "rules": [
+    {
+      "description": "Caps Lock as Command except in Select Apps",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "caps_lock",
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "left_command"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "frontmost_application_unless",
+              "bundle_identifiers": [
+                "^net\\.kovidgoyal\\.kitty$",
+                "^com\\.extropy\\.oni$",
+                "^com\\.veonim\\.veonim$",
+                "^org\\.python\\.python$",
+                "^com\\.microsoft\\.VSCode$",
+                "^com\\.microsoft\\.VSCodeInsiders$"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "description": "Caps Lock as Control in Select Apps",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "caps_lock",
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "left_control"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "frontmost_application_if",
+              "bundle_identifiers": [
+                "^net\\.kovidgoyal\\.kitty$",
+                "^com\\.extropy\\.oni$",
+                "^com\\.veonim\\.veonim$",
+                "^org\\.python\\.python$",
+                "^com\\.microsoft\\.VSCode$",
+                "^com\\.microsoft\\.VSCodeInsiders$"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
