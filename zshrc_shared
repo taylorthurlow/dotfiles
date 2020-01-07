@@ -144,6 +144,9 @@ if [[ -n "$SSH_CONNECTION" ]]; then
 	export PINENTRY_USER_DATA="USE_CURSES=1"
 fi
 
+# Collides with "bayphoto" gem excecutable
+unalias bp
+
 [ "$(command -v nvim)" ] && export EDITOR="$(which nvim)"
 [ "$(command -v bat)" ] && alias cat="bat"
 [ "$(command -v hub)" ] && alias git="hub"
