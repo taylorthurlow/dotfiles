@@ -26,9 +26,7 @@
                 "^net\\.kovidgoyal\\.kitty$",
                 "^com\\.extropy\\.oni$",
                 "^com\\.veonim\\.veonim$",
-                "^org\\.python\\.python$",
-                "^com\\.microsoft\\.VSCode$",
-                "^com\\.microsoft\\.VSCodeInsiders$"
+                "^org\\.python\\.python$"
               ]
             }
           ]
@@ -60,9 +58,7 @@
                 "^net\\.kovidgoyal\\.kitty$",
                 "^com\\.extropy\\.oni$",
                 "^com\\.veonim\\.veonim$",
-                "^org\\.python\\.python$",
-                "^com\\.microsoft\\.VSCode$",
-                "^com\\.microsoft\\.VSCodeInsiders$"
+                "^org\\.python\\.python$"
               ]
             }
           ]
