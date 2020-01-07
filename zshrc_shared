@@ -169,6 +169,7 @@ alias wglog="watch --color -n 1 thicket --color-prefixes -n 200 --refs"
 alias wgloga="watch --color -n 1 thicket --color-prefixes -n 200 --refs --all"
 alias xit="exit"
 alias work="nohup kitty --session ~/.dotfiles/work-kitty &"
+alias rake="noglob rake"
 
 if [ "$(command -v kitty)" ]; then
 	alias aedirnlan="kitty +kitten ssh taylor@aedirn.local"
