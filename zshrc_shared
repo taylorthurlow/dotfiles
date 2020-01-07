@@ -31,6 +31,11 @@ function git-nuke {
 	git branch -D $1 && git push origin :$1
 }
 
+# Use `jq` with both JSON and non-JSON lines.
+function jjq {
+	jq -R -r "${1:-.} as \$line | try fromjson catch \$line"
+}
+
 # make git tab completion faster
 __git_files () {
 	_wanted files expl 'local files' _files
