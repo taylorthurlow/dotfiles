@@ -1,6 +1,6 @@
 export ZSH=/Users/taylor/.oh-my-zsh
 ZSH_THEME="panda"
-plugins=(git gitfast autojump bundler common-aliases ruby sublime sudo zsh-syntax-highlighting)
+plugins=(git gitfast autojump bundler common-aliases ruby sublime sudo)
 DISABLE_UPDATE_PROMPT=true
 KEYTIMEOUT=1
 
@@ -10,5 +10,7 @@ source $ZSH/oh-my-zsh.sh
 ## USER CONFIG BELOW THIS LINE ##
 #################################
 
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source "$HOME/.dotfiles/zshrc_shared"
 
