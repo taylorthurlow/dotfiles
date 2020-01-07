@@ -1,6 +1,7 @@
 ---
 include:
 - "**/*.rb"
+- "bin/*"
 exclude:
 - spec/**/*
 - test/**/*
@@ -9,7 +10,6 @@ exclude:
 require: []
 domains: []
 reporters:
-- require_not_found
+- rubocop
 - typecheck
-require_paths: []
 max_files: 5000
