@@ -2,6 +2,7 @@
 include:
 - "**/*.rb"
 - "bin/*"
+- "config.ru"
 exclude:
 - spec/**/*
 - test/**/*
