@@ -1,12 +1,14 @@
 call plug#begin('~/.local/share/nvim/plugged')
 Plug 'Carpetsmoker/auto_mkdir2.vim'
 Plug 'editorconfig/editorconfig-vim'
+Plug 'godlygeek/tabular'
 Plug 'jiangmiao/auto-pairs'
 Plug 'knubie/vim-kitty-navigator'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'machakann/vim-highlightedyank'
 Plug 'markonm/traces.vim'
 Plug 'mattn/emmet-vim'
+Plug 'plasticboy/vim-markdown'
 Plug 'rhysd/committia.vim'
 Plug 'romainl/vim-cool'
 Plug 'sheerun/vim-polyglot'
@@ -76,6 +78,9 @@ let g:gutentags_file_list_command = {
 	\ },
 	\ }
 
+let g:vim_markdown_new_list_item_indent = 2
+let g:vim_markdown_strikethrough = 1
+
 " Word wrap in quickfix
 augroup quickfix
   autocmd!
@@ -91,6 +96,11 @@ augroup myfiletypes
   autocmd FileType ruby,eruby,yaml setlocal path+=lib
   " Make ?s part of words
   autocmd FileType ruby,eruby,yaml setlocal iskeyword+=?
+
+  """ Markdown
+  " autoindent with two spaces, always expand tabs
+  autocmd FileType markdown setlocal autoindent shiftwidth=2 softtabstop=2 expandtab
+  autocmd FileType markdown setlocal path+=lib
 
   """ CSS/SCSS
   " autoindent with two spaces, always expand tabs
