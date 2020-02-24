@@ -5,3 +5,5 @@ BUNDLE_BUILD__MYSQL2: "--with-ldflags=-L/usr/local/opt/openssl@1.1/lib --with-cp
 BUNDLE_GEM__TEST: "false"
 BUNDLE_GEM__MIT: "true"
 BUNDLE_GEM__COC: "false"
+BUNDLE_BUILD__THERUBYRACER: "--with-v8-dir=/usr/local/opt/v8@3.15"
+BUNDLE_BUILD__LIBV8: "--with-system-v8"
