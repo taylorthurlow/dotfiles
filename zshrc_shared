@@ -4,12 +4,12 @@ bindkey '^n' autosuggest-accept
 bindkey '^ ' autosuggest-execute
 
 # Up a directory with "up"
-up() {
+function up() {
 	cd $(eval printf '../'%.0s {1..$1})
 }
 
 # Makedir and cd into it
-mkcd() {
+function mkcd() {
 	if [ $# != 1 ]; then
 		echo "Usage: mkcd <dir>"
 	else
@@ -18,7 +18,7 @@ mkcd() {
 }
 
 # Makedir and take ownership
-mkchown() {
+function mkchown() {
 	if [ $# != 1 ]; then
 		echo "Usage: mkchown <dir>"
 	else
@@ -37,12 +37,12 @@ function jjq {
 }
 
 # make git tab completion faster
-__git_files () {
+function __git_files () {
 	_wanted files expl 'local files' _files
 }
 
 # easy kill processes with fzf
-kill_process() {
+function kill_process() {
 	local pid=$(ps -ef | sed 1d | eval "fzf ${FZF_DEFAULT_OPTS} -m --header='[kill:process]'" | awk '{print $2}')
 
 	if [ "x$pid" != "x" ]
@@ -53,7 +53,7 @@ kill_process() {
 }
 
 # brew install with fzf
-brew_install_fzf() {
+function brew_install_fzf() {
 	local inst=$(brew search | eval "fzf ${FZF_DEFAULT_OPTS} -m --header='[brew:install]'")
 
 	if [[ $inst ]]; then
@@ -64,7 +64,7 @@ brew_install_fzf() {
 }
 
 # checkout git branch (including remote branches), sorted by most recent commit, limit 30 last branches
-fbr() {
+function fbr() {
 	local branches branch
 	branches=$(git for-each-ref --count=30 --sort=-committerdate refs/heads/ --format="%(refname:short)") &&
 	branch=$(echo "$branches" |
@@ -73,7 +73,7 @@ fbr() {
 }
 
 # autojump when used with no args uses fzf
-j() {
+function j() {
 	if [[ "$#" -ne 0 ]]; then
 		cd $(autojump $@)
 		return
@@ -82,7 +82,7 @@ j() {
 }
 
 # git interactive rebase with fzf commit selection
-girb() {
+function girb() {
 	git rebase -i $(git log --decorate --oneline --color=always | fzf --ansi | cut -d ' ' -f1 )^
 }
 
@@ -124,15 +124,15 @@ function ds() {
 }
 
 # find in zsh history
-fh() {
+function fh() {
 	print -z $( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf +s --tac | gsed -r 's/ *[0-9]*\*? *//' | gsed -r 's/\\/\\\\/g')
 }
 
-dsa() {
+function dsa() {
 	docker stop $(docker ps -a -q)
 }
 
-bay-clone() {
+function bay-clone() {
 	git clone git@bitbucket.org:bayphotolab/$1.git
 }
 
