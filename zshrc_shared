@@ -142,6 +142,20 @@ function bay-clone() {
 	git clone git@bitbucket.org:bayphotolab/$1.git
 }
 
+function precmd() {
+	if val=$(current_ruby); then
+		iterm2_set_user_var currentRuby "ruby $val"
+	else
+		iterm2_set_user_var currentRuby ""
+	fi
+
+	if val=$((git branch 2> /dev/null) | grep \* | cut -c3-); then
+		iterm2_set_user_var gitBranch "$val"
+	else
+		iterm2_set_user_var gitBranch ""
+	fi
+}
+
 unsetopt AUTOcd
 setopt noflowcontrol
 
