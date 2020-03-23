@@ -193,6 +193,8 @@ alias rake="noglob rake"
 alias notes="nvim ~/.notes/main.md"
 alias worknotes="nvim ~/.notes/work.md"
 
+unalias fd
+
 if [ "$(command -v kitty)" ]; then
 	alias aedirnlan="kitty +kitten ssh taylor@aedirn.local"
 	alias aedirnwan="kitty +kitten ssh taylor@home.thurlow.io"
