@@ -1,14 +1,14 @@
 AllCops:
   Exclude:
-    - '.circleci/**/*'
-    - 'app/assets/bower_components/**/*'
-    - 'bin/**/*'
-    - 'config/**/*'
-    - 'db/**/*'
-    - 'script/**/*'
-    - 'tmp/**/*'
-    - 'vendor/**/*'
-    - '**/*.rb.erb'
+    - ".circleci/**/*"
+    - "app/assets/bower_components/**/*"
+    - "bin/**/*"
+    - "config/**/*"
+    - "db/**/*"
+    - "script/**/*"
+    - "tmp/**/*"
+    - "vendor/**/*"
+    - "**/*.rb.erb"
 
 Layout:
   Enabled: false
@@ -17,11 +17,17 @@ Layout/LineLength:
   Enabled: true
   Max: 120
 
+Lint/StructNewOverride:
+  Enabled: true
+
+Lint/RaiseException:
+  Enabled: true
+
 Metrics/ClassLength:
   Max: 200
   Exclude:
-    - 'spec/**/*'
-    - 'test/**/*'
+    - "spec/**/*"
+    - "test/**/*"
 
 Metrics/MethodLength:
   Max: 25
@@ -37,8 +43,8 @@ Style/IfUnlessModifier:
 
 Style/BlockDelimiters:
   Exclude:
-    - 'spec/**/*'
-    - 'test/**/*'
+    - "spec/**/*"
+    - "test/**/*"
 
 Style/NumericPredicate:
   Enabled: false
