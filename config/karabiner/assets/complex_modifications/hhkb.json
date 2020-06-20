@@ -23,6 +23,7 @@
               "bundle_identifiers": [
                 "^net\\.kovidgoyal\\.kitty$",
                 "^com\\.extropy\\.oni$",
+                "^com\\.outrunlabs\\.onivim2$",
                 "^com\\.veonim\\.veonim$",
                 "^org\\.python\\.python$",
                 "^com\\.blizzard\\.worldofwarcraft$",
