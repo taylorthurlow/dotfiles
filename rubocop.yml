@@ -23,17 +23,12 @@ Lint/StructNewOverride:
 Lint/RaiseException:
   Enabled: true
 
-Metrics/ClassLength:
-  Max: 200
-  Exclude:
-    - "spec/**/*"
-    - "test/**/*"
-
-Metrics/MethodLength:
-  Max: 25
-
-Metrics/BlockLength:
+Metrics:
   Enabled: false
+
+
+
+
 
 Style/Documentation:
   Enabled: false
