@@ -9,4 +9,5 @@ export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl)"
 export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:"/usr/local/opt/openssl/lib/pkgconfig"
 
 # Other stuff
+export PATH="$PATH:/Users/taylorthurlow/.cargo/bin"
 [ "$(command -v anyenv)" ] && eval "$(anyenv init -)"
