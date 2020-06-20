@@ -17,6 +17,12 @@ Layout/LineLength:
   Enabled: true
   Max: 120
 
+Lint/DeprecatedOpenSSLConstant:
+  Enabled: true
+
+Lint/MixedRegexpCaptureTypes:
+  Enabled: true
+
 Lint/StructNewOverride:
   Enabled: true
 
@@ -26,9 +32,17 @@ Lint/RaiseException:
 Metrics:
   Enabled: false
 
+Style/ExponentialNotation:
+  Enabled: true
 
+Style/RedundantRegexpCharacterClass:
+  Enabled: true
 
+Style/RedundantRegexpEscape:
+  Enabled: true
 
+Style/SlicingWithRange:
+  Enabled: true
 
 Style/Documentation:
   Enabled: false
