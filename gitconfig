@@ -37,5 +37,7 @@
 [core]
 	pager = delta --dark --theme base16
 	excludesfiles = $HOME/.gitignore_global
+	commitGraph = true
+	writeCommitGraph = true
 [includeIf "gitdir:~/Code/bayphoto/"]
 	path = ~/Code/bayphoto/gitconfig_include
