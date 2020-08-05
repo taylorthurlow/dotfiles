@@ -164,9 +164,6 @@ if [[ -n "$SSH_CONNECTION" ]]; then
 	export PINENTRY_USER_DATA="USE_CURSES=1"
 fi
 
-# Collides with "bayphoto" gem excecutable
-unalias bp
-
 [ "$(command -v nvim)" ] && export EDITOR="$(which nvim)"
 [ "$(command -v bat)" ] && alias cat="bat"
 [ "$(command -v hub)" ] && alias git="hub"
@@ -182,6 +179,8 @@ alias bip="brew_install_fzf"
 alias dc="docker-compose"
 alias gst="git status -s"
 alias bid="bundle install --path=vendor --jobs=$(sysctl -n hw.ncpu) --binstubs=.bundle/bin"
+alias bi="bundle install"
+alias be="bundle exec"
 alias gfap="git fetch --all --prune"
 alias glog="thicket --color-prefixes --refs --initials | less"
 alias gloga="thicket --color-prefixes --all --refs --initials | less"
