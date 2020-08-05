@@ -194,20 +194,8 @@ alias worknotes="nvim ~/.notes/work.md"
 
 unalias fd
 
-if [ "$(command -v kitty)" ]; then
-	alias aedirnlan="kitty +kitten ssh taylor@aedirn.local"
-	alias aedirnwan="kitty +kitten ssh taylor@home.thurlow.io"
-	alias cintralan="kitty +kitten ssh taylor@cintra.local"
-	alias cintrawan="kitty +kitten ssh taylor@home.thurlow.io -t ssh taylor@cintra.local"
-	alias whatbox="kitty +kitten ssh frizkie@apollo.whatbox.ca"
-else
-	alias aedirnlan="ssh taylor@aedirn.local"
-	alias aedirnwan="ssh taylor@home.thurlow.io"
-	alias cintralan="ssh taylor@cintra.local"
-	alias cintrawan="ssh taylor@home.thurlow.io -t ssh taylor@cintra.local"
-	alias feral="ssh frizkie@selene.feralhosting.com"
-	alias whatbox="ssh frizkie@apollo.whatbox.ca"
-fi
+alias unraid="ssh root@unraid.local"
+alias whatbox="ssh frizkie@apollo.whatbox.ca"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
