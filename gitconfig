@@ -41,3 +41,5 @@
 	writeCommitGraph = true
 [includeIf "gitdir:~/Code/bayphoto/"]
 	path = ~/Code/bayphoto/gitconfig_include
+[init]
+	defaultBranch = main
