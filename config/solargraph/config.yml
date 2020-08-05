@@ -11,6 +11,5 @@ exclude:
 require: []
 domains: []
 reporters:
-- rubocop
 - typecheck
 max_files: 5000
