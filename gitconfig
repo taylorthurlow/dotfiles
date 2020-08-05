@@ -36,7 +36,7 @@
 	br = branch
 [core]
 	pager = delta --dark --theme base16
-	excludesfiles = $HOME/.gitignore_global
+	excludesfile = /Users/taylorthurlow/.gitignore_global
 	commitGraph = true
 	writeCommitGraph = true
 [includeIf "gitdir:~/Code/bayphoto/"]
