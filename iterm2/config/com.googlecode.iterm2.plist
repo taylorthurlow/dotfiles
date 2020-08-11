@@ -16,8 +16,6 @@
 	<integer>1</integer>
 	<key>AppleWindowTabbingMode</key>
 	<string>manual</string>
-	<key>CGFontRenderingFontSmoothingDisabled</key>
-	<false/>
 	<key>CompactMinimalTabBarHeight</key>
 	<real>30</real>
 	<key>Custom Color Presets</key>
@@ -409,10 +407,8 @@ Maximize Active Pane</string>
 	<integer>4</integer>
 	<key>LoadPrefsFromCustomFolder</key>
 	<true/>
-	<key>NSFontPanelAttributes</key>
-	<string>1, 4</string>
 	<key>NSNavLastRootDirectory</key>
-	<string>~/Temp</string>
+	<string>~</string>
 	<key>NSNavPanelExpandedSizeForOpenMode</key>
 	<string>{799, 448}</string>
 	<key>NSQuotedKeystrokeBinding</key>
@@ -457,13 +453,11 @@ Maximize Active Pane</string>
 		<integer>1</integer>
 	</dict>
 	<key>NSWindow Frame NSNavPanelAutosaveName</key>
-	<string>880 726 799 448 -1440 -688 1440 2537 </string>
-	<key>NSWindow Frame SUUpdateAlert</key>
-	<string>970 768 620 392 0 0 2560 1417 </string>
+	<string>880 726 799 448 -1440 -650 1440 2560 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>-1440 580 1440 1269 -1440 -688 1440 2537 </string>
+	<string>-1440 -650 1440 1269 -1440 -650 1440 2537 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>322 204 665 452 0 0 2560 1417 </string>
+	<string>37 52 1021 850 0 0 2560 1417 </string>
 	<key>NeverWarnAboutShortLivedSessions_E25DD13A-29DF-4CE7-890E-18556C303671</key>
 	<true/>
 	<key>NeverWarnAboutShortLivedSessions_E25DD13A-29DF-4CE7-890E-18556C303671_selection</key>
@@ -1103,6 +1097,8 @@ Maximize Active Pane</string>
 				<dict>
 					<key>algorithm</key>
 					<integer>1</integer>
+					<key>auto-rainbow style</key>
+					<integer>0</integer>
 					<key>font</key>
 					<string>.AppleSystemUIFont 12</string>
 				</dict>
@@ -1185,6 +1181,8 @@ Maximize Active Pane</string>
 							<dict>
 								<key>algorithm</key>
 								<integer>1</integer>
+								<key>font</key>
+								<string>.AppleSystemUIFont 12</string>
 							</dict>
 						</dict>
 					</dict>
@@ -1200,17 +1198,17 @@ Maximize Active Pane</string>
 								<key>base: priority</key>
 								<real>5</real>
 								<key>expression</key>
-								<string>ruby \(user.currentRuby)</string>
+								<string>\(user.currentRuby)</string>
 								<key>shared text color</key>
 								<dict>
 									<key>Alpha Component</key>
 									<real>1</real>
 									<key>Blue Component</key>
-									<real>0.3677044918294996</real>
+									<real>0.36770448088645935</real>
 									<key>Color Space</key>
 									<string>sRGB</string>
 									<key>Green Component</key>
-									<real>0.3677044918294996</real>
+									<real>0.36770448088645935</real>
 									<key>Red Component</key>
 									<real>0.7448883056640625</real>
 								</dict>
@@ -1219,6 +1217,8 @@ Maximize Active Pane</string>
 							<dict>
 								<key>algorithm</key>
 								<integer>1</integer>
+								<key>font</key>
+								<string>.AppleSystemUIFont 12</string>
 							</dict>
 						</dict>
 					</dict>
@@ -1331,41 +1331,31 @@ Maximize Active Pane</string>
 	</array>
 	<key>NoSyncAllAppVersions</key>
 	<array>
-		<string>3.3.8</string>
-		<string>3.3.9</string>
-	</array>
-	<key>NoSyncBFPRecents</key>
-	<array>
-		<string>JetBrains Mono</string>
-		<string>Monaco</string>
+		<string>3.3.12</string>
 	</array>
 	<key>NoSyncCommandHistoryHasEverBeenUsed</key>
 	<true/>
-	<key>NoSyncConfirmShellIntegrationCommand</key>
-	<true/>
-	<key>NoSyncConfirmShellIntegrationCommand_selection</key>
-	<integer>0</integer>
 	<key>NoSyncFrame_SharedPreferences</key>
 	<dict>
 		<key>screenFrame</key>
-		<string>{{0, 0}, {2560, 1440}}</string>
+		<string>{{-1440, -650}, {1440, 2560}}</string>
 		<key>topLeft</key>
-		<string>{213, 846}</string>
+		<string>{-1230, 977}</string>
 	</dict>
+	<key>NoSyncHaveUsedCopyMode</key>
+	<true/>
 	<key>NoSyncInstallationId</key>
-	<string>AE36962A-FF34-4871-B221-6CE86DD2AD99</string>
+	<string>19C1D89D-1675-4015-B766-238F4A9D32E6</string>
 	<key>NoSyncLaunchExperienceControllerRunCount</key>
-	<integer>6</integer>
+	<integer>7</integer>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
 	<true/>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
 	<integer>0</integer>
 	<key>NoSyncNextAnnoyanceTime</key>
-	<real>604091363.22148705</real>
+	<real>619039945.22059095</real>
 	<key>NoSyncOnboardingWindowHasBeenShown</key>
 	<true/>
-	<key>NoSyncPermissionToShowTip</key>
-	<false/>
 	<key>NoSyncRecordedVariables</key>
 	<dict>
 		<key>0</key>
@@ -1732,7 +1722,7 @@ Maximize Active Pane</string>
 				<key>isTerminal</key>
 				<true/>
 				<key>name</key>
-				<string>currentTab.currentSession.terminalWindowName</string>
+				<string>currentTab.currentSession.terminalIconName</string>
 				<key>nonterminalContext</key>
 				<integer>0</integer>
 			</dict>
@@ -1740,7 +1730,7 @@ Maximize Active Pane</string>
 				<key>isTerminal</key>
 				<true/>
 				<key>name</key>
-				<string>currentTab.currentSession.terminalIconName</string>
+				<string>currentTab.currentSession.terminalWindowName</string>
 				<key>nonterminalContext</key>
 				<integer>0</integer>
 			</dict>
@@ -1812,14 +1802,6 @@ Maximize Active Pane</string>
 				<key>isTerminal</key>
 				<true/>
 				<key>name</key>
-				<string>currentTab.currentSession.path</string>
-				<key>nonterminalContext</key>
-				<integer>0</integer>
-			</dict>
-			<dict>
-				<key>isTerminal</key>
-				<true/>
-				<key>name</key>
 				<string>currentTab.currentSession.commandLine</string>
 				<key>nonterminalContext</key>
 				<integer>0</integer>
@@ -1828,7 +1810,7 @@ Maximize Active Pane</string>
 				<key>isTerminal</key>
 				<true/>
 				<key>name</key>
-				<string>currentTab.currentSession.hostname</string>
+				<string>currentTab.currentSession.path</string>
 				<key>nonterminalContext</key>
 				<integer>0</integer>
 			</dict>
@@ -1836,7 +1818,7 @@ Maximize Active Pane</string>
 				<key>isTerminal</key>
 				<true/>
 				<key>name</key>
-				<string>currentTab.titleOverrideFormat</string>
+				<string>currentTab.currentSession.hostname</string>
 				<key>nonterminalContext</key>
 				<integer>0</integer>
 			</dict>
@@ -1903,14 +1885,6 @@ Maximize Active Pane</string>
 				<key>isTerminal</key>
 				<true/>
 				<key>name</key>
-				<string>currentSession</string>
-				<key>nonterminalContext</key>
-				<integer>0</integer>
-			</dict>
-			<dict>
-				<key>isTerminal</key>
-				<true/>
-				<key>name</key>
 				<string>currentSession.commandLine</string>
 				<key>nonterminalContext</key>
 				<integer>0</integer>
@@ -1936,14 +1910,6 @@ Maximize Active Pane</string>
 				<true/>
 				<key>name</key>
 				<string>tmuxWindowTitle</string>
-				<key>nonterminalContext</key>
-				<integer>0</integer>
-			</dict>
-			<dict>
-				<key>isTerminal</key>
-				<true/>
-				<key>name</key>
-				<string>currentSession.terminalIconName</string>
 				<key>nonterminalContext</key>
 				<integer>0</integer>
 			</dict>
@@ -2015,14 +1981,6 @@ Maximize Active Pane</string>
 				<key>isTerminal</key>
 				<true/>
 				<key>name</key>
-				<string>currentSession.lastCommand</string>
-				<key>nonterminalContext</key>
-				<integer>0</integer>
-			</dict>
-			<dict>
-				<key>isTerminal</key>
-				<true/>
-				<key>name</key>
 				<string>currentSession.user.gitBranch</string>
 				<key>nonterminalContext</key>
 				<integer>0</integer>
@@ -2087,7 +2045,7 @@ Maximize Active Pane</string>
 				<key>isTerminal</key>
 				<true/>
 				<key>name</key>
-				<string>currentSession.terminalWindowName</string>
+				<string>currentSession.hostname</string>
 				<key>nonterminalContext</key>
 				<integer>0</integer>
 			</dict>
@@ -2095,7 +2053,7 @@ Maximize Active Pane</string>
 				<key>isTerminal</key>
 				<true/>
 				<key>name</key>
-				<string>currentSession.hostname</string>
+				<string>currentSession.pid</string>
 				<key>nonterminalContext</key>
 				<integer>0</integer>
 			</dict>
@@ -2111,7 +2069,7 @@ Maximize Active Pane</string>
 				<key>isTerminal</key>
 				<true/>
 				<key>name</key>
-				<string>currentSession.pid</string>
+				<string>tmuxWindow</string>
 				<key>nonterminalContext</key>
 				<integer>0</integer>
 			</dict>
@@ -2127,7 +2085,7 @@ Maximize Active Pane</string>
 				<key>isTerminal</key>
 				<true/>
 				<key>name</key>
-				<string>tmuxWindow</string>
+				<string>currentSession</string>
 				<key>nonterminalContext</key>
 				<integer>0</integer>
 			</dict>
@@ -2161,7 +2119,7 @@ Maximize Active Pane</string>
 		</array>
 	</dict>
 	<key>NoSyncTipOfTheDayEligibilityBeganTime</key>
-	<real>602791259.53844297</real>
+	<real>618867145.220487</real>
 	<key>OpenArrangementAtStartup</key>
 	<false/>
 	<key>OpenNoWindowsAtStartup</key>
@@ -2200,7 +2158,7 @@ Maximize Active Pane</string>
 		</dict>
 	</dict>
 	<key>PrefsCustomFolder</key>
-	<string>/Users/taylorthurlow/.dotfiles/iterm</string>
+	<string>~/.dotfiles/iterm2/config/</string>
 	<key>QuickPasteBytesPerCall</key>
 	<integer>1152</integer>
 	<key>QuickPasteDelayBetweenCalls</key>
@@ -2212,16 +2170,12 @@ Maximize Active Pane</string>
 	<key>SUFeedAlternateAppNameKey</key>
 	<string>iTerm</string>
 	<key>SUFeedURL</key>
-	<string>https://iterm2.com/appcasts/final_new.xml?shard=15</string>
+	<string>https://iterm2.com/appcasts/final_new.xml?shard=39</string>
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2020-02-21T19:09:05Z</date>
+	<date>2020-08-11T19:39:51Z</date>
 	<key>SUSendProfileInfo</key>
-	<false/>
-	<key>SUUpdateGroupIdentifier</key>
-	<integer>52938872</integer>
-	<key>SUUpdateRelaunchingMarker</key>
 	<false/>
 	<key>SeparateStatusBarsPerPane</key>
 	<true/>
@@ -2250,7 +2204,7 @@ Maximize Active Pane</string>
 	<key>WrapFocus</key>
 	<false/>
 	<key>iTerm Version</key>
-	<string>3.3.9</string>
+	<string>3.3.12</string>
 	<key>kCPKSelectionViewPreferredModeKey</key>
 	<integer>2</integer>
 	<key>kCPKSelectionViewShowHSBTextFieldsKey</key>
