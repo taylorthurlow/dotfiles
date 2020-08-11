@@ -161,7 +161,7 @@ function precmd() {
 		iterm2_set_user_var currentRuby ""
 	fi
 
-	if val=$((git branch 2> /dev/null) | grep \* | cut -c3-); then
+	if val=$(git branch 2> /dev/null | grep \* | cut -c3-); then
 		iterm2_set_user_var gitBranch "$val"
 	else
 		iterm2_set_user_var gitBranch ""
