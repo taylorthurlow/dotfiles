@@ -211,14 +211,6 @@ alias whatbox="ssh frizkie@apollo.whatbox.ca"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-get_ruby() {
-	$(which ruby) <<RUBY
-		$:.unshift File.join(Dir.home, ".dotfiles", "ruby_scripts")
-		ARGV = ["$2"]
-		$1
-RUBY
-}
-
 # We want PATH modification to happen even in non-interactive shells, so we'll
 # include all the PATH modification in ~/.zprofile. Do not add PATH modification
 # to this file.
