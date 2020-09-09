@@ -11,6 +11,7 @@ export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:"/usr/local/opt/openssl/lib/pkgconfig"
 # Other stuff
 export PATH="$PATH:/Users/taylorthurlow/.cargo/bin"
 [ "$(command -v anyenv)" ] && eval "$(anyenv init -)"
+export DISABLE_SPRING=1
 
 # Specific versioned homebrew packages
 export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
