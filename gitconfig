@@ -9,6 +9,7 @@
 [diff]
 	tool = vimdiff
 	renames = copies
+	colorMoved = default
 [branch]
 	autosetupmerge = true
 [commit]
