@@ -36,10 +36,20 @@
 	co = checkout
 	br = branch
 [core]
-	pager = delta --dark --theme base16
+	pager = delta
 	excludesfile = /Users/taylorthurlow/.gitignore_global
 	commitGraph = true
 	writeCommitGraph = true
+	attributesfile = /Users/taylorthurlow/.gitattributes
+[interactive]
+	diffFilter = delta --color-only
+[delta]
+	features = side-by-side line-numbers decorations
+	syntax-theme = base16
+[delta "decorations"]
+	commit-decoration-style = bold yellow box ul
+	file-style = bold yellow ul
+	file-decoration-style = none
 [includeIf "gitdir:~/Code/bayphoto/"]
 	path = ~/Code/bayphoto/gitconfig_include
 [init]
