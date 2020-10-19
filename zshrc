@@ -194,6 +194,8 @@ alias bid="bundle install --path=vendor --jobs=$(sysctl -n hw.ncpu) --binstubs=.
 alias bi="bundle install"
 alias be="bundle exec"
 alias gfap="git fetch --all --prune"
+alias gs="git sync"
+alias gcane="git commit --amend --no-edit"
 alias glog="thicket --color-prefixes --refs --initials | less"
 alias gloga="thicket --color-prefixes --all --refs --initials | less"
 alias wglog="watch -t -c -n 1 thicket --color-prefixes -n 200 --refs --initials"
