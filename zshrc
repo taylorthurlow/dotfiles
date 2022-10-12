@@ -1,6 +1,6 @@
 export ZSH=/Users/taylor/.oh-my-zsh
 ZSH_THEME="panda"
-plugins=(git autojump common-aliases ruby sudo)
+plugins=(git common-aliases ruby sudo)
 DISABLE_UPDATE_PROMPT=true
 KEYTIMEOUT=1
 
@@ -62,15 +62,6 @@ function kill_process() {
 		echo $pid | xargs kill -${1:-9}
 		kp
 	fi
-}
-
-# autojump when used with no args uses fzf
-function j() {
-	if [[ "$#" -ne 0 ]]; then
-		cd $(autojump $@)
-		return
-	fi
-	cd "$(autojump -s | gsed '/_____/Q; s/^[0-9,.:]*\s*//' | fzf --height 40% --reverse --inline-info)"
 }
 
 # git interactive rebase with fzf commit selection
