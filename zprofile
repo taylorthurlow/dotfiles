@@ -1,6 +1,4 @@
-# PATH modification
 export PATH="/usr/local/sbin:$PATH"
-export PATH="$HOME/.anyenv/bin:$PATH"
 
 # Homebrew
 HOMEBREW_NO_INSTALL_CLEANUP=true
@@ -15,8 +13,9 @@ export DISABLE_SPRING=1
 # Crystal compilation
 export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:"/usr/local/opt/openssl/lib/pkgconfig"
 
-# Other stuff
+# Miscellaneous
 export PATH="$PATH:/Users/taylorthurlow/.cargo/bin"
+export PATH="$HOME/.anyenv/bin:$PATH"
 [ "$(command -v anyenv)" ] && eval "$(anyenv init -)"
 
 # Specific versioned homebrew packages
