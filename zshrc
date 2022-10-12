@@ -64,26 +64,6 @@ function kill_process() {
 	fi
 }
 
-# brew install with fzf
-function brew_install_fzf() {
-	local inst=$(brew search | eval "fzf ${FZF_DEFAULT_OPTS} -m --header='[brew:install]'")
-
-	if [[ $inst ]]; then
-		for prog in $(echo $inst)
-		do brew install $prog
-		done
-	fi
-}
-
-# checkout git branch (including remote branches), sorted by most recent commit, limit 30 last branches
-function fbr() {
-	local branches branch
-	branches=$(git for-each-ref --count=30 --sort=-committerdate refs/heads/ --format="%(refname:short)") &&
-	branch=$(echo "$branches" |
-			 fzf-tmux -d $(( 2 + $(wc -l <<< "$branches") )) +m) &&
-	git checkout $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
-}
-
 # autojump when used with no args uses fzf
 function j() {
 	if [[ "$#" -ne 0 ]]; then
@@ -98,74 +78,13 @@ function girb() {
 	git rebase -i $(git log --decorate --oneline --color=always | fzf --ansi | cut -d ' ' -f1 )^
 }
 
-# Given a filename, look in the current directory and all directories above it
-# for a given file. Will print the path of the directory containing the file if
-# found, and will return 1 if not found.
-function search_upwards() {
-	local look=${PWD%/}
-
-	while [[ -n $look ]]; do
-		[[ -e $look/$1 ]] && {
-			printf '%s\n' "$look"
-			return
-		}
-
-		look=${look%/*}
-	done
-
-	[[ -e /$1 ]] && echo /
-}
-
-# Get the current Ruby version based on .ruby-version files.
-function current_ruby() {
-	if search_result=$(search_upwards .ruby-version); then
-		\cat "$search_result/.ruby-version"
-	else
-		return 1
-	fi
-}
-
-# Select a docker container to start and attach to
-function da() {
-	local cid
-	cid=$(docker ps -a | sed 1d | fzf -1 -q "$1" | awk '{print $1}')
-
-	[ -n "$cid" ] && docker start "$cid" && docker attach "$cid"
-}
-
-# Select a running docker container to stop
-function ds() {
-	local cid
-	cid=$(docker ps | sed 1d | fzf -q "$1" | awk '{print $1}')
-
-	[ -n "$cid" ] && docker stop "$cid"
-}
-
 # find in zsh history
 function fh() {
 	print -z $( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf +s --tac | gsed -r 's/ *[0-9]*\*? *//' | gsed -r 's/\\/\\\\/g')
 }
 
-function dsa() {
-	docker stop $(docker ps -a -q)
-}
-
 function bay-clone() {
 	git clone git@bitbucket.org:bayphotolab/$1.git
-}
-
-function precmd() {
-	if val=$(current_ruby); then
-		iterm2_set_user_var currentRuby "ruby $val"
-	else
-		iterm2_set_user_var currentRuby ""
-	fi
-
-	if val=$(git branch 2> /dev/null | grep \* | cut -c3-); then
-		iterm2_set_user_var gitBranch "$val"
-	else
-		iterm2_set_user_var gitBranch ""
-	fi
 }
 
 unsetopt AUTOcd
@@ -181,13 +100,8 @@ fi
 [ "$(command -v hub)" ] && alias git="hub"
 [ "$(command -v hub)" ] && alias gci="hub ci-status -v"
 [ "$(command -v exa)" ] && alias ls="exa"
-[ "$(command -v nvim)" ] && alias vim="nvim"
-[ "$(command -v thefuck)" ] && eval $(thefuck --alias)
-
-[ -f /Users/taylor/.travis/travis.sh ] && source /Users/taylor/.travis/travis.sh
 
 alias kp="kill_process"
-alias bip="brew_install_fzf"
 alias dc="docker-compose"
 alias gst="git status -s"
 alias bid="bundle install --path=vendor --jobs=$(sysctl -n hw.ncpu) --binstubs=.bundle/bin"
@@ -201,17 +115,10 @@ alias gloga="thicket --color-prefixes --all --refs --initials | less"
 alias wglog="watch -t -c -n 1 thicket --color-prefixes -n 200 --refs --initials"
 alias wgloga="watch -t -c -n 1 thicket --color-prefixes -n 200 --refs --all --initials"
 alias xit="exit"
-alias work="nohup kitty --session ~/.dotfiles/work-kitty &"
-alias rake="noglob rake"
 alias notes="nvim ~/.notes/main.md"
 alias worknotes="nvim ~/.notes/work.md"
 
 unalias fd
-
-alias unraid="ssh root@unraid.local"
-alias whatbox="ssh frizkie@apollo.whatbox.ca"
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # We want PATH modification to happen even in non-interactive shells, so we'll
 # include all the PATH modification in ~/.zprofile. Do not add PATH modification
