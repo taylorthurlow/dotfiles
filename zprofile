@@ -1,10 +1,10 @@
 export PATH="/usr/local/sbin:$PATH"
 
 # Homebrew
-HOMEBREW_NO_INSTALL_CLEANUP=true
-HOMEBREW_AUTOREMOVE=true
-HOMEBREW_BAT=true
-HOMEBREW_BOOTSNAP=true
+export HOMEBREW_NO_INSTALL_CLEANUP=true
+export HOMEBREW_AUTOREMOVE=true
+export HOMEBREW_BAT=true
+export HOMEBREW_BOOTSNAP=true
 
 # Ruby
 export PATH="/usr/local/opt/openssl@3/bin:$PATH"
