@@ -54,3 +54,5 @@
 	path = ~/Code/bayphoto/gitconfig_include
 [init]
 	defaultBranch = main
+[hub]
+	protocol = ssh
