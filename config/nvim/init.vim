@@ -3,8 +3,6 @@ Plug 'Carpetsmoker/auto_mkdir2.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'godlygeek/tabular'
 Plug 'jiangmiao/auto-pairs'
-Plug 'knubie/vim-kitty-navigator'
-Plug 'ludovicchabant/vim-gutentags'
 Plug 'machakann/vim-highlightedyank'
 Plug 'markonm/traces.vim'
 Plug 'mattn/emmet-vim'
@@ -59,25 +57,7 @@ nnoremap <silent> <C-l> <C-w><C-l>
 " Don't put certain actions in the default register, send to black hole
 nnoremap x "_x
 
-" leader bindings
-nnoremap <leader>vr :tabe $MYVIMRC<CR>
-nnoremap <leader>so :source $MYVIMRC<CR>
-nnoremap <leader>pp :setlocal paste!<CR>
-nnoremap <silent> <leader>pa :setlocal paste<CR>"+p :setlocal nopaste<CR>
-
-" tags
-nnoremap <C-]> :exec("tag ".expand("<cword>"))<CR>
-nnoremap <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
-nnoremap <C-[> :split <CR>:exec("tag ".expand("<cword>"))<CR>
-nunmap <Esc>
-
 let loaded_netrwPlugin = 1
-let g:gutentags_file_list_command = {
-	\ 'markers': {
-	\ '.git': 'git ls-files',
-	\ },
-	\ }
-
 let g:vim_markdown_new_list_item_indent = 2
 let g:vim_markdown_strikethrough = 1
 
