@@ -2,6 +2,12 @@
 export PATH="/usr/local/sbin:$PATH"
 export PATH="$HOME/.anyenv/bin:$PATH"
 
+# Homebrew
+HOMEBREW_NO_INSTALL_CLEANUP=true
+HOMEBREW_AUTOREMOVE=true
+HOMEBREW_BAT=true
+HOMEBREW_BOOTSNAP=true
+
 # Ruby
 export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl)"
 export DISABLE_SPRING=1
