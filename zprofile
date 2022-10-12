@@ -2,8 +2,9 @@
 export PATH="/usr/local/sbin:$PATH"
 export PATH="$HOME/.anyenv/bin:$PATH"
 
-# Ruby compilation
+# Ruby
 export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl)"
+export DISABLE_SPRING=1
 
 # Crystal compilation
 export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:"/usr/local/opt/openssl/lib/pkgconfig"
@@ -11,7 +12,6 @@ export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:"/usr/local/opt/openssl/lib/pkgconfig"
 # Other stuff
 export PATH="$PATH:/Users/taylorthurlow/.cargo/bin"
 [ "$(command -v anyenv)" ] && eval "$(anyenv init -)"
-export DISABLE_SPRING=1
 
 # Specific versioned homebrew packages
 export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
