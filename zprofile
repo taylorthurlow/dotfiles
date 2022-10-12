@@ -7,9 +7,9 @@ export HOMEBREW_BAT=true
 export HOMEBREW_BOOTSNAP=true
 
 # Ruby
-export PATH="/usr/local/opt/openssl@3/bin:$PATH"
-export LIBRARY_PATH="$LIBRARY_PATH:/usr/local/opt/openssl@3/lib/"
-export RUBY_CONFIGURE_OPTS="--with-openssl-dir=/usr/local/opt/openssl@3"
+export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
+export LIBRARY_PATH="$LIBRARY_PATH:/usr/local/opt/openssl@1.1/lib/"
+export RUBY_CONFIGURE_OPTS="--with-openssl-dir=/usr/local/opt/openssl@1.1"
 export DISABLE_SPRING=1
 
 # Crystal compilation
