@@ -78,6 +78,11 @@ function bay-clone() {
 	git clone git@bitbucket.org:bayphotolab/$1.git
 }
 
+function plex-loudness() {
+  ssh -t -o LogLevel=QUIET root@unraid.local \
+		"docker exec -itu abc plex bash -c '/lib/plexmediaserver/Plex\ Media\ Scanner --force --analyze-loudness --loudness-parallelism 6 --item $@'"
+}
+
 unsetopt AUTOcd
 setopt noflowcontrol
 
