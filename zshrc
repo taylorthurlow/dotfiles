@@ -93,9 +93,12 @@ fi
 
 [ "$(command -v nvim)" ] && export EDITOR="$(which nvim)"
 [ "$(command -v bat)" ] && alias cat="bat"
-[ "$(command -v hub)" ] && alias git="hub"
-[ "$(command -v hub)" ] && alias gci="hub ci-status -v"
 [ "$(command -v exa)" ] && alias ls="exa"
+
+if [ "$(command -v hub)" ]; then
+	alias git="hub"
+	alias gci="hub ci-status -v"
+fi
 
 alias be="bundle exec"
 alias bi="bundle install"
