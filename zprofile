@@ -19,6 +19,7 @@ export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:"/usr/local/opt/openssl/lib/pkgconfig"
 export PATH="$PATH:/Users/taylorthurlow/.cargo/bin"
 export PATH="$HOME/.anyenv/bin:$PATH"
 [ "$(command -v anyenv)" ] && eval "$(anyenv init -)"
+[ "$(command -v kubectl)" ] && export KUBECONFIG="$HOME/.kube/config:$HOME/.kube/svkube"
 
 # Specific versioned homebrew packages
 export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
