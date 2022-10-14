@@ -106,6 +106,12 @@ if [ "$(command -v kubectl)" ]; then
 	complete -F __start_kubectl kctl
 fi
 
+if [ "$(command -v zoxide)" ]; then
+	eval "$(zoxide init zsh)"
+	alias cd="z"
+	alias cdi="zi"
+fi
+
 alias be="bundle exec"
 alias bi="bundle install"
 alias bid="bundle install --path=vendor --jobs=$(sysctl -n hw.ncpu) --binstubs=.bundle/bin"
