@@ -100,6 +100,12 @@ if [ "$(command -v hub)" ]; then
 	alias gci="hub ci-status -v"
 fi
 
+if [ "$(command -v kubectl)" ]; then
+	alias kctl="kubectl"
+	source <(kubectl completion zsh)
+	complete -F __start_kubectl kctl
+fi
+
 alias be="bundle exec"
 alias bi="bundle install"
 alias bid="bundle install --path=vendor --jobs=$(sysctl -n hw.ncpu) --binstubs=.bundle/bin"
