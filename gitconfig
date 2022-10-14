@@ -36,6 +36,7 @@
 [alias]
 	co = checkout
 	br = branch
+	permission-reset = !git diff -p -R --no-ext-diff --no-color | grep -E \"^(diff|(old|new) mode)\" --color=never | git apply
 [core]
 	pager = delta
 	excludesfile = /Users/taylorthurlow/.gitignore_global
