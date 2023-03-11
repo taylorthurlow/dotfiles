@@ -127,6 +127,7 @@ alias xit="exit"
 
 unalias fd
 unalias bp
+unalias gm
 
 # We want PATH modification to happen even in non-interactive shells, so we'll
 # include all the PATH modification in ~/.zprofile. Do not add PATH modification
