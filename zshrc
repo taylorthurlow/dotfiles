@@ -10,11 +10,6 @@ source $ZSH/oh-my-zsh.sh
 ## USER CONFIG BELOW THIS LINE ##
 #################################
 
-source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-
-bindkey '^n' autosuggest-accept
-bindkey '^ ' autosuggest-execute
-
 # Up a directory with "up"
 function up() {
 	cd $(eval printf '../'%.0s {1..$1})
@@ -137,14 +132,16 @@ unalias fd
 # to this file.
 
 # ZSH Prompt Coolness
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /opt/homebrew/opt/zsh-syntax-highlighting/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /opt/homebrew/opt/zsh-autosuggestions/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+bindkey '^n' autosuggest-accept
+bindkey '^ ' autosuggest-execute
 
 # Google Cloud SDK
 
 if [ "$(command -v gcloud)" ]; then
-	source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc
-	source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc
+	source /opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc
+	source /opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc
 fi
 
 # iTerm Shell Integration
