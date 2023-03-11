@@ -126,6 +126,7 @@ alias worknotes="nvim ~/.notes/work.md"
 alias xit="exit"
 
 unalias fd
+unalias bp
 
 # We want PATH modification to happen even in non-interactive shells, so we'll
 # include all the PATH modification in ~/.zprofile. Do not add PATH modification
