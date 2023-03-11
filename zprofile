@@ -5,6 +5,7 @@ export HOMEBREW_NO_INSTALL_CLEANUP=true
 export HOMEBREW_AUTOREMOVE=true
 export HOMEBREW_BAT=true
 export HOMEBREW_BOOTSNAP=true
+export HOMEBREW_NO_GOOGLE_ANALYTICS=true
 
 # Ruby
 export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
