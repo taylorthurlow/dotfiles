@@ -78,6 +78,10 @@ function plex-loudness() {
 		"docker exec -itu abc plex bash -c '/lib/plexmediaserver/Plex\ Media\ Scanner --force --analyze-loudness --loudness-parallelism 6 --item $@'"
 }
 
+function nlp-timestamp-copy() {
+  exiftool "-TimeCreated<DigitalCreationTime" "-DateCreated<DateTimeOriginal" $@
+}
+
 unsetopt AUTOcd
 setopt noflowcontrol
 
