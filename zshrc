@@ -133,7 +133,6 @@ alias wgloga="watch -t -c -n 1 thicket --color-prefixes -n 200 --refs --all --in
 alias worknotes="nvim ~/.notes/work.md"
 alias xit="exit"
 
-unalias fd
 unalias bp
 unalias gm
 
@@ -148,7 +147,6 @@ bindkey '^n' autosuggest-accept
 bindkey '^ ' autosuggest-execute
 
 # Google Cloud SDK
-
 if [ "$(command -v gcloud)" ]; then
 	source /opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc
 	source /opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc
