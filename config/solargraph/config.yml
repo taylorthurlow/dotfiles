@@ -10,6 +10,8 @@ exclude:
 - .bundle/**/*
 require: []
 domains: []
+plugins:
+  - solargraph-rails
 reporters:
 - typecheck
 max_files: 5000
