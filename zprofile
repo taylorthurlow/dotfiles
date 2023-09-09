@@ -3,6 +3,7 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 export HOMEBREW_NO_INSTALL_CLEANUP=true
 export HOMEBREW_AUTOREMOVE=true
 export HOMEBREW_BAT=true
+export HOMEBREW_NO_INSTALLED_DEPENDENTS_CHECK=true
 export HOMEBREW_BOOTSNAP=true
 export HOMEBREW_NO_GOOGLE_ANALYTICS=true
 
