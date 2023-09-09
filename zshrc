@@ -10,6 +10,10 @@ source $ZSH/oh-my-zsh.sh
 ## USER CONFIG BELOW THIS LINE ##
 #################################
 
+# Git tab auto-completion
+autoload -Uz compinit && compinit
+setopt complete_aliases
+
 # Up a directory with "up"
 function up() {
 	cd $(eval printf '../'%.0s {1..$1})
