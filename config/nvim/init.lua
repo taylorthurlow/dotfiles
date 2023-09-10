@@ -111,6 +111,7 @@ vim.o.smartindent = true          -- Smarter indent for some languages
 vim.o.smarttab = true             -- Smart alignment when adding tabs
 vim.o.scrolloff = 4               -- Keep at least N lines in view around cursor line
 vim.o.wrap = false                -- Disable text wrapping
+vim.o.showmode = false            -- Disable mode display because lualine already does it
 
 vim.wo.colorcolumn = "80,120"     -- Rulers at 80 and 120 character line lengths
 vim.wo.number = true              -- Show line numbers
