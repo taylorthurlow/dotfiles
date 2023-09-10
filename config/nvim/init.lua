@@ -165,6 +165,35 @@ vim.api.nvim_create_autocmd(
   }
 )
 
+-- [[ nvim-cmp ]]
+
+local cmp = require("cmp")
+
+cmp.setup({
+  snippet = {
+    expand = function(args)
+      require("luasnip").lsp_expand(args.body)
+    end,
+  },
+  window = {
+    completion = cmp.config.window.bordered(),
+    documentation = cmp.config.window.bordered(),
+  },
+  mapping = cmp.mapping.preset.insert({
+    ["<C-b>"] = cmp.mapping.scroll_docs(-4),
+    ["<C-f>"] = cmp.mapping.scroll_docs(4),
+    ["<C-Space>"] = cmp.mapping.complete(),
+    ["<C-e>"] = cmp.mapping.abort(),
+    ["<C-CR>"] = cmp.mapping.confirm({ select = true }),
+  }),
+  sources = cmp.config.sources({
+    -- TODO: snippets from LSP end up getting prioritized, lame
+    { name = "nvim_lsp" },
+  }, {
+    { name = "buffer" },
+  }),
+})
+
 -- [[ Telescope ]]
 
 local telescope = require("telescope")
@@ -239,32 +268,6 @@ telescope.load_extension("file_browser")
 -- Setup neovim lua configuration
 require("neodev").setup()
 
-local lspconfig = require("lspconfig")
-
--- nvim-cmp supports additional completion capabilities, so broadcast that to servers
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
-
-lspconfig["rust_analyzer"].setup({
-  onattach = rust_on_attach,
-  capabilities = capabilities,
-  flags = {
-    debounce_text_changes = 150,
-  },
-  settings = {
-    ["rust-analyzer"] = {
-      cargo = {
-        allFeatures = true,
-      },
-      completion = {
-        postfix = {
-          enable = false,
-        },
-      },
-    },
-  },
-})
-
 vim.api.nvim_create_autocmd("LspAttach", {
   group = vim.api.nvim_create_augroup("UserLspConfig", {}),
   callback = function(args)
@@ -322,39 +325,28 @@ vim.api.nvim_create_autocmd("LspAttach", {
   end,
 })
 
--- [[ nvim-cmp ]]
+-- nvim-cmp supports additional completion capabilities, so broadcast that to servers
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
-local cmp = require("cmp")
-local luasnip = require("luasnip")
-
-luasnip.config.setup({})
-
-cmp.setup({
-  snippet = {
-    expand = function(args)
-      luasnip.lsp_expand(args.body)
-    end,
+local lspconfig = require("lspconfig")
+lspconfig["rust_analyzer"].setup({
+  capabilities = capabilities,
+  flags = {
+    debounce_text_changes = 150,
   },
-  view = {
-    entries = "custom"
+  settings = {
+    ["rust-analyzer"] = {
+      cargo = {
+        allFeatures = true,
+      },
+      completion = {
+        postfix = {
+          enable = false,
+        },
+      },
+    },
   },
-  window = {
-    completion = cmp.config.window.bordered(),
-    documentation = cmp.config.window.bordered(),
-  },
-  mapping = cmp.mapping.preset.insert({
-    ["<C-b>"] = cmp.mapping.scroll_docs(-4),
-    ["<C-f>"] = cmp.mapping.scroll_docs(4),
-    ["<C-Space>"] = cmp.mapping.complete(),
-    ["<C-e>"] = cmp.mapping.abort(),
-    ["<C-CR>"] = cmp.mapping.confirm({ select = true }),
-  }),
-  sources = cmp.config.sources({
-    -- TODO: snippets from LSP end up getting prioritized, lame
-    { name = "nvim_lsp" },
-  }, {
-    { name = "buffer" },
-  })
 })
 
 -- [[ Treesitter ]]
