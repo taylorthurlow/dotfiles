@@ -25,8 +25,13 @@ require("lazy").setup({
   "andymass/vim-matchup",                             -- Matching pair highlighting, navigation, and operation
   "airblade/vim-rooter",                              -- Automatically set working directory to project root
   "tpope/vim-sleuth",                                 -- Detect tabstop/shiftwidth automatically
-  "kdheepak/lazygit.nvim",                            -- Lazy git!
 
+  { -- Lazygit integration
+    "kdheepak/lazygit.nvim",
+    dependencies = {
+        "nvim-lua/plenary.nvim",
+    },
+  },
   { -- Easy access to top files in project
     "ThePrimeagen/harpoon",
     dependencies = {
@@ -482,9 +487,10 @@ vim.keymap.set("n", "<leader>pc", telescope_builtins.command_history,           
 vim.keymap.set("n", "<leader>ps", telescope_builtins.search_history,            { desc = "[p]ick a previous [s]earch to execute" })
 vim.keymap.set("n", "<leader>ph", telescope.extensions.harpoon.marks,           { desc = "[p]ick a [h]arpoon mark to jump to" })
 
--- Other telescope stuff
+-- Other stuff
 vim.keymap.set("n", "<leader>op", telescope.extensions.project.project,           { desc = "[o]pen a [p]roject" })
 vim.keymap.set("n", "<leader>oe", telescope.extensions.file_browser.file_browser, { desc = "[o]pen file [e]xplorer" })
+vim.keymap.set("n", "<leader>og", function() vim.cmd("LazyGit") end,              { desc = "[o]pen lazy[g]it" })
 
 -- Harpoon
 local harpoon_mark = require("harpoon.mark")
