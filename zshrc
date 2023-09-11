@@ -15,9 +15,9 @@ autoload -Uz compinit && compinit
 setopt complete_aliases
 
 function iterm_attach_to_tmux() {
-	if tmux ls && read tmux_session && tmux attach -t ${currentsession:-default}; then
+	if tmux ls && read tmux_session && tmux attach -t ${tmux_session:-default}; then
 	else
-		tmux new -s ${currentsession:-default}
+		tmux new -s ${tmux_session:-default}
 		exit
 	fi
 }
