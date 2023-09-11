@@ -400,6 +400,11 @@ lspconfig["rust_analyzer"].setup({
   },
 })
 
+lspconfig["tsserver"].setup({
+  capabilities = capabilities,
+  on_attach = require("lsp-format").on_attach,
+})
+
 -- [[ Treesitter ]]
 
 require("nvim-treesitter.configs").setup({
