@@ -31,10 +31,12 @@ require("lazy").setup({
   { -- Language server
     "neovim/nvim-lspconfig",
     dependencies = {
-      -- Useful status updates for LSP
-      { "j-hui/fidget.nvim", tag = "legacy", opts = {} },
       -- Auto-configured lua language server, completion for nvim stuff
       "folke/neodev.nvim",
+      -- Auto-format configurable per-server
+      "lukas-reineke/lsp-format.nvim",
+      -- Useful status updates for LSP
+      { "j-hui/fidget.nvim", tag = "legacy", opts = {} },
     },
   },
   { -- Treesitter highlighting & code analysys
@@ -338,8 +340,13 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
 local lspconfig = require("lspconfig")
+require("lsp-format").setup({})
+
 lspconfig["rust_analyzer"].setup({
   capabilities = capabilities,
+  -- TODO: Figure out how to get locally defined methods to actually work for on_attach
+  on_attach = require("lsp-format").on_attach,
+  handlers = handler,
   flags = {
     debounce_text_changes = 150,
   },
