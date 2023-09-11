@@ -14,9 +14,6 @@ source $ZSH/oh-my-zsh.sh
 autoload -Uz compinit && compinit
 setopt complete_aliases
 
-# Up a directory with "up"
-function up() {
-	cd $(eval printf '../'%.0s {1..$1})
 }
 
 # Makedir and cd into it
@@ -25,15 +22,6 @@ function mkcd() {
 		echo "Usage: mkcd <dir>"
 	else
 		mkdir -p $1 && cd $1
-	fi
-}
-
-# Makedir and take ownership
-function mkchown() {
-	if [ $# != 1 ]; then
-		echo "Usage: mkchown <dir>"
-	else
-		sudo mkdir -p $1 && sudo chown $(whoami):$(whoami) $1
 	fi
 }
 
