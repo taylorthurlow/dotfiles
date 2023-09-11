@@ -342,6 +342,25 @@ capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 local lspconfig = require("lspconfig")
 require("lsp-format").setup({})
 
+local border = {
+  {"╭", "FloatBorder"},
+  {"─", "FloatBorder"},
+  {"╮", "FloatBorder"},
+  {"│", "FloatBorder"},
+  {"╯", "FloatBorder"},
+  {"─", "FloatBorder"},
+  {"╰", "FloatBorder"},
+  {"│", "FloatBorder"},
+}
+
+local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
+function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
+  opts = opts or {}
+  opts.border = opts.border or border
+  return orig_util_open_floating_preview(contents, syntax, opts, ...)
+end
+
+
 lspconfig["rust_analyzer"].setup({
   capabilities = capabilities,
   -- TODO: Figure out how to get locally defined methods to actually work for on_attach
