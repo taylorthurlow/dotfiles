@@ -14,6 +14,27 @@ source $ZSH/oh-my-zsh.sh
 autoload -Uz compinit && compinit
 setopt complete_aliases
 
+function dev() {
+	if [ -n "$1" ]; then
+		destination=$(zoxide query "$1")
+
+		if [ $? -ne 0 ]; then
+			return $?
+		fi
+
+		cd "$destination"
+
+		if [ $? -ne 0 ]; then
+			return $?
+		fi
+
+		RBENV_VERSION="$(rbenv global)" teamocil dev
+		cd -
+	else
+		RBENV_VERSION="$(rbenv global)" teamocil dev
+	fi
+}
+
 function iterm_attach_to_tmux() {
 	if tmux ls && read tmux_session && tmux attach -t ${tmux_session:-default}; then
 	else
