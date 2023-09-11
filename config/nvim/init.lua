@@ -26,8 +26,19 @@ require("lazy").setup({
   "airblade/vim-rooter",                              -- Automatically set working directory to project root
   "tpope/vim-sleuth",                                 -- Detect tabstop/shiftwidth automatically
   "kdheepak/lazygit.nvim",                            -- Lazy git!
-  -- "ThePrimeagen/harpoon",                             -- Easy access to top files in project
 
+  { -- Easy access to top files in project
+    "ThePrimeagen/harpoon",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+    opts = {
+      global_settings = {
+        tabline = true,
+        mark_branch = false,
+      },
+    },
+  },
   { -- Language server
     "neovim/nvim-lspconfig",
     dependencies = {
@@ -262,6 +273,7 @@ require("telescope").setup({
   }
 })
 
+telescope.load_extension("harpoon")
 telescope.load_extension("project")
 telescope.load_extension("file_browser")
 
@@ -468,10 +480,23 @@ vim.keymap.set("n", "<leader>pq", telescope_builtins.quickfix,                  
 vim.keymap.set("n", "<leader>pr", telescope_builtins.registers,                 { desc = "[p]ick a [r]egister to paste" })
 vim.keymap.set("n", "<leader>pc", telescope_builtins.command_history,           { desc = "[p]ick a previously run [c]ommand to execute" })
 vim.keymap.set("n", "<leader>ps", telescope_builtins.search_history,            { desc = "[p]ick a previous [s]earch to execute" })
+vim.keymap.set("n", "<leader>ph", telescope.extensions.harpoon.marks,           { desc = "[p]ick a [h]arpoon mark to jump to" })
 
 -- Other telescope stuff
 vim.keymap.set("n", "<leader>op", telescope.extensions.project.project,           { desc = "[o]pen a [p]roject" })
 vim.keymap.set("n", "<leader>oe", telescope.extensions.file_browser.file_browser, { desc = "[o]pen file [e]xplorer" })
+
+-- Harpoon
+local harpoon_mark = require("harpoon.mark")
+local harpoon_ui = require("harpoon.ui")
+vim.keymap.set("n", "<leader>mf", harpoon_mark.add_file,                             { desc = "[m]ark a [f]ile with harpoon" })
+vim.keymap.set("n", "<leader>ml", harpoon_ui.toggle_quick_menu,                      { desc = "open harpoon [m]arks [l]ist" })
+vim.keymap.set("n", "<leader>mn", harpoon_ui.nav_next,                               { desc = "jump to [n]ext harpoon [m]ark" })
+vim.keymap.set("n", "<leader>mp", harpoon_ui.nav_prev,                               { desc = "jump to [p]rev harpoon [m]ark" })
+vim.keymap.set("n", "<leader>1",  function() require("harpoon.ui").nav_file(1) end,  { desc = "jump to harpoon mark [1]" })
+vim.keymap.set("n", "<leader>2",  function() require("harpoon.ui").nav_file(2) end,  { desc = "jump to harpoon mark [2]" })
+vim.keymap.set("n", "<leader>3",  function() require("harpoon.ui").nav_file(3) end,  { desc = "jump to harpoon mark [3]" })
+vim.keymap.set("n", "<leader>4",  function() require("harpoon.ui").nav_file(4) end,  { desc = "jump to harpoon mark [4]" })
 
 -- vim: ts=2 sts=2 sw=2 et
 
