@@ -36,11 +36,13 @@ function dev() {
 }
 
 function iterm_attach_to_tmux() {
-	if tmux ls && read tmux_session && tmux attach -t ${tmux_session:-default}; then
+	if tmux has-session -t "$1"; then
+		tmux attach -t $1
 	else
-		tmux new -s ${tmux_session:-default}
-		exit
+		tmux new -s $1
 	fi
+
+	exit
 }
 
 # Makedir and cd into it
