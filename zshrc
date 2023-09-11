@@ -89,7 +89,7 @@ fi
 
 [ "$(command -v nvim)" ] && export EDITOR="$(which nvim)"
 [ "$(command -v bat)" ] && alias cat="bat"
-[ "$(command -v exa)" ] && alias ls="exa"
+[ "$(command -v eza)" ] && alias ls="eza"
 
 if [ "$(command -v hub)" ]; then
 	alias git="hub"
