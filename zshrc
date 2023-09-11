@@ -53,7 +53,12 @@ function kill_process() {
 
 # git interactive rebase with fzf commit selection
 function girb() {
-	git rebase -i $(git log --decorate --oneline --color=always | fzf --ansi | cut -d ' ' -f1 )^
+	if [ "$(command -v thicket)" ]; then
+		git rebase -i $(thicket --color-prefixes --refs --initials | fzf --ansi | tr -cd "[:alnum:] " | cut -w -f2)^
+	else
+		git rebase -i $(git log --decorate --oneline --color=always | fzf --ansi | cut -d ' ' -f1 )^
+	fi
+
 }
 
 # find in zsh history
