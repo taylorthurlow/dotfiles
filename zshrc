@@ -14,6 +14,12 @@ source $ZSH/oh-my-zsh.sh
 autoload -Uz compinit && compinit
 setopt complete_aliases
 
+function iterm_attach_to_tmux() {
+	if tmux ls && read tmux_session && tmux attach -t ${currentsession:-default}; then
+	else
+		tmux new -s ${currentsession:-default}
+		exit
+	fi
 }
 
 # Makedir and cd into it
