@@ -26,6 +26,20 @@ require("lazy").setup({
   "airblade/vim-rooter",                              -- Automatically set working directory to project root
   "tpope/vim-sleuth",                                 -- Detect tabstop/shiftwidth automatically
 
+  { -- GitHub copilot
+    "zbirenbaum/copilot.lua",
+    opts = {
+      panel = { enabled = false },
+      suggestion = { enabled = false },
+    },
+  },
+  {
+    "zbirenbaum/copilot-cmp",
+    opts = {},
+    -- config = function()
+    --   require("copilot_cmp").setup()
+    -- end
+  },
   { -- Lazygit integration
     "kdheepak/lazygit.nvim",
     dependencies = {
@@ -205,11 +219,29 @@ cmp.setup({
     ["<C-CR>"] = cmp.mapping.confirm({ select = true }),
   }),
   sources = cmp.config.sources({
-    -- TODO: snippets from LSP end up getting prioritized, lame
+    { name = "copilot" },
     { name = "nvim_lsp" },
   }, {
     { name = "buffer" },
   }),
+  sorting = {
+    priority_weight = 2,
+    comparators = {
+      require("copilot_cmp.comparators").prioritize,
+
+      -- Below is the default comparitor list and order for nvim-cmp
+      cmp.config.compare.offset,
+      -- cmp.config.compare.scopes, --this is commented in nvim-cmp too
+      cmp.config.compare.exact,
+      cmp.config.compare.score,
+      cmp.config.compare.recently_used,
+      cmp.config.compare.locality,
+      cmp.config.compare.kind,
+      cmp.config.compare.sort_text,
+      cmp.config.compare.length,
+      cmp.config.compare.order,
+    },
+  },
 })
 
 -- [[ Telescope ]]
