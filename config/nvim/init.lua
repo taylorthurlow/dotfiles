@@ -414,12 +414,10 @@ vim.api.nvim_create_autocmd("LspAttach", {
   end,
 })
 
--- nvim-cmp supports additional completion capabilities, so broadcast that to servers
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
 local lspconfig = require("lspconfig")
-require("lsp-format").setup({})
+local lsp_format = require("lsp-format")
+lsp_format.setup({})
 
 local border = {
   {"╭", "FloatBorder"},
@@ -439,13 +437,19 @@ function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
   return orig_util_open_floating_preview(contents, syntax, opts, ...)
 end
 
-lspconfig["rust_analyzer"].setup({
-  capabilities = capabilities,
+-- Set default LSP config
+lspconfig.util.default_config = vim.tbl_deep_extend(
+  "force",
+  lspconfig.util.default_config,
+  {
+    -- nvim-cmp supports additional completion capabilities
+    capabilities = require("cmp_nvim_lsp").default_capabilities(),
+  }
+)
+
+lspconfig.rust_analyzer.setup({
   -- TODO: Figure out how to get locally defined methods to actually work for on_attach
-  on_attach = require("lsp-format").on_attach,
-  flags = {
-    debounce_text_changes = 150,
-  },
+  on_attach = lsp_format.on_attach,
   settings = {
     ["rust-analyzer"] = {
       cargo = {
@@ -460,18 +464,19 @@ lspconfig["rust_analyzer"].setup({
   },
 })
 
-lspconfig["tsserver"].setup({
-  capabilities = capabilities,
-  on_attach = require("lsp-format").on_attach,
+lspconfig.tsserver.setup({
+  on_attach = lsp_format.on_attach,
 })
 
-lspconfig["solargraph"].setup({
-  capabilities = capabilities,
-  -- on_attach = require("lsp-format").on_attach,
+lspconfig.standardrb.setup({
+  cmd = { "bundle", "exec", "standardrb", "--lsp" },
+  on_attach = lsp_format.on_attach,
+  filetypes = { "ruby" },
+})
+
+lspconfig.solargraph.setup({
   cmd = { "bundle", "exec", "solargraph", "stdio" },
-  init_options = {
-    formatting = true,
-  },
+  init_options = { formatting = false },
   filetypes = { "ruby" },
   settings = {
     solargraph = {
