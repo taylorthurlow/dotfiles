@@ -271,10 +271,25 @@ require("telescope").setup({
         ["<esc>"] = telescope_actions.close,
       }
     },
+    prompt_title = false,
+    path_display = { "smart" },
+    sorting_strategy = "ascending",
     layout_strategy = "flex",
     layout_config = {
-      flip_columns = 200,
-      flip_lines = 40,
+      flex = {
+        flip_columns = 200,
+        flip_lines = 40,
+      },
+      vertical = {
+        prompt_position = "top",
+        height = 20,
+      },
+      horizontal = {
+        prompt_position = "top",
+        width = 0.95,
+        height = 40,
+        preview_width = 0.4,
+      },
     },
   },
   pickers = {
