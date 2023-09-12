@@ -439,12 +439,10 @@ function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
   return orig_util_open_floating_preview(contents, syntax, opts, ...)
 end
 
-
 lspconfig["rust_analyzer"].setup({
   capabilities = capabilities,
   -- TODO: Figure out how to get locally defined methods to actually work for on_attach
   on_attach = require("lsp-format").on_attach,
-  handlers = handler,
   flags = {
     debounce_text_changes = 150,
   },
@@ -465,6 +463,21 @@ lspconfig["rust_analyzer"].setup({
 lspconfig["tsserver"].setup({
   capabilities = capabilities,
   on_attach = require("lsp-format").on_attach,
+})
+
+lspconfig["solargraph"].setup({
+  capabilities = capabilities,
+  -- on_attach = require("lsp-format").on_attach,
+  cmd = { "bundle", "exec", "solargraph", "stdio" },
+  init_options = {
+    formatting = true,
+  },
+  filetypes = { "ruby" },
+  settings = {
+    solargraph = {
+      diagnostics = true,
+    },
+  },
 })
 
 -- [[ Treesitter ]]
