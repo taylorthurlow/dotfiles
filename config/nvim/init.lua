@@ -120,6 +120,15 @@ require("lazy").setup({
         component_separators = "|",
         section_separators = "",
       },
+      sections = {
+        lualine_c = {
+          {
+            "filename",
+            path = 1, -- relative path
+            shorting_target = 64, -- at least 64 chars of space for other stuff
+          }
+        },
+      },
     },
   },
   { -- Maybe replacement for tpope/vim-commentary
