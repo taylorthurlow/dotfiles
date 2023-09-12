@@ -268,7 +268,7 @@ require("telescope").setup({
         ["<C-s>"] = telescope_actions.select_horizontal,
         ["<C-t>"] = telescope_actions.select_tab,
         ["<C-q>"] = telescope_actions.add_selected_to_qflist,
-        -- ["<esc>"] = telescope_actions.close,
+        ["<esc>"] = telescope_actions.close,
       }
     },
     layout_strategy = "flex",
