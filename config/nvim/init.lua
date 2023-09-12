@@ -293,18 +293,17 @@ require("telescope").setup({
     },
   },
   pickers = {
+    find_files = {
+      hidden = true,
+    },
     buffers = {
       mappings = {
         i = {
           ["<C-d>"] = telescope_actions.delete_buffer + telescope_actions.move_to_top
-        }
-      }
+        },
+      },
     },
     quickfix = {
-      layout_strategy = "bottom_pane",
-      layout_config = {},
-    },
-    project = {
       layout_strategy = "bottom_pane",
       layout_config = {},
     },
@@ -312,6 +311,11 @@ require("telescope").setup({
   extensions = {
     file_browser = {
       hijack_netrw = true,
+      layout_strategy = "horizontal",
+      layout_config = {
+        width = 0.99,
+        height = 0.99,
+      },
     },
     fzf = {
       fuzzy = true,                    -- false will only do exact matching
@@ -320,6 +324,8 @@ require("telescope").setup({
       case_mode = "smart_case",        -- or "ignore_case" or "respect_case"
     },
     project = {
+      layout_strategy = "bottom_pane",
+      layout_config = {},
       base_dirs = {
         { "~/Code", max_depth = 2 },
         { "~/Code/bayphoto", max_depth = 2 },
