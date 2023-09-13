@@ -374,7 +374,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
     -- LSP-only telescope
     local telescope_builtins = require("telescope.builtin")
-    nmap("gr", telescope_builtins.lsp_references, "[g]oto [r]eferences")
+    nmap("gu", telescope_builtins.lsp_references, "[g]oto [u]ses")
     nmap("gI", telescope_builtins.lsp_implementations, "[g]oto [I]mplementation")
     nmap("<leader>pd", telescope_builtins.diagnostics, "[p]ick a [d]iagnostic to jump to")
     nmap("<leader>ds", telescope_builtins.lsp_document_symbols, "[d]ocument [s]ymbols")
