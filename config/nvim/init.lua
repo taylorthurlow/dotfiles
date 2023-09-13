@@ -26,6 +26,10 @@ require("lazy").setup({
   "airblade/vim-rooter",                              -- Automatically set working directory to project root
   "tpope/vim-sleuth",                                 -- Detect tabstop/shiftwidth automatically
 
+  { -- Git diff signs in gutter
+    "lewis6991/gitsigns.nvim",
+    opts = { },
+  },
   { -- GitHub copilot
     "zbirenbaum/copilot.lua",
     opts = {
