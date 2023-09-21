@@ -285,7 +285,7 @@ require("telescope").setup({
       },
       vertical = {
         prompt_position = "top",
-        height = 20,
+        height = 0.95,
       },
       horizontal = {
         prompt_position = "top",
