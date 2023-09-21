@@ -583,6 +583,16 @@ vim.keymap.set("n", "<leader>op", telescope.extensions.project.project,         
 vim.keymap.set("n", "<leader>oe", telescope.extensions.file_browser.file_browser, { desc = "[o]pen file [e]xplorer" })
 vim.keymap.set("n", "<leader>og", function() vim.cmd("LazyGit") end,              { desc = "[o]pen lazy[g]it" })
 
+-- Remove trailing whitespace without messing with cursor position
+vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+    pattern = {"*"},
+    callback = function(ev)
+        save_cursor = vim.fn.getpos(".")
+        vim.cmd([[%s/\s\+$//e]])
+        vim.fn.setpos(".", save_cursor)
+    end,
+})
+
 -- Harpoon
 local harpoon_mark = require("harpoon.mark")
 local harpoon_ui = require("harpoon.ui")
