@@ -555,6 +555,9 @@ vim.keymap.set("n", "<leader>hh", ":nohl<CR>")
 -- Reload config
 vim.keymap.set("n", "<leader>vr", ":source ~/.config/nvim/init.lua<CR>")
 
+-- Show git blame for current line
+vim.keymap.set("n", "gb", require("gitsigns").blame_line, { desc = "[g]it [b]lame current line" })
+
 local telescope_builtins = require("telescope.builtin")
 
 -- Telescope "find" shortcuts (find something that might exist)
