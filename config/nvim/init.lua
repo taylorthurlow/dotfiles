@@ -20,7 +20,6 @@ require("lazy").setup({
   "Carpetsmoker/auto_mkdir2.vim",                     -- Allow mkdir when editing
   "editorconfig/editorconfig-vim",                    -- Honor .editorconfig if exists
   "machakann/vim-sandwich",                           -- Maybe replacement for tpope/vim-surround
-  "rhysd/committia.vim",                              -- Nice git commit interface
   "tpope/vim-repeat",                                 -- Plugin-friendly '.'-repeats
   "andymass/vim-matchup",                             -- Matching pair highlighting, navigation, and operation
   "airblade/vim-rooter",                              -- Automatically set working directory to project root
