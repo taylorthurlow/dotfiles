@@ -24,6 +24,7 @@ require("lazy").setup({
   "andymass/vim-matchup",                             -- Matching pair highlighting, navigation, and operation
   "airblade/vim-rooter",                              -- Automatically set working directory to project root
   "tpope/vim-sleuth",                                 -- Detect tabstop/shiftwidth automatically
+  "romainl/vim-cool",                                 -- Don't highlight search after done searching
   "rhysd/committia.vim",                              -- Better git commit filetype
 
   { -- Git diff signs in gutter
