@@ -27,6 +27,12 @@ require("lazy").setup({
   "romainl/vim-cool",                                 -- Don't highlight search after done searching
   "rhysd/committia.vim",                              -- Better git commit filetype
 
+  { -- Project-wide search and replace
+    "nvim-pack/nvim-spectre",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+  },
   { -- Git diff signs in gutter
     "lewis6991/gitsigns.nvim",
     opts = { },
@@ -584,6 +590,7 @@ vim.keymap.set("n", "<leader>ph", telescope.extensions.harpoon.marks,           
 vim.keymap.set("n", "<leader>op", telescope.extensions.project.project,           { desc = "[o]pen a [p]roject" })
 vim.keymap.set("n", "<leader>oe", telescope.extensions.file_browser.file_browser, { desc = "[o]pen file [e]xplorer" })
 vim.keymap.set("n", "<leader>og", function() vim.cmd("LazyGit") end,              { desc = "[o]pen lazy[g]it" })
+vim.keymap.set("n", "<leader>fr", "<cmd>lua require(\"spectre\").toggle()<CR>",   { desc = "[f]ind and [r]eplace in project" })
 
 -- Remove trailing whitespace without messing with cursor position
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
