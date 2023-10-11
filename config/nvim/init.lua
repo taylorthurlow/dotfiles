@@ -19,13 +19,13 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
   "Carpetsmoker/auto_mkdir2.vim",                     -- Allow mkdir when editing
   "editorconfig/editorconfig-vim",                    -- Honor .editorconfig if exists
-  "machakann/vim-sandwich",                           -- Maybe replacement for tpope/vim-surround
   "tpope/vim-repeat",                                 -- Plugin-friendly '.'-repeats
   "andymass/vim-matchup",                             -- Matching pair highlighting, navigation, and operation
   "airblade/vim-rooter",                              -- Automatically set working directory to project root
   "tpope/vim-sleuth",                                 -- Detect tabstop/shiftwidth automatically
   "romainl/vim-cool",                                 -- Don't highlight search after done searching
   "rhysd/committia.vim",                              -- Better git commit filetype
+  "tpope/vim-surround",                               -- It's vim-surround, man
 
   { -- Project-wide search and replace
     "nvim-pack/nvim-spectre",
