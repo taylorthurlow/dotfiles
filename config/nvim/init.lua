@@ -26,6 +26,7 @@ require("lazy").setup({
   "romainl/vim-cool",                                 -- Don't highlight search after done searching
   "rhysd/committia.vim",                              -- Better git commit filetype
   "tpope/vim-surround",                               -- It's vim-surround, man
+  "tpope/vim-eunuch",                                 -- Easy UNIX commands
 
   { -- Project-wide search and replace
     "nvim-pack/nvim-spectre",
