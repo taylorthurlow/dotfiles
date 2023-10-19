@@ -34,6 +34,12 @@ require("lazy").setup({
       "nvim-lua/plenary.nvim",
     },
   },
+  { -- Endwise for treesitter
+    "RRethy/nvim-treesitter-endwise",
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+    }
+  },
   { -- Git diff signs in gutter
     "lewis6991/gitsigns.nvim",
     opts = { },
@@ -504,9 +510,15 @@ require("nvim-treesitter.configs").setup({
   ensure_installed = { "lua", "python", "rust", "ruby", "typescript", "javascript", "vim" },
   auto_install = true,
   highlight = { enable = true },
-  indent = { enable = true },
   matchup = { enable = true },
   incremental_selection = { enable = true },
+  endwise = { enable = true },
+  indent = {
+    enable = true,
+    disable = function(lang, bufnr)
+      return lang == "ruby"
+    end
+  },
   textobjects = {
     enable = true,
     select = {
