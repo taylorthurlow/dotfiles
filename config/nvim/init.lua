@@ -28,6 +28,17 @@ require("lazy").setup({
   "tpope/vim-surround",                               -- It's vim-surround, man
   "tpope/vim-eunuch",                                 -- Easy UNIX commands
 
+  {
+    "williamboman/mason.nvim",
+    dependencies = {
+      {
+        "williamboman/mason-lspconfig.nvim",
+        dependencies = {
+          "neovim/nvim-lspconfig"
+        }
+      }
+    }
+  },
   { -- Project-wide search and replace
     "nvim-pack/nvim-spectre",
     dependencies = {
@@ -435,6 +446,12 @@ vim.api.nvim_create_autocmd("LspAttach", {
 })
 
 
+local mason = require("mason")
+local mason_lspconfig = require("mason-lspconfig")
+
+mason.setup()
+mason_lspconfig.setup()
+
 local lspconfig = require("lspconfig")
 local lsp_format = require("lsp-format")
 lsp_format.setup({})
@@ -467,42 +484,65 @@ lspconfig.util.default_config = vim.tbl_deep_extend(
   }
 )
 
-lspconfig.rust_analyzer.setup({
-  -- TODO: Figure out how to get locally defined methods to actually work for on_attach
-  on_attach = lsp_format.on_attach,
-  settings = {
-    ["rust-analyzer"] = {
-      cargo = {
-        allFeatures = true,
-      },
-      completion = {
-        postfix = {
-          enable = false,
+mason_lspconfig.setup_handlers({
+  -- Default handler, called for each installed server that doesn't have a
+  -- dedicated handler
+  function (server_name)
+    require("lspconfig")[server_name].setup({})
+  end,
+
+  -- Dedicated server handlers
+  ["rust_analyzer"] = function ()
+    require("lspconfig").rust_analyzer.setup({
+      -- TODO: Figure out how to get locally defined methods to actually work for on_attach
+      on_attach = require("lsp-format").on_attach,
+      settings = {
+        ["rust-analyzer"] = {
+          cargo = {
+            allFeatures = true,
+          },
+          completion = {
+            postfix = {
+              enable = false,
+            },
+          },
         },
       },
-    },
-  },
-})
+    })
+  end,
 
-lspconfig.tsserver.setup({
-  on_attach = lsp_format.on_attach,
-})
+  ["jsonls"] = function ()
+    require("lspconfig").jsonls.setup({
+      on_attach = require("lsp-format").on_attach,
+    })
+  end,
 
-lspconfig.standardrb.setup({
-  cmd = { "bundle", "exec", "standardrb", "--lsp" },
-  on_attach = lsp_format.on_attach,
-  filetypes = { "ruby" },
-})
+  ["tsserver"] = function ()
+    require("lspconfig").tsserver.setup({
+      on_attach = require("lsp-format").on_attach,
+    })
+  end,
 
-lspconfig.solargraph.setup({
-  cmd = { "bundle", "exec", "solargraph", "stdio" },
-  init_options = { formatting = false },
-  filetypes = { "ruby" },
-  settings = {
-    solargraph = {
-      diagnostics = true,
-    },
-  },
+  ["standardrb"] = function ()
+    require("lspconfig").standardrb.setup({
+      on_attach = require("lsp-format").on_attach,
+      cmd = { "bundle", "exec", "standardrb", "--lsp" },
+      filetypes = { "ruby" },
+    })
+  end,
+
+  ["solargraph"] = function ()
+    require("lspconfig").solargraph.setup({
+      cmd = { "bundle", "exec", "solargraph", "stdio" },
+      init_options = { formatting = false },
+      filetypes = { "ruby" },
+      settings = {
+        solargraph = {
+          diagnostics = true,
+        },
+      },
+    })
+  end
 })
 
 -- [[ Treesitter ]]
