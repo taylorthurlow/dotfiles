@@ -35,6 +35,12 @@ require("lazy").setup({
     build = function() vim.fn["mkdp#util#install"]() end,
   },
   {
+    "danymat/neogen",
+    dependencies = "nvim-treesitter/nvim-treesitter",
+    config = true,
+    version = "*" -- stable versions only
+  },
+  {
     "williamboman/mason.nvim",
     dependencies = {
       {
