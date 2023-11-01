@@ -41,6 +41,21 @@ require("lazy").setup({
     version = "*" -- stable versions only
   },
   {
+    "nvim-tree/nvim-tree.lua",
+    lazy = false,
+    dependencies = {
+      "nvim-tree/nvim-web-devicons",
+    },
+    version = "*",
+    config = function()
+      require("nvim-tree").setup({
+        view = {
+          width = 30
+        }
+      })
+    end
+  },
+  {
     "williamboman/mason.nvim",
     dependencies = {
       {
