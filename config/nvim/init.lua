@@ -591,7 +591,12 @@ require("nvim-treesitter.configs").setup({
   indent = {
     enable = true,
     disable = function(lang, bufnr)
-      return lang == "ruby"
+      -- Disable tree sitter indentation for specific languages
+      for index, value in ipairs({ "ruby", "javascript" }) do
+        if lang == value then
+          return true
+        end
+      end
     end
   },
   textobjects = {
