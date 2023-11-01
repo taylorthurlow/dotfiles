@@ -29,6 +29,12 @@ require("lazy").setup({
   "tpope/vim-eunuch",                                 -- Easy UNIX commands
 
   {
+    "iamcco/markdown-preview.nvim",
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    ft = { "markdown" },
+    build = function() vim.fn["mkdp#util#install"]() end,
+  },
+  {
     "williamboman/mason.nvim",
     dependencies = {
       {
