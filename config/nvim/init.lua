@@ -248,6 +248,9 @@ if vim.fn.executable("rg") > 0 then
   vim.opt.grepformat = vim.opt.grepformat ^ { "%f:%l:%c:%m" }
 end
 
+-- Define project root files
+vim.g.rooter_patterns = { ".git", "Makefile", "*.sln", "Gemfile", "*.gemspec", "*LICENSE*", "=lib" }
+
 -- [[ Extra visual configuration ]]
 
 -- Highlight yanked text, see `:help vim.highlight.on_yank()`
