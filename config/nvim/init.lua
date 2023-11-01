@@ -575,6 +575,10 @@ mason_lspconfig.setup_handlers({
   end
 })
 
+require("lspconfig").stimulus_ls.setup({
+  filetypes = { "html", "ruby", "eruby", "blade", "php" }
+})
+
 -- [[ Treesitter ]]
 
 require("nvim-treesitter.configs").setup({
