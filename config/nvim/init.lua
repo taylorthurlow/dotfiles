@@ -332,7 +332,7 @@ require("telescope").setup({
       }
     },
     prompt_title = false,
-    path_display = { "smart" },
+    path_display = { "truncate" },
     sorting_strategy = "ascending",
     layout_strategy = "flex",
     layout_config = {
