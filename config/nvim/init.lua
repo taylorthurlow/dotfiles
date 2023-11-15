@@ -575,9 +575,10 @@ mason_lspconfig.setup_handlers({
   end
 })
 
-require("lspconfig").stimulus_ls.setup({
-  filetypes = { "html", "ruby", "eruby", "blade", "php" }
-})
+-- Disabling while stimulus LSP matures, a bit wonky with ERB
+-- require("lspconfig").stimulus_ls.setup({
+--   filetypes = { "html", "ruby", "eruby", "blade", "php" }
+-- })
 
 -- [[ Treesitter ]]
 
