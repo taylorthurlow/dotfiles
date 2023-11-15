@@ -249,7 +249,7 @@ if vim.fn.executable("rg") > 0 then
 end
 
 -- Define project root files
-vim.g.rooter_patterns = { ".git", "Makefile", "*.sln", "Gemfile", "*.gemspec", "*LICENSE*", "=lib" }
+vim.g.rooter_patterns = { ".git", "Makefile", "*.sln", "Gemfile", "*.gemspec", "*LICENSE*" }
 
 -- [[ Extra visual configuration ]]
 
