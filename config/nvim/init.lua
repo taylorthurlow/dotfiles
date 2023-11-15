@@ -652,6 +652,14 @@ require("nvim-treesitter.configs").setup({
 -- of the primary register
 vim.keymap.set("n", "x", "\"_x")
 
+-- Move along soft wrapped lines instead of physical lines
+-- nnoremap <expr> k (v:count == 0 ? 'gk' : 'k')
+-- nnoremap <expr> j (v:count == 0 ? 'gj' : 'j')
+vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true })
+vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true })
+vim.keymap.set("v", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true })
+vim.keymap.set("v", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true })
+
 -- Stop highlighting things
 vim.keymap.set("n", "<leader>hh", ":nohl<CR>")
 
