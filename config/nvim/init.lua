@@ -692,7 +692,8 @@ vim.keymap.set("n", "<leader>ph", telescope.extensions.harpoon.marks,           
 -- Other stuff
 vim.keymap.set("n", "<leader>op", telescope.extensions.project.project,           { desc = "[o]pen a [p]roject" })
 vim.keymap.set("n", "<leader>oe", function() vim.cmd("NvimTreeFocus") end,        { desc = "[o]pen file [e]xplorer" })
-vim.keymap.set("n", "<leader>ce", function() vim.cmd("NvimTreeToggle") end,       { desc = "[c]pen file [e]xplorer" })
+vim.keymap.set("n", "<leader>ce", function() vim.cmd("NvimTreeToggle") end,       { desc = "[c]lose file [e]xplorer" })
+vim.keymap.set("n", "<leader>ef", function() vim.cmd("NvimTreeFindFile") end,     { desc = "open [e]xplorer at [f]ile" })
 vim.keymap.set("n", "<leader>og", function() vim.cmd("LazyGit") end,              { desc = "[o]pen lazy[g]it" })
 vim.keymap.set("n", "<leader>fr", "<cmd>lua require(\"spectre\").toggle()<CR>",   { desc = "[f]ind and [r]eplace in project" })
 
