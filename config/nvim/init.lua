@@ -27,6 +27,7 @@ require("lazy").setup({
   "rhysd/committia.vim",                              -- Better git commit filetype
   "tpope/vim-surround",                               -- It's vim-surround, man
   "tpope/vim-eunuch",                                 -- Easy UNIX commands
+  "f-person/git-blame.nvim",                          -- Featureful git blame
 
   {
     "iamcco/markdown-preview.nvim",
@@ -250,6 +251,9 @@ end
 
 -- Define project root files
 vim.g.rooter_patterns = { ".git", "Makefile", "*.sln", "Gemfile", "*.gemspec", "*LICENSE*" }
+
+-- Git blame
+vim.g.gitblame_display_virtual_text = 0
 
 -- [[ Extra visual configuration ]]
 
@@ -567,7 +571,6 @@ mason_lspconfig.setup_handlers({
       init_options = { formatting = false },
       filetypes = { "ruby" },
       settings = {
-        solargraph = {
           diagnostics = true,
         },
       },
