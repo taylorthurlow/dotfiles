@@ -571,10 +571,6 @@ mason_lspconfig.setup_handlers({
       cmd = { "bundle", "exec", "solargraph", "stdio" },
       init_options = { formatting = false },
       filetypes = { "ruby" },
-      settings = {
-          diagnostics = true,
-        },
-      },
     })
   end
 })
