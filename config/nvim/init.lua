@@ -105,6 +105,7 @@ require("lazy").setup({
   },
   { -- Easy access to top files in project
     "ThePrimeagen/harpoon",
+    branch = "harpoon2",
     dependencies = {
       "nvim-lua/plenary.nvim",
     },
@@ -711,16 +712,13 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
 })
 
 -- Harpoon
-local harpoon_mark = require("harpoon.mark")
-local harpoon_ui = require("harpoon.ui")
-vim.keymap.set("n", "<leader>mf", harpoon_mark.add_file,                             { desc = "[m]ark a [f]ile with harpoon" })
-vim.keymap.set("n", "<leader>ml", harpoon_ui.toggle_quick_menu,                      { desc = "open harpoon [m]arks [l]ist" })
-vim.keymap.set("n", "<leader>mn", harpoon_ui.nav_next,                               { desc = "jump to [n]ext harpoon [m]ark" })
-vim.keymap.set("n", "<leader>mp", harpoon_ui.nav_prev,                               { desc = "jump to [p]rev harpoon [m]ark" })
-vim.keymap.set("n", "<leader>1",  function() require("harpoon.ui").nav_file(1) end,  { desc = "jump to harpoon mark [1]" })
-vim.keymap.set("n", "<leader>2",  function() require("harpoon.ui").nav_file(2) end,  { desc = "jump to harpoon mark [2]" })
-vim.keymap.set("n", "<leader>3",  function() require("harpoon.ui").nav_file(3) end,  { desc = "jump to harpoon mark [3]" })
-vim.keymap.set("n", "<leader>4",  function() require("harpoon.ui").nav_file(4) end,  { desc = "jump to harpoon mark [4]" })
+local harpoon = require("harpoon")
+vim.keymap.set("n", "<leader>mf", function() harpoon:list():append() end,                      { desc = "[m]ark a [f]ile with harpoon" })
+vim.keymap.set("n", "<leader>ml", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end, { desc = "open harpoon [m]arks [l]ist" })
+vim.keymap.set("n", "<leader>1",  function() harpoon:list():select(1) end,                     { desc = "jump to harpoon mark [1]" })
+vim.keymap.set("n", "<leader>2",  function() harpoon:list():select(2) end,                     { desc = "jump to harpoon mark [2]" })
+vim.keymap.set("n", "<leader>3",  function() harpoon:list():select(3) end,                     { desc = "jump to harpoon mark [3]" })
+vim.keymap.set("n", "<leader>4",  function() harpoon:list():select(4) end,                     { desc = "jump to harpoon mark [4]" })
 
 -- vim: ts=2 sts=2 sw=2 et
 
