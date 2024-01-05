@@ -18,20 +18,21 @@ function dev() {
 	if [ -n "$1" ]; then
 		destination=$(zoxide query "$1")
 
+		# If zoxide call failed, return same error code
 		if [ $? -ne 0 ]; then
 			return $?
 		fi
 
-		cd "$destination"
+		zellij action new-tab --name "$(basename "$destination")" --layout ~/.config/zellij/dev.kdl --cwd "$destination"
 
+		# If zellij call failed, return same error code
 		if [ $? -ne 0 ]; then
 			return $?
 		fi
 
-		RBENV_VERSION="$(rbenv global)" teamocil dev
-		cd -
+		# cd -
 	else
-		RBENV_VERSION="$(rbenv global)" teamocil dev
+		zellij action new-tab --name "$(basename "$destination")" --layout ~/.config/zellij/dev.kdl --cwd "."
 	fi
 }
 
