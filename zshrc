@@ -1,6 +1,39 @@
-# Git tab auto-completion
+# PROMPT='%1~/ %# '
+PROMPT='%F{33}t%f%F{39}a%f%F{38}y%f%F{44}lor%f%F{50}@%f%F{43}cin%f%F{44}tra%f%F{38}:%1~/%f %F{44}%#%f '
+
+KEYTIMEOUT=1
+
+# Disable "implied cd" when using a path as a command
+unsetopt AUTOcd
+
+# Disable "flow control" with CTRL-S and CTRL-Q, not seeing if iTerm supports
+# this but it's here just in case
+setopt noflowcontrol
+
+# History configuration, avoid duplicates in logs/history recall
+HISTFILE=50000
+HISTFILE=~/.zsh_history
+SAVEHIST=50000
+HISTDUP=erase
+setopt appendhistory
+setopt sharehistory
+setopt incappendhistory
+setopt hist_ignore_all_dups
+setopt hist_save_no_dups
+setopt hist_ignore_dups
+setopt hist_find_no_dups
+
+# Case-insensitive completion
 autoload -Uz compinit && compinit
-setopt complete_aliases
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+
+# Prompt syntax highlighting
+source /opt/homebrew/opt/zsh-syntax-highlighting/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# # Autosuggestions
+source /opt/homebrew/opt/zsh-autosuggestions/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+bindkey '^n' autosuggest-accept
+bindkey '^ ' autosuggest-execute
 
 function dev() {
 	if [ -n "$1" ]; then
@@ -82,9 +115,6 @@ function nlp-timestamp-copy() {
   exiftool "-TimeCreated<DigitalCreationTime" "-DateCreated<DateTimeOriginal" $@
 }
 
-unsetopt AUTOcd
-setopt noflowcontrol
-
 export GPG_TTY=$(tty)
 if [[ -n "$SSH_CONNECTION" ]]; then
 	export PINENTRY_USER_DATA="USE_CURSES=1"
@@ -102,7 +132,6 @@ fi
 if [ "$(command -v kubectl)" ]; then
 	alias kctl="kubectl"
 	source <(kubectl completion zsh)
-	complete -F __start_kubectl kctl
 fi
 
 if [ "$(command -v zoxide)" ]; then
@@ -140,18 +169,9 @@ alias xit="exit"
 alias zshrc="nvim ~/.zshrc"
 alias zprofile="nvim ~/.zprofile"
 
-# unalias bp
-# unalias gm
-
 # We want PATH modification to happen even in non-interactive shells, so we'll
 # include all the PATH modification in ~/.zprofile. Do not add PATH modification
 # to this file.
-
-# ZSH Prompt Coolness
-source /opt/homebrew/opt/zsh-syntax-highlighting/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source /opt/homebrew/opt/zsh-autosuggestions/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-bindkey '^n' autosuggest-accept
-bindkey '^ ' autosuggest-execute
 
 # Google Cloud SDK
 if [ "$(command -v gcloud)" ]; then
