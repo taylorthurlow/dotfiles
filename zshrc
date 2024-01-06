@@ -153,6 +153,7 @@ alias rm="rm -i"
 alias cp="cp -i"
 alias mv="mv -i"
 alias grep="grep --color=auto"
+alias less="less -R"
 
 # Extra aliases
 alias be="bundle exec"
