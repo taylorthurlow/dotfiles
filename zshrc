@@ -1,13 +1,3 @@
-export ZSH=/Users/taylor/.oh-my-zsh
-ZSH_THEME="panda"
-DISABLE_UPDATE_PROMPT=true
-
-source $ZSH/oh-my-zsh.sh
-
-#################################
-## USER CONFIG BELOW THIS LINE ##
-#################################
-
 # Git tab auto-completion
 autoload -Uz compinit && compinit
 setopt complete_aliases
