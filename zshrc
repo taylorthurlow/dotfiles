@@ -1,6 +1,5 @@
 export ZSH=/Users/taylor/.oh-my-zsh
 ZSH_THEME="panda"
-plugins=(bundler)
 DISABLE_UPDATE_PROMPT=true
 KEYTIMEOUT=1
 
@@ -135,6 +134,8 @@ alias grep="grep --color=auto"
 alias be="bundle exec"
 alias bi="bundle install"
 alias biy="bundle install && bundle exec yard gems -q"
+alias bu="bundle update"
+alias bout="bundle outdated --only-explicit"
 alias dc="docker-compose"
 alias gfap="git fetch --all --prune"
 alias glog="thicket --color-prefixes --refs --initials --exclude-remote-dependabot | less"
