@@ -30,10 +30,16 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 # Prompt syntax highlighting
 source /opt/homebrew/opt/zsh-syntax-highlighting/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-# # Autosuggestions
+# Autosuggestions
 source /opt/homebrew/opt/zsh-autosuggestions/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 bindkey '^n' autosuggest-accept
 bindkey '^ ' autosuggest-execute
+
+# Prompt navigation
+bindkey "^[[H" beginning-of-line # Home
+bindkey "^[[F" end-of-line       # End
+bindkey "^[[5~" backward-word    # Page Up
+bindkey "^[[6~" forward-word     # Page Down
 
 function dev() {
 	if [ -n "$1" ]; then
