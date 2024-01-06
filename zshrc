@@ -180,6 +180,9 @@ alias zprofile="nvim ~/.zprofile"
 # include all the PATH modification in ~/.zprofile. Do not add PATH modification
 # to this file.
 
+# Anyenv
+[ "$(command -v anyenv)" ] && eval "$(anyenv init -)"
+
 # Google Cloud SDK
 if [ "$(command -v gcloud)" ]; then
 	source /opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc
