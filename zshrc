@@ -1,6 +1,6 @@
 export ZSH=/Users/taylor/.oh-my-zsh
 ZSH_THEME="panda"
-plugins=(git github common-aliases ruby sudo bundler)
+plugins=(git github ruby sudo bundler)
 DISABLE_UPDATE_PROMPT=true
 KEYTIMEOUT=1
 
@@ -123,6 +123,15 @@ if [ "$(command -v zoxide)" ]; then
 	alias cdi="zi"
 fi
 
+# Built-in aliases
+alias ll="ls -l"
+alias ldot="ls -ld .*"
+alias rm="rm -i"
+alias cp="cp -i"
+alias mv="mv -i"
+alias grep="grep --color=auto"
+
+# Extra aliases
 alias be="bundle exec"
 alias bi="bundle install"
 alias biy="bundle install && bundle exec yard gems -q"
@@ -132,15 +141,17 @@ alias glog="thicket --color-prefixes --refs --initials --exclude-remote-dependab
 alias gloga="thicket --color-prefixes --all --refs --initials --exclude-remote-dependabot | less"
 alias wglog="watch -t -c -n 1 thicket --color-prefixes -n 200 --refs --initials --exclude-remote-dependabot"
 alias wgloga="watch -t -c -n 1 thicket --color-prefixes -n 200 --refs --all --initials --exclude-remote-dependabot"
-alias gs="git sync"
 alias kp="kill_process"
 alias lg="lazygit"
 alias notes="nvim ~/.notes/main.md"
 alias worknotes="nvim ~/.notes/work.md"
 alias xit="exit"
 
-unalias bp
-unalias gm
+alias zshrc="nvim ~/.zshrc"
+alias zprofile="nvim ~/.zprofile"
+
+# unalias bp
+# unalias gm
 
 # We want PATH modification to happen even in non-interactive shells, so we'll
 # include all the PATH modification in ~/.zprofile. Do not add PATH modification
