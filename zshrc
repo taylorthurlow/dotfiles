@@ -125,7 +125,7 @@ fi
 
 alias be="bundle exec"
 alias bi="bundle install"
-alias bid="bundle install --path=vendor --jobs=$(sysctl -n hw.ncpu) --binstubs=.bundle/bin && bundle exec yard gems -q"
+alias biy="bundle install && bundle exec yard gems -q"
 alias dc="docker-compose"
 alias gfap="git fetch --all --prune"
 alias glog="thicket --color-prefixes --refs --initials --exclude-remote-dependabot | less"
