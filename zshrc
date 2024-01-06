@@ -36,16 +36,6 @@ function dev() {
 	fi
 }
 
-function iterm_attach_to_tmux() {
-	if tmux has-session -t "$1"; then
-		tmux attach -t $1
-	else
-		tmux new -s $1
-	fi
-
-	exit
-}
-
 # Makedir and cd into it
 function mkcd() {
 	if [ $# != 1 ]; then
@@ -89,11 +79,6 @@ function girb() {
 		git rebase -i $(git log --decorate --oneline --color=always | fzf --ansi | cut -d ' ' -f1 )^
 	fi
 
-}
-
-# find in zsh history
-function fh() {
-	print -z $( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf +s --tac | gsed -r 's/ *[0-9]*\*? *//' | gsed -r 's/\\/\\\\/g')
 }
 
 function bay-clone() {
@@ -142,12 +127,10 @@ alias be="bundle exec"
 alias bi="bundle install"
 alias bid="bundle install --path=vendor --jobs=$(sysctl -n hw.ncpu) --binstubs=.bundle/bin && bundle exec yard gems -q"
 alias dc="docker-compose"
-alias gcane="git commit --amend --no-edit"
 alias gfap="git fetch --all --prune"
 alias glog="thicket --color-prefixes --refs --initials --exclude-remote-dependabot | less"
 alias gloga="thicket --color-prefixes --all --refs --initials --exclude-remote-dependabot | less"
 alias gs="git sync"
-alias gst="git status -s"
 alias kp="kill_process"
 alias lg="lazygit"
 alias notes="nvim ~/.notes/main.md"
