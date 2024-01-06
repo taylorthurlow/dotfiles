@@ -1,7 +1,6 @@
 export ZSH=/Users/taylor/.oh-my-zsh
 ZSH_THEME="panda"
 DISABLE_UPDATE_PROMPT=true
-KEYTIMEOUT=1
 
 source $ZSH/oh-my-zsh.sh
 
