@@ -1,6 +1,6 @@
 export ZSH=/Users/taylor/.oh-my-zsh
 ZSH_THEME="panda"
-plugins=(ruby sudo bundler)
+plugins=(sudo bundler)
 DISABLE_UPDATE_PROMPT=true
 KEYTIMEOUT=1
 
