@@ -19,6 +19,8 @@ export PATH="$PATH:/Users/taylorthurlow/.cargo/bin"
 export PATH="$HOME/.anyenv/bin:$PATH"
 [ "$(command -v anyenv)" ] && eval "$(anyenv init -)"
 [ "$(command -v kubectl)" ] && export KUBECONFIG="$HOME/.kube/config:$HOME/.kube/svkube"
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
 
 # Specific versioned homebrew packages
 export PATH="/opt/homebrew/opt/mysql@5.7/bin:$PATH"
