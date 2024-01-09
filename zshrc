@@ -41,6 +41,14 @@ bindkey "^[[F" end-of-line       # End
 bindkey "^[[5~" backward-word    # Page Up
 bindkey "^[[6~" forward-word     # Page Down
 
+# Prompt history search
+autoload -U up-line-or-beginning-search
+autoload -U down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+bindkey "^[[A" up-line-or-beginning-search
+bindkey "^[[B" down-line-or-beginning-search
+
 function dev() {
 	if [ -n "$1" ]; then
 		destination=$(zoxide query "$1")
