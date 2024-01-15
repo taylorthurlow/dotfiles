@@ -1,14 +1,12 @@
-# Host-specific configuration may be installed by RCM. May set some environment
-# variables to be used in this file.
-if [ -f ~/.zprofile.local ]; then source ~/.zprofile.local; fi
-
-# Homebrew
-eval "$($HOMEBREW_PREFIX/bin/brew shellenv)"
 export HOMEBREW_NO_INSTALL_CLEANUP=true
 export HOMEBREW_AUTOREMOVE=true
 export HOMEBREW_BAT=true
 export HOMEBREW_NO_INSTALLED_DEPENDENTS_CHECK=true
 export HOMEBREW_BOOTSNAP=true
+
+# Host-specific configuration may be installed by RCM. May set some environment
+# variables to be used in this file.
+if [ -f ~/.zprofile.local ]; then source ~/.zprofile.local; fi
 
 # Ruby
 OPENSSL_VER_NUM="${OPENSSL_VER_NUM:-3}"
