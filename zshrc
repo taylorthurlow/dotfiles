@@ -36,10 +36,14 @@ bindkey '^n' autosuggest-accept
 bindkey '^ ' autosuggest-execute
 
 # Prompt navigation
-bindkey "^[[H" beginning-of-line # Home
-bindkey "^[[F" end-of-line       # End
-bindkey "^[[5~" backward-word    # Page Up
-bindkey "^[[6~" forward-word     # Page Down
+bindkey "^[[H" beginning-of-line    # Home
+bindkey "^[[F" end-of-line          # End
+bindkey "^[[5~" backward-word       # Page Up
+bindkey "^[[6~" forward-word        # Page Down
+bindkey "^[[1;5D" backward-word     # Ctrl + Left
+bindkey "^[[1;5C" forward-word      # Ctrl + Right
+bindkey "^[[1;5A" beginning-of-line # Ctrl + Up
+bindkey "^[[1;5B" end-of-line       # Ctrl + Down
 
 # Prompt history search
 autoload -U up-line-or-beginning-search
