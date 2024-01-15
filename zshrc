@@ -1,5 +1,6 @@
-# PROMPT='%1~/ %# '
-PROMPT='%F{33}t%f%F{39}a%f%F{38}y%f%F{44}lor%f%F{50}@%f%F{43}cin%f%F{44}tra%f%F{38}:%1~/%f %F{44}%#%f '
+# Host-specific configuration may be installed by RCM. May set some environment
+# variables to be used in this file.
+if [ -f ~/.zshrc.local ]; then source ~/.zshrc.local; fi
 
 KEYTIMEOUT=1
 
@@ -28,10 +29,10 @@ autoload -Uz compinit && compinit
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 
 # Prompt syntax highlighting
-source /opt/homebrew/opt/zsh-syntax-highlighting/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $HOMEBREW_PREFIX/opt/zsh-syntax-highlighting/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Autosuggestions
-source /opt/homebrew/opt/zsh-autosuggestions/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $HOMEBREW_PREFIX/opt/zsh-autosuggestions/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 bindkey '^n' autosuggest-accept
 bindkey '^ ' autosuggest-execute
 
@@ -53,27 +54,29 @@ zle -N down-line-or-beginning-search
 bindkey "^[[A" up-line-or-beginning-search
 bindkey "^[[B" down-line-or-beginning-search
 
-function dev() {
-	if [ -n "$1" ]; then
-		destination=$(zoxide query "$1")
+if [ "$(command -v zellij)" ]; then
+	function dev() {
+		if [ -n "$1" ]; then
+			destination=$(zoxide query "$1")
 
-		# If zoxide call failed, return same error code
-		if [ $? -ne 0 ]; then
-			return $?
+			# If zoxide call failed, return same error code
+			if [ $? -ne 0 ]; then
+				return $?
+			fi
+
+			zellij action new-tab --name "$(basename "$destination")" --layout ~/.config/zellij/dev.kdl --cwd "$destination"
+
+			# If zellij call failed, return same error code
+			if [ $? -ne 0 ]; then
+				return $?
+			fi
+
+			# cd -
+		else
+			zellij action new-tab --name "$(basename "$destination")" --layout ~/.config/zellij/dev.kdl --cwd "."
 		fi
-
-		zellij action new-tab --name "$(basename "$destination")" --layout ~/.config/zellij/dev.kdl --cwd "$destination"
-
-		# If zellij call failed, return same error code
-		if [ $? -ne 0 ]; then
-			return $?
-		fi
-
-		# cd -
-	else
-		zellij action new-tab --name "$(basename "$destination")" --layout ~/.config/zellij/dev.kdl --cwd "."
-	fi
-}
+	}
+fi
 
 # Makedir and cd into it
 function mkcd() {
@@ -86,7 +89,13 @@ function mkcd() {
 
 # Delete local and remote branches
 function git-nuke {
-	git branch -D $1 && git push origin :$1
+	echo "ARE YOU SURE you want to nuke $1?"
+	select yn in "Yes" "No"; do
+	    case $yn in
+		Yes ) git branch -D $1 && git push origin :$1; break;;
+		No ) return;;
+	    esac
+	done
 }
 
 # Use `jq` with both JSON and non-JSON lines.
@@ -99,16 +108,19 @@ function __git_files () {
 	_wanted files expl 'local files' _files
 }
 
-# easy kill processes with fzf
-function kill_process() {
-	local pid=$(ps -ef | sed 1d | eval "fzf ${FZF_DEFAULT_OPTS} -m --header='[kill:process]'" | awk '{print $2}')
+if [ "$(command -v fzf)" ]; then
+	# easy kill processes
+	alias kp="kill_process"
+	function kill_process() {
+		local pid=$(ps -ef | sed 1d | eval "fzf ${FZF_DEFAULT_OPTS} -m --header='[kill:process]'" | awk '{print $2}')
 
-	if [ "x$pid" != "x" ]
-	then
-		echo $pid | xargs kill -${1:-9}
-		kp
-	fi
-}
+		if [ "x$pid" != "x" ]
+		then
+			echo $pid | xargs kill -${1:-9}
+			kp
+		fi
+	}
+fi
 
 # git interactive rebase with fzf commit selection
 function girb() {
@@ -124,13 +136,8 @@ function bay-clone() {
 	git clone git@bitbucket.org:bayphotolab/$1.git
 }
 
-function plex-loudness() {
-  ssh -t -o LogLevel=QUIET root@unraid.local \
-		"docker exec -itu abc plex bash -c '/lib/plexmediaserver/Plex\ Media\ Scanner --force --analyze-loudness --loudness-parallelism 6 --item $@'"
-}
-
 function nlp-timestamp-copy() {
-  exiftool "-TimeCreated<DigitalCreationTime" "-DateCreated<DateTimeOriginal" $@
+	exiftool "-TimeCreated<DigitalCreationTime" "-DateCreated<DateTimeOriginal" $@
 }
 
 export GPG_TTY=$(tty)
@@ -141,6 +148,7 @@ fi
 [ "$(command -v nvim)" ] && export EDITOR="$(which nvim)"
 [ "$(command -v bat)" ] && alias cat="bat"
 [ "$(command -v eza)" ] && alias ls="eza"
+[ "$(command -v lazygit)" ] && alias lg="lazygit"
 
 if [ "$(command -v hub)" ]; then
 	alias git="hub"
@@ -174,10 +182,13 @@ alias gpr="git pull --rebase"
 alias gfap="git fetch --all --prune"
 alias gsw="git switch"
 alias gre="git restore"
-alias glog="thicket --color-prefixes --refs --initials --exclude-remote-dependabot | less"
-alias gloga="thicket --color-prefixes --all --refs --initials --exclude-remote-dependabot | less"
-alias wglog="watch -t -c -n 1 thicket --color-prefixes -n 200 --refs --initials --exclude-remote-dependabot"
-alias wgloga="watch -t -c -n 1 thicket --color-prefixes -n 200 --refs --all --initials --exclude-remote-dependabot"
+
+if [ "$(command -v thicket)" ]; then
+	alias glog="thicket --color-prefixes --refs --initials --exclude-remote-dependabot | less"
+	alias gloga="thicket --color-prefixes --all --refs --initials --exclude-remote-dependabot | less"
+	alias wglog="watch -t -c -n 1 thicket --color-prefixes -n 200 --refs --initials --exclude-remote-dependabot"
+	alias wgloga="watch -t -c -n 1 thicket --color-prefixes -n 200 --refs --all --initials --exclude-remote-dependabot"
+fi
 
 # Extra aliases
 alias be="bundle exec"
@@ -186,8 +197,6 @@ alias biy="bundle install && bundle exec yard gems -q"
 alias bu="bundle update"
 alias bout="bundle outdated --only-explicit"
 alias dc="docker-compose"
-alias kp="kill_process"
-alias lg="lazygit"
 alias notes="nvim ~/.notes/main.md"
 alias worknotes="nvim ~/.notes/work.md"
 alias xit="exit"
@@ -204,13 +213,10 @@ alias zprofile="nvim ~/.zprofile"
 
 # Google Cloud SDK
 if [ "$(command -v gcloud)" ]; then
-	source /opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc
-	source /opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc
+	source $HOMEBREW_PREFIX/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc
+	source $HOMEBREW_PREFIX/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc
 fi
 
 # iTerm Shell Integration
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-
-# bun completions
-[ -s "/Users/taylor/.bun/_bun" ] && source "/Users/taylor/.bun/_bun"
 

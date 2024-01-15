@@ -1,5 +1,9 @@
+# Host-specific configuration may be installed by RCM. May set some environment
+# variables to be used in this file.
+if [ -f ~/.zprofile.local ]; then source ~/.zprofile.local; fi
+
 # Homebrew
-eval "$(/opt/homebrew/bin/brew shellenv)"
+eval "$($HOMEBREW_PREFIX/bin/brew shellenv)"
 export HOMEBREW_NO_INSTALL_CLEANUP=true
 export HOMEBREW_AUTOREMOVE=true
 export HOMEBREW_BAT=true
@@ -7,20 +11,18 @@ export HOMEBREW_NO_INSTALLED_DEPENDENTS_CHECK=true
 export HOMEBREW_BOOTSNAP=true
 
 # Ruby
+OPENSSL_VER_NUM="${OPENSSL_VER_NUM:-3}"
 export DISABLE_SPRING=1
-local openssl_ver_num=3
-export PATH="/opt/homebrew/opt/openssl@$openssl_ver_num/bin:$PATH"
-export LIBRARY_PATH="$LIBRARY_PATH:/opt/homebrew/opt/openssl@$openssl_ver_num/lib/"
-export RUBY_CONFIGURE_OPTS="--with-openssl-dir=/opt/homebrew/opt/openssl@$openssl_ver_num"
-export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:"/opt/homebrew/opt/openssl@$openssl_ver_num/lib/pkgconfig"
+export PATH="$HOMEBREW_PREFIX/opt/openssl@$OPENSSL_VER_NUM/bin:$PATH"
+export LIBRARY_PATH="$LIBRARY_PATH:$HOMEBREW_PREFIX/opt/openssl@$OPENSSL_VER_NUM/lib/"
+export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$HOMEBREW_PREFIX/opt/openssl@$OPENSSL_VER_NUM"
+export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:"$HOMEBREW_PREFIX/opt/openssl@$OPENSSL_VER_NUM/lib/pkgconfig"
 
 # Miscellaneous
 export PATH="$PATH:/Users/taylorthurlow/.cargo/bin"
 export PATH="$HOME/.anyenv/bin:$PATH"
 [ "$(command -v kubectl)" ] && export KUBECONFIG="$HOME/.kube/config:$HOME/.kube/svkube"
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
 
 # Specific versioned homebrew packages
-export PATH="/opt/homebrew/opt/mysql@5.7/bin:$PATH"
-export PATH="/opt/homebrew/opt/imagemagick@6/bin:$PATH"
+export PATH="$HOMEBREW_PREFIX/opt/mysql@5.7/bin:$PATH"
+export PATH="$HOMEBREW_PREFIX/opt/imagemagick@6/bin:$PATH"
