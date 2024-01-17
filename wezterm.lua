@@ -17,6 +17,8 @@ config.color_scheme = 'Ayu Mirage'
 config.front_end = 'WebGpu'
 config.hide_tab_bar_if_only_one_tab = true
 config.adjust_window_size_when_changing_font_size = false
+config.initial_rows = 40
+config.initial_cols = 120
 
 -- Text rendering
 config.font_size = 14.0
