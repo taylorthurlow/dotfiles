@@ -163,18 +163,21 @@ require("lazy").setup({
     },
   },
   { -- Onedark theme
-    "navarasu/onedark.nvim",
-    priority = 1000,
+    "Shatur/neovim-ayu",
     config = function()
-      vim.cmd.colorscheme "onedark"
-    end,
+      require("ayu").setup({
+        mirage = true,
+      })
+
+      require("ayu").colorscheme()
+    end
   },
   { -- Simple powerline alternative
     "nvim-lualine/lualine.nvim",
     opts = {
       options = {
         icons_enabled = true,
-        theme = "onedark",
+        theme = "ayu",
         component_separators = "|",
         section_separators = "",
       },
@@ -202,6 +205,7 @@ vim.o.breakindent = true          -- Wrapped lines continue indent
 vim.o.undofile = true             -- Save undo history
 vim.o.updatetime = 250            -- Much faster idle time to save to swap
 vim.o.timeoutlen = 500            -- Faster timeout for key chords
+vim.o.background = "dark"         -- Dark background
 vim.o.termguicolors = true        -- Full-color support
 vim.o.hidden = true               -- Don't unload abandoned buffers
 vim.o.cursorline = true           -- Highlight
