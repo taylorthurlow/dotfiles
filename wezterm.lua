@@ -35,6 +35,7 @@ config.enable_csi_u_key_encoding = true
 
 -- Keybinds, start from zero
 config.disable_default_key_bindings = true
+config.disable_default_mouse_bindings = true
 
 local act = wezterm.action
 config.keys = {
