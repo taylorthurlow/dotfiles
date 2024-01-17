@@ -23,7 +23,7 @@ config.font_size = 14.0
 config.font = wezterm.font('CommitMono400w')
 config.line_height = 1.2
 config.freetype_load_target = 'Light'
-
+config.default_prog = { '/bin/zsh', '-lc', 'zellij' }
 
 -- Speed up ^ and ~ processing
 config.use_dead_keys = false
