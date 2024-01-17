@@ -24,7 +24,8 @@
               "type": "frontmost_application_unless",
               "bundle_identifiers": [
                 "^com\\.googlecode\\.iterm2$",
-                "^com\\.microsoft\\.VSCode$"
+                "^com\\.microsoft\\.VSCode$",
+                "^com\\.github\\.wez\\.wezterm$"
               ]
             }
           ]
@@ -54,7 +55,8 @@
               "type": "frontmost_application_if",
               "bundle_identifiers": [
                 "^com\\.googlecode\\.iterm2$",
-                "^com\\.microsoft\\.VSCode$"
+                "^com\\.microsoft\\.VSCode$",
+                "^com\\.github\\.wez\\.wezterm$"
               ]
             }
           ]
