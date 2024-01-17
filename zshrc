@@ -64,7 +64,7 @@ if [ "$(command -v zellij)" ]; then
 				return $?
 			fi
 
-			zellij action new-tab --name "$(basename "$destination")" --layout ~/.config/zellij/dev.kdl --cwd "$destination"
+			zellij action new-tab --name "$(basename "$destination")" --cwd "$destination"
 
 			# If zellij call failed, return same error code
 			if [ $? -ne 0 ]; then
@@ -73,7 +73,7 @@ if [ "$(command -v zellij)" ]; then
 
 			# cd -
 		else
-			zellij action new-tab --name "$(basename "$destination")" --layout ~/.config/zellij/dev.kdl --cwd "."
+			zellij action new-tab --name "$(basename "$destination")" --cwd "."
 		fi
 	}
 fi
