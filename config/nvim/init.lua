@@ -28,6 +28,7 @@ require("lazy").setup({
   "tpope/vim-surround",                               -- It's vim-surround, man
   "tpope/vim-eunuch",                                 -- Easy UNIX commands
   "f-person/git-blame.nvim",                          -- Featureful git blame
+  "dhruvasagar/vim-table-mode",                       -- Table editing
 
   {
     "iamcco/markdown-preview.nvim",
