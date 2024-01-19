@@ -25,7 +25,9 @@
               "bundle_identifiers": [
                 "^com\\.googlecode\\.iterm2$",
                 "^com\\.microsoft\\.VSCode$",
-                "^com\\.github\\.wez\\.wezterm$"
+                "^com\\.github\\.wez\\.wezterm$",
+                "^com\\.alacritty$",
+                "^org\\.alacritty$"
               ]
             }
           ]
@@ -56,7 +58,9 @@
               "bundle_identifiers": [
                 "^com\\.googlecode\\.iterm2$",
                 "^com\\.microsoft\\.VSCode$",
-                "^com\\.github\\.wez\\.wezterm$"
+                "^com\\.github\\.wez\\.wezterm$",
+                "^com\\.alacritty$",
+                "^org\\.alacritty$"
               ]
             }
           ]
