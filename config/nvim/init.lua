@@ -573,10 +573,6 @@ mason_lspconfig.setup_handlers({
 require("conform").setup({
 	formatters_by_ft = {
 		lua = { "stylua" },
-		json = { "jq" },
-		ruby = { "standardrb" },
-		rust = { "rustfmt" },
-
 		-- python = { "isort", "black" },
 		-- Use a sub-list to run only the first available formatter
 	},
