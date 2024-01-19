@@ -531,8 +531,6 @@ mason_lspconfig.setup_handlers({
 	-- Dedicated server handlers
 	["rust_analyzer"] = function()
 		require("lspconfig").rust_analyzer.setup({
-			-- TODO: Figure out how to get locally defined methods to actually work for on_attach
-			on_attach = require("lsp-format").on_attach,
 			settings = {
 				["rust-analyzer"] = {
 					cargo = {
@@ -548,21 +546,8 @@ mason_lspconfig.setup_handlers({
 		})
 	end,
 
-	["jsonls"] = function()
-		require("lspconfig").jsonls.setup({
-			on_attach = require("lsp-format").on_attach,
-		})
-	end,
-
-	["tsserver"] = function()
-		require("lspconfig").tsserver.setup({
-			on_attach = require("lsp-format").on_attach,
-		})
-	end,
-
 	["standardrb"] = function()
 		require("lspconfig").standardrb.setup({
-			on_attach = require("lsp-format").on_attach,
 			cmd = { "bundle", "exec", "standardrb", "--lsp" },
 			filetypes = { "ruby" },
 		})
