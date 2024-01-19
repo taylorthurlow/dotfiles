@@ -583,7 +583,8 @@ mason_lspconfig.setup_handlers({
 -- })
 --
 
--- Formatting with conform
+-- [[ Formatting with conform ]]
+
 require("conform").setup({
 	formatters_by_ft = {
 		lua = { "stylua" },
@@ -594,11 +595,35 @@ require("conform").setup({
 		-- python = { "isort", "black" },
 		-- Use a sub-list to run only the first available formatter
 	},
-	format_on_save = {
-		-- These options will be passed to conform.format()
-		timeout_ms = 2000,
-		lsp_fallback = true,
-	},
+	format_on_save = function(bufnr)
+		-- Disable with a global or buffer-local variable
+		if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
+			return
+		end
+
+		return {
+			-- These options will be passed to conform.format()
+			timeout_ms = 500,
+			lsp_fallback = true,
+		}
+	end,
+})
+
+-- Toggle auto-formatting with :AutoformatToggle, and add a "!" to disable for
+-- globally rather than just the current one
+vim.api.nvim_create_user_command("AutoformatToggle", function(args)
+	if args.bang then
+		local current = vim.g.disable_autoformat
+		vim.g.disable_autoformat = not current
+		vim.cmd('echo "Auto-format-on-save globally set to ' .. tostring(not vim.g.disable_autoformat) .. '"')
+	else
+		local current = vim.b.disable_autoformat
+		vim.b.disable_autoformat = not current
+		vim.cmd('echo "Autoformat-on-save buffer-locally set to ' .. tostring(not vim.b.disable_autoformat) .. '"')
+	end
+end, {
+	desc = "Toggle autoformat-on-save for the current buffer (default) or globally (with !)",
+	bang = true,
 })
 
 -- [[ Treesitter ]]
@@ -755,6 +780,9 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
 		vim.fn.setpos(".", save_cursor)
 	end,
 })
+
+-- Toggle format-on-save
+vim.keymap.set("n", "<leader>tf", ":AutoformatToggle!<CR>", { desc = "[t]oggle [f]ormat-on-save globally" })
 
 -- Harpoon
 local harpoon = require("harpoon")
