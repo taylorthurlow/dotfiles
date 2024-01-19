@@ -43,6 +43,10 @@ require("lazy").setup({
     version = "*" -- stable versions only
   },
   {
+    "stevearc/conform.nvim",
+    opts = {},
+  },
+  {
     "nvim-tree/nvim-tree.lua",
     lazy = false,
     dependencies = {
@@ -592,6 +596,25 @@ mason_lspconfig.setup_handlers({
 -- require("lspconfig").stimulus_ls.setup({
 --   filetypes = { "html", "ruby", "eruby", "blade", "php" }
 -- })
+--
+
+-- Formatting with conform
+require("conform").setup({
+	formatters_by_ft = {
+		lua = { "stylua" },
+		json = { "jq" },
+		ruby = { "standardrb" },
+		rust = { "rustfmt" },
+
+		-- python = { "isort", "black" },
+		-- Use a sub-list to run only the first available formatter
+	},
+	format_on_save = {
+		-- These options will be passed to conform.format()
+		timeout_ms = 2000,
+		lsp_fallback = true,
+	},
+})
 
 -- [[ Treesitter ]]
 
