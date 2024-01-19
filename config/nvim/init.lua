@@ -428,9 +428,6 @@ telescope.load_extension("file_browser")
 
 -- [[ LSP ]]
 
--- Setup neovim lua configuration
-require("neodev").setup()
-
 vim.api.nvim_create_autocmd("LspAttach", {
 	group = vim.api.nvim_create_augroup("UserLspConfig", {}),
 	callback = function(args)
