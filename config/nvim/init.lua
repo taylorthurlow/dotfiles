@@ -218,6 +218,10 @@ vim.o.wrap = false                -- Disable text wrapping
 vim.o.showmode = false            -- Disable mode display because lualine already does it
 vim.o.cindent = true              -- C-style indenting
 
+-- Tabs at 4 spaces
+vim.o.tabstop = 4                 -- Tab width
+vim.o.softtabstop = 4             -- Tab width when editing
+
 vim.wo.colorcolumn = "80,120"     -- Rulers at 80 and 120 character line lengths
 vim.wo.number = true              -- Show line numbers
 vim.wo.signcolumn = "yes"         -- Always show sign column
