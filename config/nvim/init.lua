@@ -128,8 +128,6 @@ require("lazy").setup({
 		dependencies = {
 			-- Auto-configured lua language server, completion for nvim stuff
 			"folke/neodev.nvim",
-			-- Auto-format configurable per-server
-			"lukas-reineke/lsp-format.nvim",
 			-- Useful status updates for LSP
 			{ "j-hui/fidget.nvim", tag = "legacy", opts = {} },
 		},
@@ -494,8 +492,6 @@ mason.setup()
 mason_lspconfig.setup()
 
 local lspconfig = require("lspconfig")
-local lsp_format = require("lsp-format")
-lsp_format.setup({})
 
 local border = {
 	{ "╭", "FloatBorder" },
