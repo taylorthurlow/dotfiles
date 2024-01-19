@@ -234,6 +234,10 @@ vim.o.smartcase = true
 vim.o.diffopt = vim.o.diffopt .. ",algorithm:patience"
 vim.o.diffopt = vim.o.diffopt .. ",indent-heuristic"
 
+-- Permanent undo
+vim.o.undofile = true
+vim.o.undodir = vim.fn.expand("~/.config/nvim/undo")
+
 -- Sane split directions
 vim.o.splitbelow = true
 vim.o.splitright = true
