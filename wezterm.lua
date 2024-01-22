@@ -33,6 +33,10 @@ config.use_dead_keys = false
 -- Support complex key combinations like Ctrl+Enter in Zellij
 config.enable_csi_u_key_encoding = true
 
+-- Disable window shadow due to performance issues:
+-- https://github.com/wez/wezterm/issues/2669
+config.window_decorations = "TITLE | RESIZE | MACOS_FORCE_DISABLE_SHADOW"
+
 -- Keybinds, start from zero
 config.disable_default_key_bindings = true
 config.disable_default_mouse_bindings = true
