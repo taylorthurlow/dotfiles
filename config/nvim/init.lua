@@ -463,16 +463,18 @@ lspconfig.util.default_config = vim.tbl_deep_extend("force", lspconfig.util.defa
 	capabilities = require("cmp_nvim_lsp").default_capabilities(),
 })
 
--- set up solargraph
 lspconfig.solargraph.setup({
 	cmd = { "bundle", "exec", "solargraph", "stdio" },
 	init_options = { formatting = false },
-	filetypes = { "ruby" },
+})
+
+lspconfig.ruby_ls.setup({
+	cmd = { "bundle", "exec", "ruby-lsp" },
+	init_options = { formatter = "none" },
 })
 
 lspconfig.standardrb.setup({
 	cmd = { "bundle", "exec", "standardrb", "--lsp" },
-	filetypes = { "ruby" },
 })
 
 -- [[ Formatting with conform ]]
