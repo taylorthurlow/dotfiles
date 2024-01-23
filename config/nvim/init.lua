@@ -123,8 +123,6 @@ require("lazy").setup({
 			"saadparwaiz1/cmp_luasnip",
 			-- Adds LSP completion capabilities
 			"hrsh7th/cmp-nvim-lsp",
-			-- Function signature completion
-			"ray-x/lsp_signature.nvim",
 		},
 	},
 	{ -- Fuzzy finding and general popup finders & pickers
@@ -436,27 +434,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		vim.api.nvim_buf_create_user_command(bufnr, "Format", function(_)
 			vim.lsp.buf.format()
 		end, { desc = "Format current buffer with LSP" })
-
-		-- Get signatures (and _only_ signatures) when in argument lists.
-		require("lsp_signature").on_attach({
-			doc_lines = 0,
-			handler_opts = {
-				border = "rounded",
-			},
-		})
-
-		if client.name == "rust_analyzer" then
-			-- None of this semantics tokens business.
-			-- https://www.reddit.com/r/neovim/comments/143efmd/is_it_possible_to_disable_treesitter_completely/
-			client.server_capabilities.semanticTokensProvider = nil
-
-			vim.lsp.handlers["textDocument/publishDiagnostics"] =
-				vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-					virtual_text = true,
-					signs = true,
-					update_in_insert = true,
-				})
-		end
 	end,
 })
 
