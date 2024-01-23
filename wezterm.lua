@@ -54,6 +54,14 @@ config.keys = {
 	{ key = "=", mods = "SUPER", action = act.IncreaseFontSize },
 	{ key = "-", mods = "SUPER", action = act.DecreaseFontSize },
 
+	-- Disable some key combinations that otherwise send useless garbage
+	{ key = "Enter", mods = "SHIFT", action = act.SendKey({ key = "Enter" }) },
+	{ key = "Backspace", mods = "SHIFT", action = act.SendKey({ key = "Backspace" }) },
+	{ key = "LeftArrow", mods = "SHIFT", action = act.SendKey({ key = "LeftArrow" }) },
+	{ key = "RightArrow", mods = "SHIFT", action = act.SendKey({ key = "RightArrow" }) },
+	{ key = "UpArrow", mods = "SHIFT", action = act.SendKey({ key = "UpArrow" }) },
+	{ key = "DownArrow", mods = "SHIFT", action = act.SendKey({ key = "DownArrow" }) },
+
 	{ key = "p", mods = "SUPER|SHIFT", action = act.ActivateCommandPalette },
 }
 
