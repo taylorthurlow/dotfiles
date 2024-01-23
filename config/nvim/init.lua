@@ -99,19 +99,6 @@ require("lazy").setup({
 			"nvim-lua/plenary.nvim",
 		},
 	},
-	{ -- Easy access to top files in project
-		"ThePrimeagen/harpoon",
-		branch = "harpoon2",
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-		},
-		opts = {
-			global_settings = {
-				tabline = true,
-				mark_branch = false,
-			},
-		},
-	},
 	{ -- Language server
 		"neovim/nvim-lspconfig",
 		dependencies = {
@@ -409,7 +396,6 @@ require("telescope").setup({
 })
 
 telescope.load_extension("fzf")
-telescope.load_extension("harpoon")
 telescope.load_extension("project")
 telescope.load_extension("file_browser")
 
@@ -673,7 +659,6 @@ vim.keymap.set(
 	{ desc = "[p]ick a previously run [c]ommand to execute" }
 )
 vim.keymap.set("n", "<leader>ps", telescope_builtins.search_history, { desc = "[p]ick a previous [s]earch to execute" })
-vim.keymap.set("n", "<leader>ph", telescope.extensions.harpoon.marks, { desc = "[p]ick a [h]arpoon mark to jump to" })
 
 -- Other stuff
 vim.keymap.set("n", "<leader>op", telescope.extensions.project.project, { desc = "[o]pen a [p]roject" })
@@ -708,29 +693,6 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
 
 -- Toggle format-on-save
 vim.keymap.set("n", "<leader>tf", ":AutoformatToggle!<CR>", { desc = "[t]oggle [f]ormat-on-save globally" })
-
--- Harpoon
-local harpoon = require("harpoon")
-vim.keymap.set("n", "<leader>mf", function()
-	harpoon:list():append()
-end, { desc = "[m]ark a [f]ile with harpoon" })
-vim.keymap.set("n", "<leader>ml", function()
-	harpoon.ui:toggle_quick_menu(harpoon:list())
-end, { desc = "open harpoon [m]arks [l]ist" })
-vim.keymap.set("n", "<leader>1", function()
-	harpoon:list():select(1)
-end, { desc = "jump to harpoon mark [1]" })
-vim.keymap.set("n", "<leader>2", function()
-	harpoon:list():select(2)
-end, { desc = "jump to harpoon mark [2]" })
-vim.keymap.set("n", "<leader>3", function()
-	harpoon:list():select(3)
-end, { desc = "jump to harpoon mark [3]" })
-vim.keymap.set("n", "<leader>4", function()
-	harpoon:list():select(4)
-end, { desc = "jump to harpoon mark [4]" })
-
--- vim: ts=2 sts=2 sw=2 et
 
 -- nvim-tree
 
