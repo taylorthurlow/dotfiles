@@ -63,17 +63,6 @@ require("lazy").setup({
 			})
 		end,
 	},
-	{
-		"williamboman/mason.nvim",
-		dependencies = {
-			{
-				"williamboman/mason-lspconfig.nvim",
-				dependencies = {
-					"neovim/nvim-lspconfig",
-				},
-			},
-		},
-	},
 	{ -- Project-wide search and replace
 		"nvim-pack/nvim-spectre",
 		dependencies = {
@@ -485,12 +474,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
 	end,
 })
 
-local mason = require("mason")
-local mason_lspconfig = require("mason-lspconfig")
-
-mason.setup()
-mason_lspconfig.setup()
-
 local lspconfig = require("lspconfig")
 
 local border = {
@@ -528,20 +511,6 @@ lspconfig.standardrb.setup({
 	cmd = { "bundle", "exec", "standardrb", "--lsp" },
 	filetypes = { "ruby" },
 })
-
-mason_lspconfig.setup_handlers({
-	-- Default handler, called for each installed server that doesn't have a
-	-- dedicated handler
-	function(server_name)
-		require("lspconfig")[server_name].setup({})
-	end,
-})
-
--- Disabling while stimulus LSP matures, a bit wonky with ERB
--- require("lspconfig").stimulus_ls.setup({
---   filetypes = { "html", "ruby", "eruby", "blade", "php" }
--- })
---
 
 -- [[ Formatting with conform ]]
 
