@@ -15,7 +15,6 @@ export PATH="$HOMEBREW_PREFIX/opt/openssl@$OPENSSL_VER_NUM/bin:$PATH"
 export LIBRARY_PATH="$LIBRARY_PATH:$HOMEBREW_PREFIX/opt/openssl@$OPENSSL_VER_NUM/lib/"
 export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$HOMEBREW_PREFIX/opt/openssl@$OPENSSL_VER_NUM"
 export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:"$HOMEBREW_PREFIX/opt/openssl@$OPENSSL_VER_NUM/lib/pkgconfig"
-export RUBYOPT="--backtrace-limit=5"
 
 # Miscellaneous
 export PATH="$PATH:/Users/taylorthurlow/.cargo/bin"
