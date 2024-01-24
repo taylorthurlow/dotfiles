@@ -169,10 +169,16 @@ config.key_tables = {
 }
 
 config.mouse_bindings = {
+	-- Unbind normal click-to-follow-link, rebind to SUPER
+	{
+		event = { Up = { streak = 1, button = "Left" } },
+		mods = "NONE",
+		action = act.CompleteSelection("ClipboardAndPrimarySelection"),
+	},
 	{
 		event = { Up = { streak = 1, button = "Left" } },
 		mods = "SUPER",
-		action = wezterm.action.OpenLinkAtMouseCursor,
+		action = act.OpenLinkAtMouseCursor,
 	},
 }
 
