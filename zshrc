@@ -2,6 +2,10 @@
 # variables to be used in this file.
 if [ -f ~/.zshrc.local ]; then source ~/.zshrc.local; fi
 
+# Ctrl-D in sequence to exit
+autoload -Uz add-zle-hook-widget
+export IGNOREEOF=3
+
 KEYTIMEOUT=1
 
 # Disable "implied cd" when using a path as a command
@@ -139,6 +143,26 @@ function bay-clone() {
 function nlp-timestamp-copy() {
 	exiftool "-TimeCreated<DigitalCreationTime" "-DateCreated<DateTimeOriginal" $@
 }
+
+# Emulate Bash $IGNOREEOF behavior
+setopt ignore_eof
+function bash-ctrl-d() {
+	if [[ $CURSOR == 0 && -z $BUFFER ]]; then
+		[[ -z $IGNOREEOF || $IGNOREEOF == 0 ]] && exit
+
+		if [[ "$LASTWIDGET" == "bash-ctrl-d" ]]; then
+			(( --__BASH_IGNORE_EOF <= 0 )) && exit
+		else
+			(( __BASH_IGNORE_EOF = IGNOREEOF-1 ))
+			echo
+		fi
+
+		echo "Press Ctrl-D $__BASH_IGNORE_EOF more time(s) to exit."
+	fi
+}
+
+zle -N bash-ctrl-d
+bindkey '^D' bash-ctrl-d
 
 export GPG_TTY=$(tty)
 if [[ -n "$SSH_CONNECTION" ]]; then
