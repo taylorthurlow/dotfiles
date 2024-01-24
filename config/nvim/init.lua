@@ -477,6 +477,9 @@ lspconfig.standardrb.setup({
 	cmd = { "bundle", "exec", "standardrb", "--lsp" },
 })
 
+lspconfig.bashls.setup({})
+lspconfig.yamlls.setup({})
+
 -- [[ Formatting with conform ]]
 
 require("conform").setup({
