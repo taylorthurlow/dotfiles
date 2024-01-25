@@ -4,6 +4,8 @@ export HOMEBREW_BAT=true
 export HOMEBREW_NO_INSTALLED_DEPENDENTS_CHECK=true
 export HOMEBREW_BOOTSNAP=true
 
+export LC_COLLATE=C
+
 # Host-specific configuration may be installed by RCM. May set some environment
 # variables to be used in this file.
 if [ -f ~/.zprofile.local ]; then source ~/.zprofile.local; fi
