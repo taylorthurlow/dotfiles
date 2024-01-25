@@ -32,6 +32,8 @@ config.font_size = 14.0
 config.font = wezterm.font("CommitMono400w")
 config.line_height = 1.2
 config.freetype_load_target = "Light"
+config.underline_thickness = 2
+config.underline_position = "-2pt"
 
 -- Speed up ^ and ~ processing
 config.use_dead_keys = false
