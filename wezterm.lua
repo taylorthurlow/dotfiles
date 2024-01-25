@@ -10,6 +10,14 @@ if wezterm.config_builder then
 	config = wezterm.config_builder()
 end
 
+-- Assumes terminfo entry for wezterm is installed in ~/.terminfo (or other
+-- applicable terminfo path). It is installable with:
+-- tempfile=$(mktemp) \
+--   && curl -o $tempfile https://raw.githubusercontent.com/wez/wezterm/main/termwiz/data/wezterm.terminfo \
+--   && tic -x -o ~/.terminfo $tempfile \
+--   && rm $tempfile
+config.term = "wezterm"
+
 config.automatically_reload_config = true
 config.color_scheme = "Ayu Mirage"
 config.front_end = "WebGpu"
