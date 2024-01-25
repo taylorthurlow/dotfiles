@@ -184,6 +184,7 @@ config.mouse_bindings = {
 }
 
 config.colors = {
+	compose_cursor = "purple",
 	tab_bar = {
 		-- The color of the strip that goes along the top of the window
 		-- (does not apply when fancy tab bar is in use)
