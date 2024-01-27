@@ -480,6 +480,7 @@ lspconfig.standardrb.setup({
 lspconfig.bashls.setup({})
 lspconfig.yamlls.setup({})
 lspconfig.rust_analyzer.setup({})
+lspconfig.tsserver.setup({})
 
 -- [[ Formatting with conform ]]
 
