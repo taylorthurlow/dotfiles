@@ -49,6 +49,10 @@ bindkey "^[[1;5D" backward-word     # Ctrl + Left
 bindkey "^[[1;5C" forward-word      # Ctrl + Right
 bindkey "^[[1;5A" beginning-of-line # Ctrl + Up
 bindkey "^[[1;5B" end-of-line       # Ctrl + Down
+bindkey "^[[1;3D" backward-word     # Alt + Left
+bindkey "^[[1;3C" forward-word      # Alt + Right
+bindkey "^[[1;3A" beginning-of-line # Alt + Up
+bindkey "^[[1;3B" end-of-line       # Alt + Down
 
 # Prompt history search
 autoload -U up-line-or-beginning-search
