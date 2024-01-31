@@ -19,6 +19,7 @@ end
 config.term = "wezterm"
 
 config.automatically_reload_config = true
+config.scrollback_lines = 20000
 config.color_scheme = "Ayu Mirage"
 config.front_end = "WebGpu"
 config.webgpu_power_preference = "HighPerformance"
