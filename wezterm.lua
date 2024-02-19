@@ -20,7 +20,6 @@ config.term = "wezterm"
 
 config.automatically_reload_config = true
 config.scrollback_lines = 20000
-config.color_scheme = "Ayu Mirage"
 config.front_end = "WebGpu"
 config.webgpu_power_preference = "HighPerformance"
 config.hide_tab_bar_if_only_one_tab = true
@@ -28,13 +27,40 @@ config.adjust_window_size_when_changing_font_size = false
 config.initial_rows = 40
 config.initial_cols = 120
 
+-- Theme
+function get_appearance()
+	if wezterm.gui then
+		return wezterm.gui.get_appearance()
+	end
+	return "Dark"
+end
+
+function scheme_for_appearance(appearance)
+	if appearance:find("Dark") then
+		return "Ayu Mirage"
+	else
+		return "ayu_light"
+	end
+end
+
+config.color_scheme = scheme_for_appearance(get_appearance())
+
 -- Text rendering
 config.font_size = 14.0
-config.font = wezterm.font("CommitMono400w")
 config.line_height = 1.2
 config.freetype_load_target = "Light"
 config.underline_thickness = 2
 config.underline_position = "-2pt"
+
+function font_for_appearance(appearance)
+	if appearance:find("Dark") then
+		return wezterm.font("CommitMono400w")
+	else
+		return wezterm.font("CommitMono500w")
+	end
+end
+
+config.font = font_for_appearance(get_appearance())
 
 -- Speed up ^ and ~ processing
 config.use_dead_keys = false
@@ -194,80 +220,77 @@ config.mouse_bindings = {
 	},
 }
 
-config.colors = {
-	compose_cursor = "purple",
-	tab_bar = {
-		-- The color of the strip that goes along the top of the window
-		-- (does not apply when fancy tab bar is in use)
-		background = "#0b0022",
+function colors_for_tab_bar(appearance)
+	if appearance:find("Dark") then
+		return {
+			compose_cursor = "purple",
+			tab_bar = {
+				background = "#0b0022",
+				active_tab = {
+					bg_color = "#2b2042",
+					fg_color = "#c0c0c0",
+					intensity = "Normal",
+					underline = "None",
+					italic = false,
+					strikethrough = false,
+				},
+				inactive_tab = {
+					bg_color = "#1b1032",
+					fg_color = "#808080",
+				},
+				inactive_tab_hover = {
+					bg_color = "#3b3052",
+					fg_color = "#909090",
+					italic = true,
+				},
+				new_tab = {
+					bg_color = "#1b1032",
+					fg_color = "#808080",
+				},
+				new_tab_hover = {
+					bg_color = "#3b3052",
+					fg_color = "#909090",
+					italic = true,
+				},
+			},
+		}
+	else
+		return {
+			compose_cursor = "purple",
+			tab_bar = {
+				background = "#eeeeee",
+				active_tab = {
+					bg_color = "#e0e0e0",
+					fg_color = "#333333",
+					intensity = "Normal",
+					underline = "None",
+					italic = false,
+					strikethrough = false,
+				},
+				inactive_tab = {
+					bg_color = "#eeeeee",
+					fg_color = "#808080",
+				},
+				inactive_tab_hover = {
+					bg_color = "#cccccc",
+					fg_color = "#222222",
+					italic = true,
+				},
+				new_tab = {
+					bg_color = "#e0e0e0",
+					fg_color = "#333333",
+				},
+				new_tab_hover = {
+					bg_color = "#cccccc",
+					fg_color = "#222222",
+					italic = true,
+				},
+			},
+		}
+	end
+end
 
-		-- The active tab is the one that has focus in the window
-		active_tab = {
-			-- The color of the background area for the tab
-			bg_color = "#2b2042",
-			-- The color of the text for the tab
-			fg_color = "#c0c0c0",
-
-			-- Specify whether you want "Half", "Normal" or "Bold" intensity for the
-			-- label shown for this tab.
-			-- The default is "Normal"
-			intensity = "Normal",
-
-			-- Specify whether you want "None", "Single" or "Double" underline for
-			-- label shown for this tab.
-			-- The default is "None"
-			underline = "None",
-
-			-- Specify whether you want the text to be italic (true) or not (false)
-			-- for this tab.  The default is false.
-			italic = false,
-
-			-- Specify whether you want the text to be rendered with strikethrough (true)
-			-- or not for this tab.  The default is false.
-			strikethrough = false,
-		},
-
-		-- Inactive tabs are the tabs that do not have focus
-		inactive_tab = {
-			bg_color = "#1b1032",
-			fg_color = "#808080",
-
-			-- The same options that were listed under the `active_tab` section above
-			-- can also be used for `inactive_tab`.
-		},
-
-		-- You can configure some alternate styling when the mouse pointer
-		-- moves over inactive tabs
-		inactive_tab_hover = {
-			bg_color = "#3b3052",
-			fg_color = "#909090",
-			italic = true,
-
-			-- The same options that were listed under the `active_tab` section above
-			-- can also be used for `inactive_tab_hover`.
-		},
-
-		-- The new tab button that let you create new tabs
-		new_tab = {
-			bg_color = "#1b1032",
-			fg_color = "#808080",
-
-			-- The same options that were listed under the `active_tab` section above
-			-- can also be used for `new_tab`.
-		},
-
-		-- You can configure some alternate styling when the mouse pointer
-		-- moves over the new tab button
-		new_tab_hover = {
-			bg_color = "#3b3052",
-			fg_color = "#909090",
-			italic = true,
-
-			-- The same options that were listed under the `active_tab` section above
-			-- can also be used for `new_tab_hover`.
-		},
-	},
-}
+config.colors = colors_for_tab_bar(get_appearance())
 
 -- and finally, return the configuration to wezterm
 return config
