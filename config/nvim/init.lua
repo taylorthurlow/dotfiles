@@ -482,10 +482,10 @@ lspconfig.solargraph.setup({
 	init_options = { formatting = false },
 })
 
-lspconfig.ruby_ls.setup({
-	cmd = { "bundle", "exec", "ruby-lsp" },
-	init_options = { formatter = "none" },
-})
+-- lspconfig.ruby_ls.setup({
+-- 	cmd = { "bundle", "exec", "ruby-lsp" },
+-- 	init_options = { formatter = "none" },
+-- })
 
 lspconfig.standardrb.setup({
 	cmd = { "bundle", "exec", "standardrb", "--lsp" },
