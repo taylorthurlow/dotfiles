@@ -39,7 +39,8 @@ function scheme_for_appearance(appearance)
 	if appearance:find("Dark") then
 		return "Ayu Mirage"
 	else
-		return "ayu_light"
+		-- return "ayu_light"
+		return "Ayu Light (Gogh)"
 	end
 end
 
