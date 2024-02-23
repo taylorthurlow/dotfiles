@@ -24,5 +24,4 @@ export PATH="$HOME/.anyenv/bin:$PATH"
 [ "$(command -v kubectl)" ] && export KUBECONFIG="$HOME/.kube/config:$HOME/.kube/svkube"
 
 # Specific versioned homebrew packages
-export PATH="$HOMEBREW_PREFIX/opt/mysql@5.7/bin:$PATH"
 export PATH="$HOMEBREW_PREFIX/opt/imagemagick@6/bin:$PATH"
