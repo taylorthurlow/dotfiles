@@ -176,7 +176,17 @@ fi
 [ "$(command -v nvim)" ] && export EDITOR="$(which nvim)"
 [ "$(command -v bat)" ] && alias cat="bat"
 [ "$(command -v eza)" ] && alias ls="eza"
-[ "$(command -v lazygit)" ] && alias lg="lazygit"
+
+[ "$(command -v lazygit)" ] && function lg() {
+    export LAZYGIT_NEW_DIR_FILE=~/.lazygit/newdir
+
+    lazygit "$@"
+
+    if [ $? -eq 0 ] && [ -f $LAZYGIT_NEW_DIR_FILE ]; then
+            cd "$(cat $LAZYGIT_NEW_DIR_FILE)"
+            rm -f $LAZYGIT_NEW_DIR_FILE > /dev/null
+    fi
+}
 
 if [ "$(command -v hub)" ]; then
 	alias git="hub"
