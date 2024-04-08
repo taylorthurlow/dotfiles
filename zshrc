@@ -130,16 +130,6 @@ if [ "$(command -v fzf)" ]; then
 	}
 fi
 
-# git interactive rebase with fzf commit selection
-function girb() {
-	if [ "$(command -v thicket)" ]; then
-		git rebase -i $(thicket --color-prefixes --refs --initials | fzf --ansi | tr -cd "[:alnum:] " | cut -w -f2)^
-	else
-		git rebase -i $(git log --decorate --oneline --color=always | fzf --ansi | cut -d ' ' -f1 )^
-	fi
-
-}
-
 function bay-clone() {
 	git clone git@bitbucket.org:bayphotolab/$1.git
 }
@@ -220,12 +210,27 @@ alias gfap="git fetch --all --prune"
 alias gsw="git switch"
 alias gre="git restore"
 
-if [ "$(command -v thicket)" ]; then
-	alias glog="thicket --color-prefixes --refs --initials --exclude-remote-dependabot | less"
-	alias gloga="thicket --color-prefixes --all --refs --initials --exclude-remote-dependabot | less"
-	alias wglog="watch -t -c -n 1 thicket --color-prefixes -n 200 --refs --initials --exclude-remote-dependabot"
-	alias wgloga="watch -t -c -n 1 thicket --color-prefixes -n 200 --refs --all --initials --exclude-remote-dependabot"
-fi
+log_command="git log --color=always --graph --date=short --pretty='format:%C(yellow)%h%Creset%C(auto)%(decorate:tag=)%Creset %s %C(cyan)[%aN]%Creset %Cgreen(%ad, %ar)%Creset'"
+
+function glog() {
+	eval "DELTA_PAGER=\"less -SR\" $log_command $@"
+}
+
+function gloga() {
+	eval "DELTA_PAGER=\"less -SR\" $log_command --perl-regexp --exclude='refs/remotes/*/dependabot*' --all $@"
+}
+
+function wglog() {
+	watch --no-wrap --no-title --color --interval 1 -- "$log_command $@"
+}
+
+function wgloga() {
+	watch --no-wrap --no-title --color --interval 1 -- "$log_command --exclude='refs/remotes/*/dependabot*' --all $@"
+}
+
+function girb() {
+	eval "git rebase -i $(glog | fzf --ansi | cut -d ' ' -f2)^"
+}
 
 # Extra aliases
 alias be="bundle exec"
