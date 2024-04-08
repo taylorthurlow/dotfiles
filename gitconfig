@@ -75,3 +75,5 @@
 	enabled = true
 [column]
 	ui = auto
+[mailmap]
+	file = ~/.gitmailmap
