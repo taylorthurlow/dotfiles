@@ -46,7 +46,7 @@
 	co = checkout
 	br = branch
 [core]
-	pager = delta
+	pager = delta --wrap-max-lines 0
 	excludesfile = /Users/taylorthurlow/.gitignore_global
 	commitGraph = true
 	writeCommitGraph = true
