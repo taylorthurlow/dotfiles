@@ -4,6 +4,12 @@
 	signingkey = 0804778559C6A1B2
 [color]
 	ui = true
+[color "decorate"]
+	HEAD = cyan
+	branch = bold red
+	remoteBranch = red
+	tag = bold magenta
+	stash = magenta
 [advice]
 	statusHints = false
 [diff]
