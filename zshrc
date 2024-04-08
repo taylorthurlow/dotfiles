@@ -242,6 +242,7 @@ alias dc="docker-compose"
 alias notes="nvim ~/.notes/main.md"
 alias worknotes="nvim ~/.notes/work.md"
 alias xit="exit"
+alias imgcat="wezterm imgcat"
 
 alias zshrc="nvim ~/.zshrc"
 alias zprofile="nvim ~/.zprofile"
