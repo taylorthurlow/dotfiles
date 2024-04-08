@@ -22,6 +22,7 @@ export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:"$HOMEBREW_PREFIX/opt/openssl@$OPENSSL_V
 export PATH="$PATH:/Users/taylorthurlow/.cargo/bin"
 export PATH="$HOME/.anyenv/bin:$PATH"
 [ "$(command -v kubectl)" ] && export KUBECONFIG="$HOME/.kube/config:$HOME/.kube/svkube"
+export LESS="-R"
 
 # Specific versioned homebrew packages
 export PATH="$HOMEBREW_PREFIX/opt/imagemagick@6/bin:$PATH"
