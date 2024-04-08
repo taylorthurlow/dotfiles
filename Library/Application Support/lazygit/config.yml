@@ -1,0 +1,5 @@
+notARepository: "quit"
+promptToReturnFromSubprocess: false
+gui:
+  expandFocusedSidePanel: true
+  nerdFontsVersion: "3"
