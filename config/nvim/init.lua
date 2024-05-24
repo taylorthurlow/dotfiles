@@ -261,6 +261,19 @@ vim.g.rooter_patterns = { ".git", "Makefile", "*.sln", "Gemfile", "*.gemspec", "
 -- Git blame
 vim.g.gitblame_display_virtual_text = 0
 
+-- Filetype detection
+vim.filetype.add({
+	extension = {
+		env = "config",
+	},
+	filename = {
+		[".env"] = "config",
+	},
+	pattern = {
+		["%.env%.[%w_.-]+"] = "config",
+	},
+})
+
 -- [[ Extra visual configuration ]]
 
 -- Highlight yanked text, see `:help vim.highlight.on_yank()`
