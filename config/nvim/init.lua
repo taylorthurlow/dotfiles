@@ -366,6 +366,9 @@ require("telescope").setup({
 				preview_width = 0.4,
 			},
 		},
+		preview = {
+			filesize_limit = 1, -- 1 megabyte
+		},
 	},
 	pickers = {
 		find_files = {
