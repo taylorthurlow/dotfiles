@@ -36,11 +36,11 @@ require("lazy").setup({
 			update_interval = 1000,
 			set_dark_mode = function()
 				vim.api.nvim_set_option("background", "dark")
-				vim.cmd("colorscheme ayu")
+				vim.cmd("colorscheme catppuccin")
 			end,
 			set_light_mode = function()
 				vim.api.nvim_set_option("background", "light")
-				vim.cmd("colorscheme ayu")
+				vim.cmd("colorscheme catppuccin")
 			end,
 		},
 	},
@@ -155,15 +155,10 @@ require("lazy").setup({
 			},
 		},
 	},
-	{ -- Onedark theme
-		"Shatur/neovim-ayu",
-		config = function()
-			require("ayu").setup({
-				mirage = true,
-			})
-
-			require("ayu").colorscheme()
-		end,
+	{
+		"catppuccin/nvim",
+		name = "catppuccin",
+		priority = 1000,
 	},
 	{ -- Simple powerline alternative
 		"nvim-lualine/lualine.nvim",
