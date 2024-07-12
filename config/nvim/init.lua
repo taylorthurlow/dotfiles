@@ -116,8 +116,6 @@ require("lazy").setup({
 	{ -- Language server
 		"neovim/nvim-lspconfig",
 		dependencies = {
-			-- Auto-configured lua language server, completion for nvim stuff
-			"folke/neodev.nvim",
 			-- Useful status updates for LSP
 			{ "j-hui/fidget.nvim", tag = "legacy", opts = {} },
 		},
