@@ -23,7 +23,8 @@
               "bundle_identifiers": [
                 "^com\\.googlecode\\.iterm2$",
                 "^com\\.github\\.wez\\.wezterm$",
-                "^com\\.alacritty$"
+                "^com\\.alacritty$",
+                "^dev\\.zed\\.Zed$"
               ]
             }
           ]
