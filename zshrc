@@ -214,11 +214,11 @@ alias gre="git restore"
 log_command="git log --color=always --graph --date=short --pretty='format:%C(yellow)%h%Creset%C(auto)%(decorate:tag=)%Creset %s %C(cyan)[%aN]%Creset %Cgreen(%ad, %ar)%Creset'"
 
 function glog() {
-	eval "DELTA_PAGER=\"less -SR\" $log_command $@"
+	eval "GIT_PAGER=\"less -SR\" $log_command $@"
 }
 
 function gloga() {
-	eval "DELTA_PAGER=\"less -SR\" $log_command --perl-regexp --exclude='refs/remotes/*/dependabot*' --all $@"
+	eval "GIT_PAGER=\"less -SR\" $log_command --perl-regexp --exclude='refs/remotes/*/dependabot*' --all $@"
 }
 
 function wglog() {
