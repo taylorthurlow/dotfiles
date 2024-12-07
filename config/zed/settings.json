@@ -1,0 +1,142 @@
+{
+  "outline_panel": {
+    "dock": "left"
+  },
+  "assistant": {
+    "default_model": {
+      "provider": "zed.dev",
+      "model": "claude-3-5-sonnet-20240620"
+    },
+    "version": "2",
+    "show_hints": false
+  },
+  "theme": "Catppuccin Mocha",
+  // "base_keymap": "VSCode",
+  "vim_mode": true,
+  "ui_font_size": 16,
+  "buffer_font_size": 14,
+  "preferred_line_length": 80,
+  "buffer_font_family": "CommitMono450w",
+  "relative_line_numbers": true,
+  "format_on_save": "on",
+  "wrap_guides": [80, 120],
+  "active_pane_modifiers": {
+    "inactive_opacity": 0.9,
+    "border_size": 0.5
+  },
+  "git": {
+    "git_gutter": "tracked_files"
+  },
+  "file_types": {
+    "Dockerfile": ["Dockerfile*"],
+    "env": [".env", ".env*", ".kamal/secrets*"]
+  },
+  "languages": {
+    "Markdown": {
+      "soft_wrap": "preferred_line_length"
+    },
+    "ERB": {
+      "tab_size": 2
+    },
+    "Nu": {
+      "tab_size": 4
+    },
+    "Ruby": {
+      "tab_size": 2,
+      "language_servers": [
+        "ruby-lsp",
+        "standardrb",
+        "tailwindcss-language-server",
+        "!solargraph",
+        "!rubocop",
+        "..."
+      ]
+    }
+  },
+  "lsp": {
+    "standardrb": {
+      "initialization_options": {
+        "enabledFeatures": {
+          "diagnostics": true,
+          "formatting": false
+        }
+      }
+    },
+    "ruby-lsp": {
+      "binary": {
+        "path": "/Users/taylor/.rbenv/shims/ruby-lsp"
+      },
+      "initialization_options": {
+        "enableExperimentalFeatures": true,
+        "formatter": "standard",
+        "linters": ["standard"],
+        "enabledFeatures": {
+          "codeActions": true,
+          "codeLens": true,
+          "completion": true,
+          "definition": true,
+          "diagnostics": false, // until Zed supports pull-type diagnostics
+          "documentHighlights": false,
+          "documentLink": true,
+          "documentSymbols": true,
+          "foldingRanges": true,
+          "formatting": true,
+          "hover": true,
+          "inlayHint": true,
+          "onTypeFormatting": false,
+          "selectionRanges": true,
+          "semanticHighlighting": true,
+          "signatureHelp": true,
+          "typeHierarchy": true,
+          "workspaceSymbol": true
+        },
+        "featuresConfiguration": {
+          "inlayHint": {
+            "implicitHashValue": true,
+            "implicitRescue": true
+          }
+        }
+      }
+    },
+    "yaml-language-server": {
+      "settings": {
+        "yaml": {
+          "schemaStore": {
+            "enable": false
+          }
+        }
+      }
+    },
+    "tailwindcss-language-server": {
+      "settings": {
+        "includeLanguages": {
+          "erb": "html",
+          "ruby": "html"
+        },
+        "experimental": {
+          "classRegex": ["\\bclass:\\s*['\"]([^'\"]*)['\"]"]
+        }
+      }
+    }
+  },
+  "project_panel": {
+    "auto_reveal_entries": false,
+    "default_width": 400,
+    "indent_size": 30
+  },
+  "chat_panel": {
+    "button": false
+  },
+  "collaboration_panel": {
+    "button": false
+  },
+  "terminal": {
+    "copy_on_select": true,
+    "dock": "left",
+    "alternate_scroll": "on",
+    "line_height": "standard",
+    "toolbar": {
+      "breadcrumbs": false
+    }
+  }
+}

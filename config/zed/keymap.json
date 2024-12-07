@@ -1,0 +1,38 @@
+[
+  {
+    "context": "Editor && showing_completions",
+    "bindings": {
+      "ctrl-enter": "editor::ConfirmCompletion",
+      "enter": "editor::Cancel",
+      "tab": "editor::Cancel"
+    }
+  },
+  {
+    "context": "Terminal",
+    "bindings": {
+      "ctrl-enter": ["terminal::SendKeystroke", "ctrl-enter"],
+      "ctrl-shift-n": "pane::ActivateNextItem",
+      "ctrl-shift-p": "pane::ActivatePrevItem"
+    }
+  },
+  {
+    "context": "Editor && inline_completion && !showing_completions",
+    "bindings": {
+      "tab": "editor::Tab",
+      "ctrl-enter": "editor::AcceptInlineCompletion"
+    }
+  },
+  {
+    "context": "Editor && VimControl && !VimWaiting && !menu",
+    "bindings": {
+      "j": ["vim::Down", { "displayLines": true }],
+      "k": ["vim::Up", { "displayLines": true }],
+      "ctrl-w v": "pane::SplitRight",
+      "ctrl-w ctrl-v": "pane::SplitRight",
+      "ctrl-w s": "pane::SplitDown",
+      "ctrl-w shift-s": "pane::SplitDown",
+      "ctrl-w ctrl-s": "pane::SplitDown",
+      "x": ["workspace::SendKeystrokes", "\" _ x"] // avoid x going to clipboard
+    }
+  }
+]
