@@ -6,6 +6,8 @@ export HOMEBREW_BOOTSNAP=true
 
 export LC_COLLATE=C
 
+export XDG_CONFIG_HOME="/Users/taylor/.config"
+
 # Host-specific configuration may be installed by RCM. May set some environment
 # variables to be used in this file.
 if [ -f ~/.zprofile.local ]; then source ~/.zprofile.local; fi
