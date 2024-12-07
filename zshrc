@@ -251,8 +251,8 @@ alias zprofile="nvim ~/.zprofile"
 # include all the PATH modification in ~/.zprofile. Do not add PATH modification
 # to this file.
 
-# Anyenv
-[ "$(command -v anyenv)" ] && eval "$(anyenv init -)"
+[ "$(command -v rbenv)" ] && eval "$(rbenv init -)"
+[ "$(command -v nodenv)" ] && eval "$(nodenv init -)"
 
 # Google Cloud SDK
 if [ "$(command -v gcloud)" ]; then
@@ -262,4 +262,3 @@ fi
 
 # iTerm Shell Integration
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-
