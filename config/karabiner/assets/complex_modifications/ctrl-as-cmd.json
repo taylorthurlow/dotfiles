@@ -24,7 +24,8 @@
                 "^com\\.googlecode\\.iterm2$",
                 "^com\\.github\\.wez\\.wezterm$",
                 "^com\\.alacritty$",
-                "^dev\\.zed\\.Zed$"
+                "^dev\\.zed\\.Zed$",
+                "^dev\\.zed\\.Zed-Preview$"
               ]
             }
           ]
