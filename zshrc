@@ -166,6 +166,7 @@ fi
 [ "$(command -v nvim)" ] && export EDITOR="$(which nvim)"
 [ "$(command -v bat)" ] && alias cat="bat"
 [ "$(command -v eza)" ] && alias ls="eza"
+[ "$(command -v zed-preview)" ] && alias zed="zed-preview"
 
 [ "$(command -v lazygit)" ] && function lg() {
     export LAZYGIT_NEW_DIR_FILE=~/.lazygit/newdir
