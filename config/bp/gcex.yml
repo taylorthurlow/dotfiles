@@ -1,0 +1,13 @@
+projects:
+  stage:
+    name: bayphoto-stage
+    cluster: bayphoto-stage
+    zone: us-west2-b
+  production:
+    name: bayphoto-production
+    cluster: bayphoto-production
+    zone: us-west2-b
+  metalprints:
+    name: metalprints-207318
+    cluster: metal-prints
+    zone: us-west1-b

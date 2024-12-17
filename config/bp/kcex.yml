@@ -1,0 +1,9 @@
+contexts:
+  sv:
+    user: taylor
+    cluster: sv_prod
+    namespaces:
+      - stage
+      - production
+      - sv-snapshot
+      - release
