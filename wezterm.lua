@@ -78,7 +78,8 @@ end)
 
 -- Disable window shadow due to performance issues:
 -- https://github.com/wez/wezterm/issues/2669
-config.window_decorations = "TITLE | RESIZE | MACOS_FORCE_DISABLE_SHADOW"
+-- config.window_decorations = "TITLE | RESIZE | MACOS_FORCE_DISABLE_SHADOW"
+config.window_decorations = "TITLE | RESIZE"
 
 -- Style and show tabs
 config.hide_tab_bar_if_only_one_tab = false
