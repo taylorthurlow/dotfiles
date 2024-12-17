@@ -1,7 +1,6 @@
+export HOMEBREW_PREFIX=/opt/homebrew
 export HOMEBREW_NO_INSTALL_CLEANUP=true
-export HOMEBREW_AUTOREMOVE=true
 export HOMEBREW_BAT=true
-export HOMEBREW_NO_INSTALLED_DEPENDENTS_CHECK=true
 export HOMEBREW_BOOTSNAP=true
 
 export LC_COLLATE=C
@@ -16,6 +15,7 @@ if [ -f ~/.zprofile.local ]; then source ~/.zprofile.local; fi
 export RUBY_DEBUG_IRB_CONSOLE=1
 OPENSSL_VER_NUM="${OPENSSL_VER_NUM:-3}"
 export DISABLE_SPRING=1
+export PATH="/opt/homebrew/bin:$PATH"
 export PATH="$HOMEBREW_PREFIX/opt/openssl@$OPENSSL_VER_NUM/bin:$PATH"
 export LIBRARY_PATH="$LIBRARY_PATH:$HOMEBREW_PREFIX/opt/openssl@$OPENSSL_VER_NUM/lib/"
 export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$HOMEBREW_PREFIX/opt/openssl@$OPENSSL_VER_NUM"
