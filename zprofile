@@ -23,6 +23,7 @@ export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:"$HOMEBREW_PREFIX/opt/openssl@$OPENSSL_V
 
 # Miscellaneous
 export PATH="$PATH:/Users/taylorthurlow/.cargo/bin"
+export PATH="$PATH:$HOMEBREW_PREFIX/opt/rustup/bin"
 export PATH="$HOME/.rbenv/bin:$PATH"
 export PATH="$HOME/.nodenv/bin:$PATH"
 export PATH="$PATH:/Applications/Docker.app/Contents/Resources/bin/"
