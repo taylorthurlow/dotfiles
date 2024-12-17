@@ -13,6 +13,7 @@ export XDG_CONFIG_HOME="/Users/taylor/.config"
 if [ -f ~/.zprofile.local ]; then source ~/.zprofile.local; fi
 
 # Ruby
+export RUBY_DEBUG_IRB_CONSOLE=1
 OPENSSL_VER_NUM="${OPENSSL_VER_NUM:-3}"
 export DISABLE_SPRING=1
 export PATH="$HOMEBREW_PREFIX/opt/openssl@$OPENSSL_VER_NUM/bin:$PATH"
