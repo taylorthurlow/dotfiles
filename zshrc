@@ -109,6 +109,10 @@ function git-nuke {
 	done
 }
 
+function beet-import {
+	ssh root@192.168.1.2 -t docker exec -itu abc beets "beet import -tm /data/music/import"
+}
+
 # Use `jq` with both JSON and non-JSON lines.
 function jjq {
 	jq -R -r "${1:-.} as \$line | try fromjson catch \$line"
