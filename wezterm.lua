@@ -56,9 +56,9 @@ config.underline_position = "-2pt"
 
 function font_for_appearance(appearance)
 	if appearance:find("Dark") then
-		return wezterm.font("CommitMono400w")
+		return wezterm.font("CommitMono")
 	else
-		return wezterm.font("CommitMono500w")
+		return wezterm.font("CommitMono")
 	end
 end
 
