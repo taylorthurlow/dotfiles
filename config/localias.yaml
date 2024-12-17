@@ -1,0 +1,19 @@
+# localias config file syntax
+#
+# 	alias: port
+#
+# for example,
+#
+#   bareTLD: 9003 # serves over https and http
+#   implicitly_secure.test: 9002 # serves over https and http
+#   https://explicit_secure.test: 9000 # serves over https and http
+#   http://explicit_insecure.test: 9001 # serves over http only
+#
+order-api.local: 4000
+bayos.local: 4001
+wos.local: 4002
+integrations.local: 4003
+my.local: 4004
+machine.local: 4005
+metalprints.local: 4006
+customer-api.local: 4007
