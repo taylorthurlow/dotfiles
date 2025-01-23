@@ -38,6 +38,7 @@
       "ctrl-w s": "pane::SplitDown",
       "ctrl-w shift-s": "pane::SplitDown",
       "ctrl-w ctrl-s": "pane::SplitDown",
+      "g k": "pane::TogglePreviewTab",
       "x": ["workspace::SendKeystrokes", "\" _ x"] // avoid x going to clipboard
     }
   }
